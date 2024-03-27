@@ -23,9 +23,9 @@
         </ul>
       </li>
         
-      <li class="deroulant"><a class="liens" href="?controller=commandes&action=all_commandes">Commandes</a>
+      <li class="deroulant"><a class="liens" href="?controller=commandes&action=all_commandes">User</a>
         <ul class="sous">
-          <li><a  href="?controller=commandes&action=all_commandes">Toutes les commandes</a></li>
+          <li><a  href="?controller=user&action=all_users">Toutes les users</a></li>
         </ul>
       </li>
 </nav>
