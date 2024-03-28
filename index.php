@@ -1,6 +1,7 @@
 <?php 
-require_once('Models/Model.php');
-require_once('Controllers/Controller.php');
+
+require_once('App/Model.php');
+require_once('App/Controller.php');
 require_once('Utils/header.php');
 
 $controllers=['home', 'user'];

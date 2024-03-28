@@ -1,6 +1,5 @@
 <?php
 
-
 class User extends Model
 {
     public static function get_model()
@@ -8,11 +7,17 @@ class User extends Model
 
         if(is_null(self::$instance))
         {
-            self::$instance=new Model();
+            self::$instance=new User();
         }
         return self::$instance;
     }
-    
+
+    public function __construct()
+    {
+        $this->
+    }
+
+
     public function get_all_users()
     {
         try {
