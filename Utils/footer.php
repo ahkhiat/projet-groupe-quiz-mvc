@@ -1,7 +1,7 @@
 <footer>
 
 
-<p>Copyright HILALA 2021 </p>
+<p>Copyright Nadia, Mustapha, Thierry 2024 </p>
 
 
 
