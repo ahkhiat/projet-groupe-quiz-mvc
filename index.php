@@ -4,6 +4,7 @@
 require_once('App/Model.php');
 require_once('Models/User.php');
 require_once('Models/Game.php');
+require_once('Models/Security.php');
 
 /* ------------------------------- Controllers ------------------------------ */
 require_once('App/Controller.php');
