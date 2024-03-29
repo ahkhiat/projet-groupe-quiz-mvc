@@ -1,10 +1,19 @@
 <?php 
 
+/* --------------------------------- Modèles -------------------------------- */
 require_once('App/Model.php');
+require_once('Models/User.php');
+require_once('Models/Game.php');
+
+/* ------------------------------- Controllers ------------------------------ */
 require_once('App/Controller.php');
+
+/* ---------------------------------- Utils --------------------------------- */
 require_once('Utils/header.php');
 
-$controllers=['home', 'user'];
+
+
+$controllers=['home', 'user', 'game'];
 $controller_default='home';
 
 if(isset($_GET['controller']) and in_array($_GET['controller'],$controllers))

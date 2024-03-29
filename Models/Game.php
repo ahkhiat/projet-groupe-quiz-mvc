@@ -1,6 +1,6 @@
 <?php
 
-class User extends Model
+class Game extends Model
 {
     protected $bd;
 
@@ -11,7 +11,7 @@ class User extends Model
 
         if(is_null(self::$instance))
         {
-            self::$instance=new User();
+            self::$instance=new Game();
         }
         return self::$instance;
     }
@@ -20,11 +20,10 @@ class User extends Model
         parent::__construct(); 
     }
 
-    public function get_all_users()
+    public function get_all_games()
     {
-
         try {
-            $requete = $this->bd->prepare('SELECT * FROM user');
+            $requete = $this->bd->prepare('SELECT * FROM game');
             $requete->execute();
             
         } catch (PDOException $e) {
@@ -32,5 +31,7 @@ class User extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
+
+
 
 }

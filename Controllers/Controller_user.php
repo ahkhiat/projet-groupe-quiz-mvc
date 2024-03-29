@@ -6,6 +6,10 @@ class Controller_user extends Controller
     {
         $this->action_home();
     }
+    public function action_home()
+    {
+        $this->render('home');
+    }
 
 
     public function action_all_users()
@@ -15,5 +19,7 @@ class Controller_user extends Controller
         $this->render("all_users",$data);
 
     }
+
+    
 
 }

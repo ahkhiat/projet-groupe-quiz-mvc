@@ -1,12 +1,29 @@
 <?php
 
-abstract class Model
+/* ------------------------- POUR RAJOUTER UN MODELE ------------------------ */
+/*
+Créer son modèle dans Models
+
+Le déclarer dans index.php 
+
+Attention aux fonctions qui doivent être protected et non private
+
+Le constructeur doit faire appel au constructeur parent
+
+Dans chaque modèle, on doit instancier le modèle en question
+
+
+*/
+
+
+
+class Model
 {
-    private $bd;
+    protected $bd;
 
     private static $instance=null;
 
-    private function __construct()
+    protected function __construct()
     {
         try {
             $this->bd = new PDO('mysql:host=localhost:3307;dbname=science-quiz-mvc', 'root', '');
@@ -19,15 +36,16 @@ abstract class Model
         }
     }
 
-    // public static function get_model()
-    // {
+    public static function get_model()
+    {
 
-    //     if(is_null(self::$instance))
-    //     {
-    //         self::$instance=new Model();
-    //     }
-    //     return self::$instance;
-    // }
+        if(is_null(self::$instance))
+        {
+            self::$instance=new Model();
+        }
+        return self::$instance;
+    }
+
 
     // public function get_all_users()
     // {
@@ -40,6 +58,10 @@ abstract class Model
     //     }
     //     return $requete->fetchAll(PDO::FETCH_OBJ);
     // }
+
+/* -------------------------------------------------------------------------- */
+/*                                    Game                                    */
+/* -------------------------------------------------------------------------- */
 
 
 
