@@ -1,6 +1,6 @@
 <?php
 
-class Controller_question extends Controller
+class Controller_security extends Controller
 {
     public function action_default()
     {
@@ -13,30 +13,38 @@ class Controller_question extends Controller
     }
 
 // ......................connection.......................;;;;
-public function action_User_connetion()
+public function action_user_connection()
     {
-        $this->render('User_connetion');
+        $this->render('user_connection');
     }
-//...............login......................
-public function action_login_connetion()
-    
-{
 
-$m=Model::get_model();
-$data = ['identification'=>$m->get_login_connetion()];
-    $this->render("login_connetion",$data);
+//...............login......................
+
+// public  function action_login_connection()
+
+// {
+
+// $m=security::get_model();
+// $data = ['identification'=>$m->get_login_connection()];
+//     $this->render("login_connection",$data);
     
-}
-public function action_disconnetion()
-{
-    $this->render('disconnetion');
-}
+// }
+
+//.............................disconnection...............................
+
+// public function action_disconnection()
+// {
+//     $this->render('disconnection');
+// }
 // ...........make registration.............
-public function action_User_registration()
+public function action_user_registration()
 {
-$this->render('User_registration');
+$this->render('user_registration');
 }
-public function action_User_registration_valid()
+
+//.........................registration valid.............................
+
+public function action_user_registration_valid()
 {    
  
 // $email = $_POST['email'];
@@ -47,11 +55,12 @@ public function action_User_registration_valid()
 // $birthdate = $_POST['birthdate'];
 
 
-$m=Model::get_model();
-$data = ['utilisateur'=>$m->get_User_registration_valid()];
+$m=security::get_model();
+$data = ['utilisateur'=>$m->get_user_registration_valid()];
     $this->render("login_connetion",$data);
     
-}    
+}
+
 
     
 }

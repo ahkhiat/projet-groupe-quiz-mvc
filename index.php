@@ -14,7 +14,7 @@ require_once('Utils/header.php');
 
 
 
-$controllers=['home', 'user', 'game'];
+$controllers=['home', 'user', 'game','security'];
 $controller_default='home';
 
 if(isset($_GET['controller']) and in_array($_GET['controller'],$controllers))
@@ -38,4 +38,3 @@ else
 
 require_once('Utils/footer.php');
 
-?>

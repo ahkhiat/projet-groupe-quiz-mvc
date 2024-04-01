@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Content/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
@@ -28,6 +30,13 @@
           <li><a  href="?controller=user&action=all_users">Toutes les users</a></li>
         </ul>
       </li>
+      <div>
+      <a href="?controller=security&action=user_registration" class="btn btn-primary m-3 ">Inscription</a>
+      
+     
+      <a href="?controller=security&action=user_connetion" class="btn btn-danger m-3 ">Connexion</a> 
+      <a href="?controller=security&action=disconnetion" class="btn btn-danger m-2 p-2">Deconnexion</a>
+      </div> 
 </nav>
 
     
