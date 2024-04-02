@@ -24,7 +24,7 @@ session_start();
           <img class="logo" src="./Content/img/logo.png" alt="logo.png"> 
         </div>
         <div> 
-         <a class="navbar-brand" href="?controlleur=home&action=home">Accueil</a>
+         <a class="navbar-brand" href="?controller=home&action=home">Accueil</a>
         </div>
       
         <?php
