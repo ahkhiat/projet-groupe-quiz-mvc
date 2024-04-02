@@ -37,6 +37,24 @@ header .navbar{
     font-weight: bolder;
     margin: 10px; 
 }
+.nav-link{
+    font-size: 20px ;
+    color:#fff !important;
+    font-weight: bolder !important;
+    margin: 10px;  
+}
+.coeur{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    /* margin-left: px; */
+}
+.space{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    /* margin-left: 2px; */
+}
 
 .admin-badge {
     background-color: #d896e9; /* Couleur de fond */
@@ -55,6 +73,11 @@ header .navbar{
     margin-right: 10px;
     font-weight: bold; 
     display: inline-block;
+}
+h1{
+    font-family:cursive;
+    background-color: rgba(127, 255, 212, 0.564);
+    text-align: center;
 }
 
 

@@ -1,19 +1,18 @@
-<div class="collapse">
-          <a class="nav-link dropdown-toggle  " href="?controller=livres&action=all_livres" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Livres
+
+     <div class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Theme
           </a>
           <ul class="dropdown-menu">
-          <li><a href="?controller=livres&action=all_livres">Tous les livres</a></li>
-            <li><a class="dropdown-item" href="?controller=livres&action=livre_auteur">par_auteur</a></li>
-            <li><a class="dropdown-item" href="?controller=livres&action=livre_editeur">par_editeur</a></li>
-            <li><a class="dropdown-item" href="?controller=livres&action=livre_titre">par_titre</a></li>
+            <li><a class="dropdown-item" href="#"><img class="coeur" src="./Content/img/Coeur.png" alt="Image 1">Corp Humain</a></li>
+            <li><a class="dropdown-item" href="#"><img  class= "space" src="./Content/img/space.png" alt="Image 1">Espace</a></li>
           </ul>
-         
-    </div>
-          
-   <div class="user-badge"><?= $_SESSION['firstname']?></div>
+        
+     </div>     
+    
+        <div class="user-badge"><?= $_SESSION['firstname']?></div>
         
     
-   <a href="?controller=security&action=disconnection" class="btn btn-danger m-2 p-2">Deconnexion</a>
+        <a href="?controller=security&action=disconnection" class="btn btn-danger m-2 p-2">Deconnexion</a>
    
     

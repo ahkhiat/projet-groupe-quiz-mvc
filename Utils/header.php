@@ -48,7 +48,7 @@ session_start();
       
      
       <a href="?controller=security&action=user_connection" class="btn btn-danger m-3 ">Connexion</a>  
-      <a href="?controller=security&action=disconnection" class="btn btn-danger m-2 p-2">Deconnexion</a>
+      
       </div> 
 
       
