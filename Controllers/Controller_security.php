@@ -12,7 +12,8 @@ class Controller_security extends Controller
         $this->render('home');
     }
 
-// ......................connection.......................;;;;
+// ......................connection.......................
+
     public function action_user_connection()
         {
             $this->render('user_connection');

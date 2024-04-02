@@ -25,12 +25,11 @@ class Security extends Model
         echo "je suis dans model login connection";
          try {
             var_dump($_POST);
-            $Mdp = $_POST['password'];
+
+            $Mdp = md5($_POST['password']);
             $email = $_POST['email'];
-            $requete = $this->bd->prepare('SELECT * FROM user 
-                  WHERE pswd=:mdp AND email=:nom');
-           
-            $requete->execute(array(':mdp'=>$Mdp, ':nom'=>$email));
+            $requete = $this->bd->prepare('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');
+            $requete->execute(array(':mdp' => $Mdp, ':nom' => $email));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
@@ -44,17 +43,17 @@ public function get_user_registration_valid()
     
     try {
         $user="user";
-     $requete = $this->bd->prepare('INSERT INTO user (user_id,email,roles,pswd,firstname,lastname,username,birthdate,created_at) 
-     VALUES(NULL,:e,:utilisateur,:p,:f,:l,:un,:b,:c)');
+     $requete = $this->bd->prepare('INSERT INTO user (user_id,email,roles,pswd,firstname,lastname,username,birthdate) 
+     VALUES(NULL,:e,:utilisateur,:p,:f,:l,:un,:b)');
        
      $requete->execute(array(':e'=>$_POST['email'],
                              ':utilisateur'=>$user,
-                             ':p' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+                             ':p' => md5($_POST['password']),
                              ':l'=>$_POST['lastname'],
                              ':f'=>$_POST['firstname'],
                              ':un'=>$_POST['username'],
                              ':b'=>$_POST['birthdate'],
-                             ':c' => date('Y-m-d')));
+                             ));
                                
                              
     } catch (PDOException $e) {

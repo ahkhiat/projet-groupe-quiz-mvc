@@ -11,7 +11,7 @@
          
     </div>
           
-   <div class="user-badge"><?= $_SESSION['nom']?></div>
+   <div class="user-badge"><?= $_SESSION['firstname']?></div>
         
     
    <a href="?controller=security&action=disconnection" class="btn btn-danger m-2 p-2">Deconnexion</a>
