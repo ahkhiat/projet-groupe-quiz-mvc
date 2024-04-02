@@ -1,4 +1,4 @@
-<form action="?controller=security&action=user_inscription_valid" method="post">
+<form action="?controller=security&action=user_registration_valid" method="post">
     
        <div class="form-row">
           <label class="col-md-3" for="lastname">Nom</label>   
@@ -14,7 +14,7 @@
         </div>
         <div class="form-row">
           <label class="col-md-3" for="birthdate">Date de naissance</label>   
-          <input id="birthdate" type="text" class="form-control" name="birthdate" placeholder="Entrer votre Date de naissance">    
+          <input id="birthdate" type="date" class="form-control" name="birthdate" placeholder="Entrer votre Date de naissance">    
         </div>
         <div class="form-row">
           <label class="col-md-3" fo="email">Email</label>   

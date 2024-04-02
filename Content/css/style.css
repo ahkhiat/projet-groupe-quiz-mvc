@@ -1,0 +1,58 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    /* background-color: skyblue; */
+    background-size: 150%; 
+}
+
+header .navbar{
+    background-color: rgb(14, 10, 241)!important;
+}
+ .container {
+    display: flex;
+
+    /* justify-content: center; */
+    /* justify-content: space-around; */
+
+}
+ .logo{
+    background-image: url('/Content/img/logo.png') !important;
+    width: 99px;
+    height: 89px;
+    border-radius: 50%;
+    margin-left: 10px;
+    float:center; 
+   position:absolute;
+}
+
+.admin-badge {
+    background-color: #d896e9; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border-radius: 50%; /* Pour créer une forme de bulle ronde */
+    padding: 8px 15px; /* Ajustez les valeurs de padding selon vos préférences */
+    margin-right: 10px; /* Marge à droite pour l'espacement avec d'autres éléments */
+    font-weight: bold; /* Pour mettre en gras le texte */
+    display: inline-block; /* Permet au badge d'occuper seulement l'espace nécessaire */
+}
+.user-badge{
+    background-color: #73f3ea; 
+    color: #fff; 
+    border-radius: 50%;
+    padding: 8px 15px; 
+    margin-right: 10px;
+    font-weight: bold; 
+    display: inline-block;
+}
+
+
+footer {
+    width: 100%;
+    text-align: center; 
+    margin-top: auto;
+    padding: 2rem;
+    color: white;
+    background-color: rgb(14, 10, 241);
+   
+}

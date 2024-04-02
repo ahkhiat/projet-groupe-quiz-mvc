@@ -1,6 +1,6 @@
 <?php
 
-class security extends Model
+class Security extends Model
 {
     protected $bd;
 
@@ -11,7 +11,7 @@ class security extends Model
 
         if(is_null(self::$instance))
         {
-            self::$instance=new security();
+            self::$instance=new Security();
         }
         return self::$instance;
     }
@@ -20,22 +20,23 @@ class security extends Model
         parent::__construct(); 
     }
 
-    // public function get_login_connetion()
-    // { 
-        
-    //      try {
-    //         $Mdp = $_POST['password'];
-    //         $email = $_POST['email'];
-    //     $requete = $this->bd->prepare('SELECT * FROM User 
-    //               WHERE password=:mdp AND email=:nom');
+    public function get_login_connection()
+    { 
+        echo "je suis dans model login connection";
+         try {
+            var_dump($_POST);
+            $Mdp = $_POST['password'];
+            $email = $_POST['email'];
+            $requete = $this->bd->prepare('SELECT * FROM user 
+                  WHERE pswd=:mdp AND email=:nom');
            
-    //         $requete->execute(array(':mdp'=>$Mdp, ':nom'=>$email));
+            $requete->execute(array(':mdp'=>$Mdp, ':nom'=>$email));
             
-    //     } catch (PDOException $e) {
-    //         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
-    //     }
-    //     return $requete->fetchAll(PDO::FETCH_OBJ);
-    // }
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
 //....................user registration....................
 public function get_user_registration_valid()
 
@@ -43,12 +44,19 @@ public function get_user_registration_valid()
     
     try {
         $user="user";
-     $requete = $this->bd->prepare('INSERT INTO user (user_id,email,password,lastname,firstname,username,birthdate,created_at,roles) 
-     VALUES(NULL,:e,:p,:l,:f,:un,:b,:c,:utilisateur)');
+     $requete = $this->bd->prepare('INSERT INTO user (user_id,email,roles,pswd,firstname,lastname,username,birthdate,created_at) 
+     VALUES(NULL,:e,:utilisateur,:p,:f,:l,:un,:b,:c)');
        
-     $requete->execute(array(':e'=>$_POST['email'],':p'=>$_POST['password'] ,':f'=>$_POST['firstname'],
-     ':l'=>$_POST['lastname'],':un'=>$_POST['username']  ,':b'=>$_POST['birthdate'] ,':created_at'=> date('Y-m-d'),':utilisateur'=>$user));
-        
+     $requete->execute(array(':e'=>$_POST['email'],
+                             ':utilisateur'=>$user,
+                             ':p' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+                             ':l'=>$_POST['lastname'],
+                             ':f'=>$_POST['firstname'],
+                             ':un'=>$_POST['username'],
+                             ':b'=>$_POST['birthdate'],
+                             ':c' => date('Y-m-d')));
+                               
+                             
     } catch (PDOException $e) {
         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
     }
