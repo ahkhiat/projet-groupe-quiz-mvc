@@ -21,7 +21,7 @@ session_start();
   <div class="container">
        
         <div >
-          <img class="logo" src="/img/logo.png" alt="logo.png"> 
+          <img class="logo" src="./Content/img/logo.png" alt="logo.png"> 
         </div>
         <div> 
          <a class="navbar-brand" href="?controlleur=home&action=home">Accueil</a>
@@ -50,6 +50,8 @@ session_start();
       <a href="?controller=security&action=user_connection" class="btn btn-danger m-3 ">Connexion</a>  
       <a href="?controller=security&action=disconnection" class="btn btn-danger m-2 p-2">Deconnexion</a>
       </div> 
+
+      
     <?php 
    } 
    ?>

@@ -1,6 +1,8 @@
 <?php
     // session_start(); on la declare juste dans le header
-var_dump($identification[0]);
+  
+
+// var_dump($identification[0]);
 
     $_SESSION['email']  = $identification[0]->email;
     $_SESSION['lastname']  = $identification[0]->lastname;

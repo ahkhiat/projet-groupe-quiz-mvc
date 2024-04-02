@@ -8,7 +8,7 @@ body {
 }
 
 header .navbar{
-    background-color: rgb(14, 10, 241)!important;
+    background-color:rgb(0, 102, 255)!important;
 }
  .container {
     display: flex;
@@ -18,22 +18,33 @@ header .navbar{
 
 }
  .logo{
-    background-image: url('/Content/img/logo.png') !important;
-    width: 99px;
-    height: 89px;
+    
+    width: 88px;
+    height: 77px;
     border-radius: 50%;
     margin-left: 10px;
-    float:center; 
-   position:absolute;
+
+}
+.dashboard a{
+  font-size: 20px ;
+  color:#fff;
+  font-weight: bolder;
+  margin: 10px;
+}
+.navbar-brand{
+    font-size: 20px ;
+    color:#fff !important;
+    font-weight: bolder;
+    margin: 10px; 
 }
 
 .admin-badge {
     background-color: #d896e9; /* Couleur de fond */
-    color: #fff; /* Couleur du texte */
-    border-radius: 50%; /* Pour créer une forme de bulle ronde */
-    padding: 8px 15px; /* Ajustez les valeurs de padding selon vos préférences */
-    margin-right: 10px; /* Marge à droite pour l'espacement avec d'autres éléments */
-    font-weight: bold; /* Pour mettre en gras le texte */
+    color: #fff; 
+    border-radius: 50%; 
+    padding: 8px 15px; 
+    margin-right: 10px; 
+    font-weight: bold; 
     display: inline-block; /* Permet au badge d'occuper seulement l'espace nécessaire */
 }
 .user-badge{
@@ -53,6 +64,6 @@ footer {
     margin-top: auto;
     padding: 2rem;
     color: white;
-    background-color: rgb(14, 10, 241);
+    background-color:rgb(0, 102, 255);
    
 }

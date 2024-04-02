@@ -1,4 +1,4 @@
-<div class="collapse navbar-collapse " id="navbarSupportedContent">
+<div class="collapse">
           <a class="nav-link dropdown-toggle  " href="?controller=livres&action=all_livres" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Livres
           </a>

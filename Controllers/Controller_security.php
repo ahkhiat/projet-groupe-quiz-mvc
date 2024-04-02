@@ -47,18 +47,18 @@ class Controller_security extends Controller
 
     public function action_user_registration_valid()
     {    
-    
-    // $email = $_POST['email'];
-    // $password= $_POST['password'];
-    // $lastname = $_POST['lastname'];
-    // $firstname = $_POST['firstname'];
-    // $username = $_POST['username'];
-    // $birthdate = $_POST['birthdate'];
-
-
+             
         $m=Security::get_model();
         $data = ['identification'=>$m->get_user_registration_valid()];
-        $this->render("login_connection",$data);
+
+        if($data){
+
+            $email = $_POST['email'];
+            $data = ['identification'=>$m->get_login_connection($email)];
+
+        }
+
+        $this->render("login_connection", $data);
         
     }
 

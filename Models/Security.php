@@ -22,9 +22,8 @@ class Security extends Model
 
     public function get_login_connection()
     { 
-        echo "je suis dans model login connection";
          try {
-            var_dump($_POST);
+            // var_dump($_POST);
 
             $Mdp = md5($_POST['password']);
             $email = $_POST['email'];
