@@ -49,5 +49,13 @@ class Controller_admin extends Controller
         $this->render("question_add_result", $data);
 
     }
+
+    public function action_all_themes()
+    {
+        $m=Admin::get_model();
+        $data=['themes'=>$m->get_all_themes()];
+        $this->render("all_themes", $data);
+
+    }
     
 }
