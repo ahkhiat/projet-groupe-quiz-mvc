@@ -1,0 +1,1 @@
+<h2>Nouvelle partie</h2>
