@@ -9,7 +9,7 @@
           </ul>
      </div>     
      <div class="nav-item dropdown">
-          <a class="nav-link" href="?controller=admin&action=dashboard" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link" href="?controller=admin&action=dashboard" >
             Panneau d'administration
           </a>
           
