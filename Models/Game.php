@@ -62,19 +62,25 @@ class Game extends Model
         $questionsQuery->execute($randomQuestionIds);
         $results = $questionsQuery->fetchAll(PDO::FETCH_ASSOC);
 
+        $index = 0;
+
         $organizedResults = [];
         foreach ($results as $row) {
             $questionId = $row['question_id'];
             if (!isset($organizedResults[$questionId])) {
-                $organizedResults[$questionId] = [
+                $organizedResults[$index] = [
                     'question' => $row['question_content'],
                     'question_id' => $questionId,
                     'answers' => [],
                     'correct_answer' => null
                 ];
+                $organizedResults[$index]['answers'][] = $row['answer_content'];
+                $index++;
+
             }
-            $organizedResults[$questionId]['answers'][] = $row['answer_content'];
-           
+            
+            
+
 
             if ($row['is_true']) {
                 $organizedResults[$questionId]['correct_answer'] = $row['answer_content'];
