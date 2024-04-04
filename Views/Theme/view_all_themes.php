@@ -1,7 +1,7 @@
 <div>
 
     <div class="align-self-end">
-        <a href="?controller=admin&action=question_add"><button class="mt-3 btn btn-secondary">Ajouter un thème</button></a>
+        <a href="?controller=theme&action=question_add"><button class="mt-3 btn btn-secondary">Ajouter un thème</button></a>
     </div>
 
     <table id='table' class="table">

@@ -2,12 +2,11 @@
 
 <div class="dashboard" >
       
-    <a class="navbar-brand" href="?controller=theme&action=theme">Theme</a>
-    <a class="navbar-brand" href="?controller=question&action=question">Question</a>
-    <a class="navbar-brand" href="?controller=reponse&action=reponse">Reponse</a>
-    <a class="navbar-brand" href="?controller=game&action=game">Game</a>
-    <a class="navbar-brand" href="?controller=user&action=user">Gestion utilisateur</a>       
-
+    <a class="navbar-brand" href="?controller=game&action=all_games">Parties</a>
+    <a class="navbar-brand" href="?controller=question&action=all_questions">Questions</a>
+    <a class="navbar-brand" href="?controller=theme&action=all_themes">Thèmes</a>
+    <a class="navbar-brand" href="?controller=user&action=all_users">Utilisateurs</a>
+    <a class="nav-link" href="?controller=admin&action=dashboard">Dashboard</a>
 </div>
          
     <div class="admin-badge"><?= $_SESSION['firstname'] ?></div>

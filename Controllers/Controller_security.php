@@ -24,7 +24,6 @@ class Controller_security extends Controller
     public function action_login_connection()
 
     {
-        echo "je suis dans controller login connection";
         $m=Security::get_model();
         $data = ['identification'=>$m->get_login_connection()];
         $this->render("login_connection",$data);

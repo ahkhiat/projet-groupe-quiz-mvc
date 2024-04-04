@@ -23,8 +23,6 @@ class Security extends Model
     public function get_login_connection()
     { 
          try {
-            // var_dump($_POST);
-
             $Mdp = md5($_POST['password']);
             $email = $_POST['email'];
             $requete = $this->bd->prepare('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');

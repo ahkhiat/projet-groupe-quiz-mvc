@@ -15,6 +15,8 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/29aef3fc25.js" crossorigin="anonymous"></script>
     <script src="./Content/js/script.js" defer></script>
+    <script type="module" src="./Content/js/game.js" defer></script>
+
     
     <title>ScienceQuize</title>
 </head>
@@ -31,7 +33,9 @@ session_start();
         <div> 
          <a class="navbar-brand" href="?controller=home&action=home">Accueil</a>
         </div>
-      
+        <div> 
+         <a class="navbar-brand" href="?controller=game&action=new_game">JOUER</a>
+        </div>
         <?php
       // une fois connecter sois je suis dans l'admin ou l'utilisateur
       if(isset($_SESSION['email']))
