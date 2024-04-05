@@ -89,7 +89,9 @@ class Game extends Model
 
 public function get_fetch_questions()
 {
-    $nbrQuestions = 5;
+    $nbrQuestions = 7;
+    $theme = 1;
+    $level = 1;
     try {
 
         $randomQuestionIdsQuery = $this->bd->prepare('SELECT question_id FROM question ORDER BY RAND() LIMIT :lm');
@@ -100,8 +102,14 @@ public function get_fetch_questions()
         $placeholders = rtrim(str_repeat('?,', count($randomQuestionIds)), ',');
         $questionsQuery = $this->bd->prepare("SELECT q.question_id, q.question_content, a.answer_content, a.is_true FROM question q
                                               JOIN answer a ON q.question_id = a.question_id
-                                              WHERE q.question_id IN ($placeholders)");
-        $questionsQuery->execute($randomQuestionIds);
+                                              WHERE q.question_id IN ($placeholders)
+                                            --  WHERE q.theme_id = :th 
+                                            --   AND q.question_level = :ql
+                                              ");
+        // $questionsQuery->bindParam(':th', $theme, PDO::PARAM_INT);
+        // $questionsQuery->bindParam(':ql', $level, PDO::PARAM_INT);
+        
+        $questionsQuery->execute(array_values($randomQuestionIds));
         $results = $questionsQuery->fetchAll(PDO::FETCH_ASSOC);
 
 

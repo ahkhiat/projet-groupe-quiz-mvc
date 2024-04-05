@@ -13,7 +13,7 @@
 
       <!-- Section résultat-->
       <section class="result-container">
-        <p>Votre score est de: <span id="score">0</span>/4</p>
+        <p>Votre score est de: <span id="score">0</span>/<span id="total_questions">4</span></p>
       </section>
 </div>
 

@@ -39,6 +39,7 @@ let gameContainer = document.getElementById("game_container");
 
 
             genererQuestion()
+            afficherTotalQuestions()
 
             function genererQuestion() {
                 question.innerText = questions[questionActuelle].question;
@@ -56,11 +57,16 @@ let gameContainer = document.getElementById("game_container");
                 let cadreScore = document.querySelector("#score")
                 cadreScore.innerText = score
             }
+
+            function afficherTotalQuestions(){
+                let cadreTotalQuestions = document.querySelector("#total_questions")
+                cadreTotalQuestions.innerText = questions.length
+            }
     
             function questionSuivante () {
                 reponses.innerHTML = "";
     
-                if (questionActuelle < questions.length - 1) {
+                if (questionActuelle < questions.length -1) {
                         questionActuelle++;
                         genererQuestion();
                         afficherScore();
