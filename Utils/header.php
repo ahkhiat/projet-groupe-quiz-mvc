@@ -27,7 +27,7 @@ session_start();
          <a class="navbar-brand" href="?controlleur=home&action=home">Accueil</a>
         </div>
       
-        <?php
+        <!-- <?php
       // une fois connecter sois je suis dans l'admin ou l'utilisateur
       if(isset($_SESSION['email']))
       {  
@@ -41,7 +41,7 @@ session_start();
       }
      else
      {  
-     ?>
+     ?> -->
       <!-- je suis  dans la partie decconnexion,  -->
       <div>
       <a href="?controller=security&action=user_registration" class="btn btn-primary m-3 ">Inscription</a>
@@ -51,10 +51,10 @@ session_start();
       
       </div> 
 
-      
+<!--       
     <?php 
    } 
-   ?>
+   ?> -->
       
   </div> 
 </nav>

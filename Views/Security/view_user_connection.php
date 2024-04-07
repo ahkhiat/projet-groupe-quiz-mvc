@@ -9,5 +9,5 @@
     <input type="password" class="form-control " id="password" name="password">
   </div>
  
-  <button type="submit" class="btn btn-primary">Se connecter</button>
+  <button type="submit" name="submit_form_connection"class="btn btn-primary">Se connecter</button>
 </form>

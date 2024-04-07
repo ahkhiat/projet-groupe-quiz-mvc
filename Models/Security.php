@@ -22,19 +22,51 @@ class Security extends Model
 
     public function get_login_connection()
     { 
-         try {
-            // var_dump($_POST);
-
-            $Mdp = md5($_POST['password']);
+        try {
             $email = $_POST['email'];
-            $requete = $this->bd->prepare('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');
+            $Mdp = $_POST['password'];
+        
+            // Validation de l'email
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new Exception("Adresse email invalide");
+            }
+        
+            $requete = $this->bd->prepare
+            ('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');
             $requete->execute(array(':mdp' => $Mdp, ':nom' => $email));
-            
+            $user = $requete->fetch(PDO::FETCH_OBJ);
+        
+            // Vérification si l'utilisateur existe
+            if (!$user) {
+                throw new Exception("Adresse email incorrecte");
+            }
+        
+            // Vérification du mot de passe
+            if (!password_verify($Mdp, $user->pswd)) {
+                throw new Exception("Mot de passe incorrect");
+            }
+        
+            // Authentification réussie
+            return $user;
+        
         } catch (PDOException $e) {
-            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage());
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
         }
-        return $requete->fetchAll(PDO::FETCH_OBJ);
-    }
+    //      try {
+    //         // var_dump($_POST);
+
+    //         $Mdp = md5($_POST['password']);
+    //         $email = $_POST['email'];
+    //         $requete = $this->bd->prepare('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');
+    //         $requete->execute(array(':mdp' => $Mdp, ':nom' => $email));
+            
+    //     } catch (PDOException $e) {
+    //         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+    //     }
+    //     return $requete->fetchAll(PDO::FETCH_OBJ);
+     }
 //....................user registration....................
 public function get_user_registration_valid()
 

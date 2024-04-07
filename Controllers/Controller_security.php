@@ -23,11 +23,43 @@ class Controller_security extends Controller
 
     public function action_login_connection()
 
-    {
-        echo "je suis dans controller login connection";
-        $m=Security::get_model();
-        $data = ['identification'=>$m->get_login_connection()];
-        $this->render("login_connection",$data);
+     {   
+        if(isset($POST['submit_form_connection'])){
+            $m=Security::get_model();
+            $user= $m->get_login_connection();
+            if ($user){
+                $user_id = $user->user_id;
+                $email = $user->email;
+                $roles = $user->admin;
+                $pswd = $user->pswd;
+                $lastname = $user->lastname;
+                $firstname = $user->firstname;
+                $username = $user->username;
+                if (session_status() !=PHP_SESSION_ACTIVE){
+                 session_start();
+                }
+                // session-start();
+                $_SESSION['user_id']= $user_id;
+                $_SESSION['email']= $email;
+                $_SESSION['admin']=$roles;
+                $_SESSION['pswd']= $pswd;
+                $_SESSION['lastname']= $lastname;
+                $_SESSION['firstname']= $firstname;
+                $_SESSION['username']= $username;
+                $_SESSION['login']= true;
+                 if($_SESSION['roles'] !='user'){
+                    header('location: index.php?type=admin');
+                 } else{
+                    header('location: index.php?type=user');
+                 }
+
+            }
+            $this->render("user_connection");
+        }
+    //     echo "je suis dans controller login connection";
+    //     $m=Security::get_model();
+    //     $data = ['identification'=>$m->get_login_connection()];
+    //     $this->render("login_connection",$data);
         
     }
 
@@ -54,7 +86,7 @@ class Controller_security extends Controller
         if($data){
 
             $email = $_POST['email'];
-            $data = ['identification'=>$m->get_login_connection($email)];
+            $data = ['identification'=>$m->get_login_connection()];
 
         }
 
