@@ -1,4 +1,4 @@
-console.log("game loaded");
+console.log("script game chargé");
 
 document.addEventListener("DOMContentLoaded", () => {
 

@@ -18,23 +18,16 @@ class Controller_admin extends Controller
         $mu = User::get_model();
         $mg = Game::get_model();
         $mq = Question::get_model();
+        $mc = Config::get_model();
         $data=['users'=>$mu->get_count_users(),
                'games'=>$mg->get_count_games(),
-               'questions'=>$mq->get_count_questions()];
+               'questions'=>$mq->get_count_questions(),
+               'nbr_questions'=>$mc->get_nbr_questions()];
 
         $this->render("dashboard", $data);
     }
 
     
 
-    
-
-    
-
-    
-
-    
-
-   
     
 }

@@ -90,7 +90,7 @@ class Game extends Model
 public function get_fetch_questions()
 {
     $nbrQuestions = 5;
-    $theme = 1;
+    $theme = 2;
     $level = 1;
     try {
 
