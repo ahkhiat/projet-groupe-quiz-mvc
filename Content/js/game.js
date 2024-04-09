@@ -44,12 +44,24 @@ let gameContainer = document.getElementById("game_container");
             function genererQuestion() {
                 question.innerText = questions[questionActuelle].question;
                 bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
-                    for (let i=0; i < questions[questionActuelle].answers.length; i++) {
-                        let reponse = document.createElement("li");
-                        reponse.classList.add("answer");
-                        reponse.innerText = questions[questionActuelle].answers[i]
-                        reponses.appendChild(reponse)
+
+                function tableauAleatoire(array) {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]];
                     }
+                    return array;
+                }
+
+                tableauAleatoire(questions[questionActuelle].answers);
+
+                for (let i=0; i < questions[questionActuelle].answers.length; i++) {
+                    let reponse = document.createElement("li");
+                    reponse.classList.add("answer");
+                    reponse.innerText = questions[questionActuelle].answers[i]
+                    reponses.appendChild(reponse)
+                }
+
                 console.log(bonneReponse)
             }
 
@@ -72,7 +84,7 @@ let gameContainer = document.getElementById("game_container");
                         afficherScore();
                     } else {
                         question.innerText = "";
-                        question.innerHTML = `Merci d'avoir participé à ce quiz, votre score est de ${score} bonnes réponses sur 4 !`
+                        question.innerHTML = `Merci d'avoir participé à ce quiz, votre score est de ${score} bonnes réponses sur ${questions.length} !`
                         reponses.remove();
                         afficherScore();
                 }

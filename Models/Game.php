@@ -89,28 +89,32 @@ class Game extends Model
 
 public function get_fetch_questions()
 {
-    $nbrQuestions = 7;
+    $nbrQuestions = 5;
     $theme = 1;
     $level = 1;
     try {
 
-        $randomQuestionIdsQuery = $this->bd->prepare('SELECT question_id FROM question ORDER BY RAND() LIMIT :lm');
+        $randomQuestionIdsQuery = $this->bd->prepare('SELECT question_id FROM question  WHERE theme_id = :theme ORDER BY RAND() LIMIT :lm');
+        
         $randomQuestionIdsQuery->bindParam(':lm', $nbrQuestions, PDO::PARAM_INT);
+        $randomQuestionIdsQuery->bindParam(':theme', $theme, PDO::PARAM_INT);
+
         $randomQuestionIdsQuery->execute();
         $randomQuestionIds = $randomQuestionIdsQuery->fetchAll(PDO::FETCH_COLUMN);
+
+        // var_dump($randomQuestionIds);
+        // die;
 
         $placeholders = rtrim(str_repeat('?,', count($randomQuestionIds)), ',');
         $questionsQuery = $this->bd->prepare("SELECT q.question_id, q.question_content, a.answer_content, a.is_true FROM question q
                                               JOIN answer a ON q.question_id = a.question_id
                                               WHERE q.question_id IN ($placeholders)
-                                            --  WHERE q.theme_id = :th 
-                                            --   AND q.question_level = :ql
                                               ");
-        // $questionsQuery->bindParam(':th', $theme, PDO::PARAM_INT);
-        // $questionsQuery->bindParam(':ql', $level, PDO::PARAM_INT);
         
         $questionsQuery->execute(array_values($randomQuestionIds));
+
         $results = $questionsQuery->fetchAll(PDO::FETCH_ASSOC);
+
 
 
         $organizedResults = [];
@@ -130,6 +134,7 @@ public function get_fetch_questions()
                 $organizedResults[$questionId]['correct_answer'] = $row['answer_content'];
             }
         }
+
         
     } catch (PDOException $e) {
         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
