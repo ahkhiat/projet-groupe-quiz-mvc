@@ -50,14 +50,15 @@ class Game extends Model
 public function get_fetch_questions()
 {
     $nbrQuestions = 5;
-    $theme = 1;
-    $level = 1;
+    $theme = $_SESSION['theme'];
+    $level = $_SESSION['level'];
     try {
 
-        $randomQuestionIdsQuery = $this->bd->prepare('SELECT question_id FROM question  WHERE theme_id = :theme ORDER BY RAND() LIMIT :lm');
+        $randomQuestionIdsQuery = $this->bd->prepare('SELECT question_id FROM question  WHERE theme_id = :theme AND question_level = :lvl ORDER BY RAND() LIMIT :lm');
         
         $randomQuestionIdsQuery->bindParam(':lm', $nbrQuestions, PDO::PARAM_INT);
         $randomQuestionIdsQuery->bindParam(':theme', $theme, PDO::PARAM_INT);
+        $randomQuestionIdsQuery->bindParam(':lvl', $level, PDO::PARAM_INT);
 
         $randomQuestionIdsQuery->execute();
         $randomQuestionIds = $randomQuestionIdsQuery->fetchAll(PDO::FETCH_COLUMN);

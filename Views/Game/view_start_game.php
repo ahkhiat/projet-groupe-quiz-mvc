@@ -1,7 +1,11 @@
 <div id="game_container">
 <h2>Nouvelle partie</h2>
-<?php echo 'theme '.$theme ?>
-<?php echo 'level '.$level ?>
+
+<?php
+echo 'theme dans $_SESSION : '.$_SESSION['theme'];
+echo '<br>';
+echo 'level dans $_SESSION : '.$_SESSION['level'];
+?>
 
 <div class="main-container">
       <!-- En-tête -->
