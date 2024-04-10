@@ -3,7 +3,7 @@
 
 <h2>Ajouter une question</h2>
 
-<form action="?controller=admin&action=question_add_request" method="POST">
+<form action="?controller=question&action=question_add_request" method="POST">
 
 <div class="form-group mb-3">
     <label for="exampleInputEmail1">Thème</label>    

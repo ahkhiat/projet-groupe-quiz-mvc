@@ -5,7 +5,10 @@ require_once('App/Model.php');
 require_once('Models/User.php');
 require_once('Models/Game.php');
 require_once('Models/Security.php');
-require_once('Models/Admin.php');
+require_once('Models/Question.php');
+require_once('Models/Answer.php');
+require_once('Models/Theme.php');
+require_once('Models/Config.php');
 
 /* ------------------------------- Controllers ------------------------------ */
 require_once('App/Controller.php');
@@ -15,7 +18,7 @@ require_once('Utils/header.php');
 
 
 
-$controllers=['home', 'user', 'game','security', 'admin'];
+$controllers=['home', 'user', 'game','security', 'admin', 'question', 'answer', 'theme', 'config'];
 $controller_default='home';
 
 if(isset($_GET['controller']) and in_array($_GET['controller'],$controllers))
