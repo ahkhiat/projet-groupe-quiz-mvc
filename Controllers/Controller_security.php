@@ -21,12 +21,12 @@ class Controller_security extends Controller
 
 //...............login......................
 
-    public function action_login_connection()
+    public function action_login()
 
     {
         $m=Security::get_model();
-        $data = ['identification'=>$m->get_login_connection()];
-        $this->render("login_connection",$data);
+        $data = ['identification'=>$m->get_login()];
+        $this->render("login",$data);
         
     }
 
@@ -53,11 +53,11 @@ class Controller_security extends Controller
         if($data){
 
             $email = $_POST['email'];
-            $data = ['identification'=>$m->get_login_connection($email)];
+            $data = ['identification'=>$m->get_login($email)];
 
         }
 
-        $this->render("login_connection", $data);
+        $this->render("login", $data);
         
     }
 

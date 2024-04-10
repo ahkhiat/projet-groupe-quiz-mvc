@@ -20,7 +20,7 @@ class Security extends Model
         parent::__construct(); 
     }
 
-    public function get_login_connection()
+    public function get_login()
     { 
          try {
             $Mdp = md5($_POST['password']);
