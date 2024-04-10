@@ -1,4 +1,4 @@
-<div class="button-container w-50 mx-auto border border-warning">
+<div class="button-container w-50 mx-auto">
 
 <form action="?controller=game&action=level_choice" method="POST">
   <div class="d-flex flex-column align-items-center">
