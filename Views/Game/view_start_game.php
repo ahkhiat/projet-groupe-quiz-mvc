@@ -1,5 +1,4 @@
 <div id="game_container">
-<h2>Nouvelle partie</h2>
 
 <!-- <?php
 echo 'theme dans $_SESSION : '.$_SESSION['theme'];
@@ -10,12 +9,24 @@ echo 'level dans $_SESSION : '.$_SESSION['level'];
 <div class="main-container">
       <!-- En-tête -->
     
+      <section class="progression">
+
+      </section>
 
       <!-- Section question-->
-      <section class="question-container">
-        <p id="question"></p>
+      <div class="image-questions-container">
+        <section class="image-brain-container">
+          
+        </section>
+        <section class="question-container">
+          <p id="question"></p>
+          
+        </section>
+      </div>
+      <div class="answers-container">
         <ul id="answers"></ul>
-      </section>
+      </div>
+      
 
       <!-- Section résultat-->
       <section class="result-container">

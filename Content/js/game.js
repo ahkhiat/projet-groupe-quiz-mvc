@@ -11,6 +11,18 @@ let gameContainer = document.getElementById("game_container");
         let questions;
         let questionsArray;
 
+        const images = [
+            "./Content/img/brain1.png",
+            "./Content/img/brain2.png",
+            "./Content/img/brain3.png",
+            "./Content/img/brain4.png",
+            "./Content/img/brain5.png",
+            "./Content/img/brain6.png",
+            "./Content/img/brain7.png",
+            "./Content/img/brain8.png",
+        ];
+
+
         async function fetchQuestions() {
             const res = await fetch("?controller=game&action=fetch_questions", {
                 method: 'GET' ,
@@ -42,6 +54,8 @@ let gameContainer = document.getElementById("game_container");
             afficherTotalQuestions()
 
             function genererQuestion() {
+                document.querySelector(".image-brain-container").innerHTML = "";
+                genererImage();
                 question.innerText = questions[questionActuelle].question;
                 bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
 
@@ -63,6 +77,15 @@ let gameContainer = document.getElementById("game_container");
                 }
 
                 console.log(bonneReponse)
+            }
+
+            function genererImage(){
+                const cheminImageAleatoire = images[Math.floor(Math.random() * images.length)];
+
+                let imageElement = document.createElement("img");
+                imageElement.src = cheminImageAleatoire;
+                imageElement.classList.add("image-brain");
+                document.querySelector(".image-brain-container").appendChild(imageElement);
             }
 
             function afficherScore() {

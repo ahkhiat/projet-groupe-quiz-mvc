@@ -74,10 +74,16 @@ header .navbar{
     font-weight: bold; 
     display: inline-block;
 }
+
 h1{
     font-family:cursive;
     background-color: rgba(127, 255, 212, 0.564);
     text-align: center;
+}
+
+.title {
+  text-align: center;
+  margin-top: 50px;
 }
 
 
@@ -91,9 +97,15 @@ footer {
    
 }
 
-/**
- * style.css - Style principal de la page
- */
+.buttons-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /**
  * Style principal
@@ -101,58 +113,30 @@ footer {
 
  
  .main-container {
-   background-color: #f0f0f0;
+   /* background-color: #f0f0f0; */
    min-height: 100vh;
    font-family: sans-serif;
    overflow: hidden;
  }
  
- .main-container section {
-   margin: 10vh 5vw;
-   background-color: white;
-   box-shadow: 5px 4px 8px #747474;
-   border-radius: 5px;
-   padding: 2rem;
+ 
+
+/* ---------------------- image and question container ---------------------- */
+
+ .image-questions-container {
+  /* border: 1px solid red; */
+  width: 1000px;
+  margin : 10px auto;
+  display: flex;
+  justify-content: center;
+  height: 200px;
+
  }
- 
- /**
-  * En-tête
-  */
- 
- .main-container header {
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
+
+ .image-brain {
+  width: 200px;
+  /* border: solid green; */
  }
- 
- .main-container header .title {
-   text-align: center;
-   font-size: 2rem;
-   background-color: rgb(0, 102, 255);
-   color: white;
-   border-radius: 5px;
-   display: inline;
-   padding: 1rem 2rem;
-   position: relative;
- }
- 
- .main-container header .title::after {
-   content: "";
-   display: inline-block;
-   position: absolute;
-   height: 0;
-   width: 0;
-   border-right: 3rem solid transparent;
-   border-bottom: 3rem solid rgb(0, 102, 255);
-   bottom: -0.1rem;
-   right: -1.2rem;
-   transform: rotate(20deg);
-   position: absolute;
- }
- 
- /**
-  * Section Question
-  */
  
  .main-container .question-container #question {
    font-size: 1.2rem;
@@ -163,6 +147,7 @@ footer {
    position: relative;
    text-align: justify;
    margin-left: 1rem;
+   width: 600px;
  }
  
  .main-container .question-container #question:before {
@@ -178,33 +163,52 @@ footer {
    transform: rotate(-10deg);
  }
  
- .main-container .question-container #answers {
+ /* ---------------------------- answers container --------------------------- */
+ .main-container  #answers {
+   width: 1000px;
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
    flex-wrap: wrap;
    justify-content: space-between;
-   margin: 5vh 0 0 0;
+   margin: 20px auto;
    padding: 0;
+   /* border: solid orange; */
  }
  
- .main-container .question-container #answers .answer {
-   font-size: 1.2rem;
-   background-color: rgb(0, 102, 255);
-   color: white;
-   border-radius: 5px;
-   padding: 1rem;
-   margin-left: 1rem;
-   display: inline;
-   border: 2px solid #1f89b3;
-   transition: background-color linear 0.2s, color linear 0.2s;
- }
- 
- .main-container .question-container #answers .answer:hover {
-   cursor: pointer;
+ /* ------------------------------ answer button ----------------------------- */
+ .main-container  #answers .answer {
+   /* font-size: 1.2rem; */
    background-color: white;
-   color: #1f89b3;
-   transition: background-color linear 0.2s, color linear 0.2s;
+   color: black;
+   border-radius: 7px;
+   border: 2px solid rgb(230, 230, 230);
+   box-shadow: 3px 3px rgb(233, 233, 233);
+   transition-duration: 0.5s;
+   width: 500px;
+   height: 50px;
+   margin: 10px auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
  }
+ 
+ .main-container #answers .answer:hover {
+   cursor: pointer;
+   background-color: rgb(230, 230, 230); 
+ }
+
+ .main-container #answers .answer:active {
+  background-color: #e2ecfd;
+  transition-duration: 0s;
+  box-shadow: 0px 0px;
+  border: 2px solid rgb(164, 190, 248);
+  color:rgb(81, 135, 252)
+}
+
+ul {
+  list-style-type: none;
+}
  
  /**
   * Section Resultat
@@ -216,92 +220,28 @@ footer {
 
  /* ------------------------------- Big buttons ------------------------------ */
 
- .pushable {
-  position: relative;
-  background: transparent;
-  padding: 0px;
-  border: none;
-  cursor: pointer;
-  outline-offset: 4px;
-  outline-color: deeppink;
-  transition: filter 250ms;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-.shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: hsl(226, 25%, 69%);
-  border-radius: 8px;
-  /* filter: blur(2px); */
-  will-change: transform;
-  transform: translateY(2px);
-  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
-}
-
-.edge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  border-radius: 8px;
-  background: linear-gradient(
-    to right,
-    hsl(248, 39%, 39%) 0%,
-    hsl(248, 39%, 49%) 8%,
-    hsl(248, 39%, 39%) 92%,
-    hsl(248, 39%, 29%) 100%
-  );
-}
-
-.front {
-  display: block;
-  position: relative;
-  border-radius: 8px;
-  background: hsl(248, 53%, 58%);
-  padding: 16px 32px;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 1rem;
-  transform: translateY(-4px);
-  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
-  width: 300px;
-}
-
-.pushable:hover {
-  filter: brightness(110%);
-}
-
-.pushable:hover .front {
-  transform: translateY(-6px);
-  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
-}
-
-.pushable:active .front {
-  transform: translateY(-2px);
-  transition: transform 34ms;
-}
-
-.pushable:hover .shadow {
-  transform: translateY(4px);
-  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
-}
-
-.pushable:active .shadow {
-  transform: translateY(1px);
-  transition: transform 34ms;
-}
-
-.pushable:focus:not(:focus-visible) {
-  outline: none;
-}
  
- 
+  .pushable{
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(230, 230, 230);
+    border-radius: 7px;
+    width : 500px;
+    height: 50px;
+    transition-duration: 0.5s;
+    margin-bottom : 10px;
+    box-shadow: 3px 3px rgb(233, 233, 233);
+  }
+
+  .pushable:hover {
+    background-color: rgb(230, 230, 230); 
+  }
+
+  .pushable:active {
+    background-color: #e2ecfd;
+    transition-duration: 0s;
+    box-shadow: 0px 0px;
+    border: 2px solid rgb(164, 190, 248);
+    color:rgb(81, 135, 252)
+
+  }
