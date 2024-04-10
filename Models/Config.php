@@ -25,11 +25,13 @@ class Config extends Model
         try {
             $requete = $this->bd->prepare('SELECT nbr_questions FROM config WHERE config_id = 1');
             $requete->execute();
+            $count = $requete->fetchColumn();
+            return $count;
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
-        return $requete->fetchAll(PDO::FETCH_OBJ);
+        // return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function set_nbr_questions()

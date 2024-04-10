@@ -47,9 +47,9 @@ class Game extends Model
 
    
 
-public function get_fetch_questions()
+public function get_fetch_questions($nbrQuestions)
 {
-    $nbrQuestions = 5;
+    // $nbrQuestions = 5;
     $theme = $_SESSION['theme'];
     $level = $_SESSION['level'];
     try {
