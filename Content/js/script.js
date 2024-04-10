@@ -4,3 +4,4 @@ console.log("script standard chargé");
 function confirmation() {
   return confirm("Etes-vous certain de supprimer cette question ? Cette action est irréversible !");
 }
+

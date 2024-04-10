@@ -32,5 +32,17 @@ class Config extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function set_nbr_questions()
+    {
+        try {
+            $requete = $this->bd->prepare('UPDATE config SET nbr_questions = :nbq WHERE config_id = 1');
+            $requete->execute(array(':nbq' => $_POST['nbr_questions']));
+
+
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
+
 
 }

@@ -1,5 +1,7 @@
 <div id="game_container">
 <h2>Nouvelle partie</h2>
+<?php echo 'theme '.$theme ?>
+<?php echo 'level '.$level ?>
 
 <div class="main-container">
       <!-- En-tête -->

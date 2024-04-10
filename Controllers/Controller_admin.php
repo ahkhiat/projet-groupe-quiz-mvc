@@ -27,6 +27,15 @@ class Controller_admin extends Controller
         $this->render("dashboard", $data);
     }
 
+    public function action_nbr_questions()
+    {
+        $m = Config::get_model();
+        $m->set_nbr_questions();
+        $this->action_dashboard();
+    }
+
+    
+
     
 
     

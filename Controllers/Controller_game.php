@@ -36,9 +36,23 @@ class Controller_game extends Controller
     public function action_new_game()
     {
         $m=Game::get_model();
-        $this->render("new_game");
-
+        $this->render("theme_choice");
     }
+
+    public function action_level_choice()
+    {
+        $theme = isset($_POST['theme']);
+        $m=Game::get_model();
+        $this->render("level_choice", ['theme' => $theme]);
+    }
+
+    public function action_start_game()
+    {
+        $level = isset($_POST['level']);
+        $m=Game::get_model();
+        $this->render("start_game", ['level' => $level]);
+    }
+
 
 
 
