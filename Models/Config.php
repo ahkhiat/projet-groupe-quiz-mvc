@@ -1,6 +1,6 @@
 <?php
 
-class Theme extends Model
+class Config extends Model
 {
     protected $bd;
 
@@ -11,7 +11,7 @@ class Theme extends Model
 
         if(is_null(self::$instance))
         {
-            self::$instance=new Theme();
+            self::$instance=new Config();
         }
         return self::$instance;
     }
@@ -20,10 +20,10 @@ class Theme extends Model
         parent::__construct(); 
     }
 
-    public function get_all_themes()
+    public function get_nbr_questions()
     {
         try {
-            $requete = $this->bd->prepare('SELECT * FROM theme');
+            $requete = $this->bd->prepare('SELECT nbr_questions FROM config WHERE config_id = 1');
             $requete->execute();
             
         } catch (PDOException $e) {

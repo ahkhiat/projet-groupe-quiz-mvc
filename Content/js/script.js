@@ -1,4 +1,4 @@
-console.log("script chargé sûr");
+console.log("script standard chargé");
 
 //-----------------Confirmation avant suppression------------------------
 function confirmation() {

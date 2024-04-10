@@ -33,4 +33,17 @@ class User extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function get_count_users()
+    {
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(*) FROM user');
+            $requete->execute();
+            $count = $requete->fetchColumn();
+            return $count;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
+
 }

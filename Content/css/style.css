@@ -90,3 +90,127 @@ footer {
     background-color:rgb(0, 102, 255);
    
 }
+
+/**
+ * style.css - Style principal de la page
+ */
+
+/**
+ * Style principal
+ */
+
+ 
+ .main-container {
+   background-color: #f0f0f0;
+   min-height: 100vh;
+   font-family: sans-serif;
+   overflow: hidden;
+ }
+ 
+ .main-container section {
+   margin: 10vh 5vw;
+   background-color: white;
+   box-shadow: 5px 4px 8px #747474;
+   border-radius: 5px;
+   padding: 2rem;
+ }
+ 
+ /**
+  * En-tête
+  */
+ 
+ .main-container header {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+ }
+ 
+ .main-container header .title {
+   text-align: center;
+   font-size: 2rem;
+   background-color: rgb(0, 102, 255);
+   color: white;
+   border-radius: 5px;
+   display: inline;
+   padding: 1rem 2rem;
+   position: relative;
+ }
+ 
+ .main-container header .title::after {
+   content: "";
+   display: inline-block;
+   position: absolute;
+   height: 0;
+   width: 0;
+   border-right: 3rem solid transparent;
+   border-bottom: 3rem solid rgb(0, 102, 255);
+   bottom: -0.1rem;
+   right: -1.2rem;
+   transform: rotate(20deg);
+   position: absolute;
+ }
+ 
+ /**
+  * Section Question
+  */
+ 
+ .main-container .question-container #question {
+   font-size: 1.2rem;
+   background-color: rgb(0, 102, 255);
+   color: white;
+   border-radius: 5px;
+   padding: 1rem;
+   position: relative;
+   text-align: justify;
+   margin-left: 1rem;
+ }
+ 
+ .main-container .question-container #question:before {
+   content: "";
+   display: inline-block;
+   position: absolute;
+   height: 0;
+   width: 0;
+   border-left: 2rem solid transparent;
+   border-bottom: 2rem solid rgb(0, 102, 255);
+   bottom: -0.2rem;
+   left: -1rem;
+   transform: rotate(-10deg);
+ }
+ 
+ .main-container .question-container #answers {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   margin: 5vh 0 0 0;
+   padding: 0;
+ }
+ 
+ .main-container .question-container #answers .answer {
+   font-size: 1.2rem;
+   background-color: rgb(0, 102, 255);
+   color: white;
+   border-radius: 5px;
+   padding: 1rem;
+   margin-left: 1rem;
+   display: inline;
+   border: 2px solid #1f89b3;
+   transition: background-color linear 0.2s, color linear 0.2s;
+ }
+ 
+ .main-container .question-container #answers .answer:hover {
+   cursor: pointer;
+   background-color: white;
+   color: #1f89b3;
+   transition: background-color linear 0.2s, color linear 0.2s;
+ }
+ 
+ /**
+  * Section Resultat
+  */
+ 
+ .main-container .result-container p {
+   font-size: 1.2rem;
+ }
+ 
