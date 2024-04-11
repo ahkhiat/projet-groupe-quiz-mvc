@@ -22,7 +22,13 @@ let gameContainer = document.getElementById("game_container");
             "./Content/img/brain8.png",
         ];
 
+    /* ---------------------------- barre progression --------------------------- */
+        let progressBarBootstrap = document.querySelector(".progress-stacked")
+    
 
+        
+
+    /* ---------------------------- fetch JSON OBJECT---------------------------- */
         async function fetchQuestions() {
             const res = await fetch("?controller=game&action=fetch_questions", {
                 method: 'GET' ,
@@ -39,6 +45,7 @@ let gameContainer = document.getElementById("game_container");
             await fetchQuestions();
         }
 
+    /* -------------- waiting the fetch before generating questions ------------- */
         getListeQuestions().then(() => {
             console.log('question test : ', questions);
 
@@ -48,7 +55,11 @@ let gameContainer = document.getElementById("game_container");
             let score = 0;
             let bonneReponseIndex = 0;
             let bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
+            let nombreQuestions = questions.length;
+            console.log('nombre de questions :' + nombreQuestions)
 
+            let progressBarInterval = 100 / nombreQuestions;
+            // Interval for the progress bar
 
             genererQuestion()
             afficherTotalQuestions()
@@ -113,32 +124,47 @@ let gameContainer = document.getElementById("game_container");
                 }
             }
 
+            function addProgressBarGreen(){
+                let progressSection = document.createElement("div");
+                progressSection.classList.add("progress");
+                progressSection.style.width = progressBarInterval  + "%";
+                progressBarBootstrap.appendChild(progressSection);
+
+                let progressBarSection = document.createElement("div");
+                progressBarSection.classList.add("progress-bar");
+                progressBarSection.classList.add("bg-success");
+                // progressBarSection.animate({width : progressBarInterval + "%"}, 1000)
+                progressSection.appendChild(progressBarSection);
+            }
+
+            function addProgressBarRed(){
+                let progressSection = document.createElement("div");
+                progressSection.classList.add("progress");
+                progressSection.style.width = progressBarInterval  + "%";
+                progressBarBootstrap.appendChild(progressSection);
+
+                let progressBarSection = document.createElement("div");
+                progressBarSection.classList.add("progress-bar");
+                progressBarSection.classList.add("bg-danger");
+                progressSection.appendChild(progressBarSection);
+
+            }
+
             reponses.addEventListener("click", (event) => {
                 let reponseChoisie = event.target.innerText
-                console.log('reponse choisie', reponseChoisie)
-    
                 if (reponseChoisie == bonneReponse) {
-                    console.log("c'est gagné")
                     score++;
-                    console.log("score", score)
-                    console.log("question actuelle", questionActuelle)
+                    addProgressBarGreen()
                     questionSuivante()
                 } else {
                     questionSuivante()
+                    addProgressBarRed()
                 }
             })
 
 
 
         });
-
-
-        
-        // let bonneReponseIndex = questions[questionActuelle].correctAnswerIndex;
-        // let bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
-
-
-        // genererQuestion();
 
         
 
