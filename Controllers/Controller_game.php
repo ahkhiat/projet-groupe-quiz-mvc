@@ -39,9 +39,9 @@ class Controller_game extends Controller
 
     public function action_new_game()
     {
-        // $m=Game::get_model();
-
-        $this->render("theme_choice");
+        $mt = Theme::get_model();
+        $data=['nbr_questions_themes'=>$mt->get_nbr_questions_themes()];
+        $this->render("theme_choice", $data);
     }
 
     public function action_level_choice()

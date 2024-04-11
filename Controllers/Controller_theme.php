@@ -15,9 +15,9 @@ class Controller_theme extends Controller
     public function action_all_themes()
     {
         $m=Theme::get_model();
-        $data=['themes'=>$m->get_all_themes()];
+        $data=['themes'=>$m->get_all_themes(),
+               'nbr_questions_themes'=>$m->get_nbr_questions_themes()];
         $this->render("all_themes", $data);
-
     }
 
     

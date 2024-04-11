@@ -54,17 +54,12 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $questions ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fa-solid fa-comments fa-2xl"></i>
+                                        <i class="fa-solid fa-database fa-2xl"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-
-                    <!-- Row 2 -->
-                    <div class="row">
 
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
@@ -83,6 +78,13 @@
                             </div>
                         </div>
 
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="row">
+
+                        
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
@@ -99,6 +101,38 @@
                                 </div>
                             </div>
                         </div>
+                    <?php
+                    // var_dump($nbr_questions_themes);
+                        foreach($nbr_questions_themes as $nqt){
+                            echo '
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-warning shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                 '.
+                                                 $nqt->theme_name
+                                                 .' (Nbe Questions)
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                 '.
+                                                 $nqt->Total_questions
+                                                 .'
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                            <i class="fa-solid fa-puzzle-piece fa-2xl"></i>                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            ';
+                        }
+                    ?>
+                        
+
+                        
 
                     </div>
 
@@ -106,7 +140,7 @@
                     <div class="row">
 
                         <!-- Area Chart -->
-                        <div class="col-xl-9 col-lg-7">
+                        <div class="col-xl-12 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
