@@ -1,4 +1,5 @@
 <?php
+// require_once(__DIR__ . '/../Utils/valid_data.php');
 
 class Controller_security extends Controller
 {
@@ -24,13 +25,16 @@ class Controller_security extends Controller
     public function action_login()
 
      {   
-               
-                echo "je suis dans controller login ";
                 $m=Security::get_model();
-                $data = ['identification'=>$m->get_login()];
-                $this->render("login_connection",$data);
                 
-      }
+                $data = ['identification'=>$m->get_login()];
+                $this->render("login",$data);           
+
+         }
+         
+
+                
+      
   
 //.............................disconnection...............................
 
@@ -47,42 +51,38 @@ class Controller_security extends Controller
 //.........................registration valid.............................
 
 //...................................function validData pour la securité des données recuperées dans les input........
-    function validData($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }  
-    public function action_user_registration_valid( $lastname, $firstname,$username,$birthdate,$email,$password)
-    {    
-        
-      
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-          
-          $lastname=$this->validData($_POST['lastname'] );
-          $firstname=$this->validData($_POST['firstname'] );
-          $username=$this->validData($_POST['username'] );
-          $birthdate=$this->validData($_POST['birthdate'] );
-          $email=$this->validData($_POST['email'] );
-          $password=$this->validData($_POST['password'] );
-        
-           
-      
-
-          $m=Security::get_model();
-          $data = ['identification'=>$m->get_user_registration_valid($email, $password)];
-
-          if($data){
-                $email =($_POST['email'] );
-                $data = ['identification'=>$m->get_login()];
+  
+    public function action_user_registration_valid( )
+         {   
             
+       
+        if(isset($_POST['submit_registration']))
+        {
 
-       }
-             
-        $this->render("login_connection", $data);
-        
+            if (
+                !empty($_POST['lastname']) && 
+                !empty($_POST['firstname']) && 
+                !empty($_POST['username']) && 
+                !empty($_POST['birthdate']) &&
+                !empty($_POST['email']) && 
+                !empty($_POST['password']))
+                {
+                   echo "tous les chants sont bien rempli";
+                
+                 if(strlen($_POST['password'])<11) {
+                    $message = "votre mot de passe est trop court.";
+                    echo $message;
+                 }
+                 
+                 $m=Security::get_model();
+                 $data = ['identification'=>$m->get_user_registration_valid()];
+                } else {
+                    echo "Veuillez completer tous les champs";
+                }
+        }
+         $this->render('login',$data);
     }
-
-}
     
-}
+
+ 
+} 

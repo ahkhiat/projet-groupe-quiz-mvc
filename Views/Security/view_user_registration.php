@@ -1,6 +1,6 @@
 <div class="col-lg-4 bg-white m-auto rounded-top">
   <h2 class= "text-center"> Inscription</h2>
-    <form action="?controller=security&action=user_registration_valid" method="post">
+    <form action="?controller=security&action=user_registration_valid" method="post" >
         
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-user"></i></span>   
@@ -8,11 +8,11 @@
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-user"></i></span>   
-              <input id="firstname" type="text" class="form-control" name="firstname" placeholder="Entrer votre Prenom" required>    
+              <input  type="text" class="form-control" name="firstname" placeholder="Entrer votre Prenom" required>    
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-user"></i></span>    
-              <input id="username" type="text" class="form-control" name="username" placeholder="Entrer votre nom d'utilisateur">    
+              <input type="text" class="form-control" name="username" placeholder="Entrer votre nom d'utilisateur">    
             </div>
             <div class="input-group mb-3">
               <span><i class="fa-solid fa-calendar-days"></i></span> 
@@ -20,7 +20,7 @@
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-envelope"></i></span>   
-              <input id="email" type="text" class="form-control" name="email" placeholder="Entrer votre email">    
+              <input  type="text" class="form-control" name="email" placeholder="Entrer votre email">    
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-lock"></i></span>  
@@ -28,8 +28,21 @@
             </div>
            
           
-            <div class="col-md-1 offset-md-9">
-              <button class="btn btn-primary">Envoyer</button>
+                 <!-- <div class="col-md-1 offset-md-9"> -->
+            <div class="d-grid">
+              <button type="submit" name="submit_registration" class="btn btn-primary">Envoyer</button>
+            
+            
+                <!-- <p class="text-center text-muted">
+                <i style="color:red">
+                <?php 
+                 if(isset($message)){
+                  echo $message;
+                 }
+                ?>
+                </i>
+              </p>  -->
+
             </div>
       
     </form>

@@ -12,6 +12,7 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
+    <script src="./Content/js/script.js" defer></script>
     <title>ScienceQuize</title>
 </head>
 <body>
@@ -28,7 +29,7 @@ session_start();
          <a class="navbar-brand" href="?controlleur=home&action=home">Accueil</a>
         </div>
       
-        <!-- <?php
+         <?php
       // une fois connecter sois je suis dans l'admin ou l'utilisateur
       if(isset($_SESSION['email']))
       {  
@@ -42,7 +43,7 @@ session_start();
       }
      else
      {  
-     ?> -->
+     ?> 
       <!-- je suis  dans la partie decconnexion,  -->
       <div>
       <a href="?controller=security&action=user_registration" class="btn btn-primary m-3 ">Inscription</a>
@@ -52,10 +53,10 @@ session_start();
       
       </div> 
 
-<!--       
+       
     <?php 
    } 
-   ?> -->
+   ?> 
       
   </div> 
 </nav>
