@@ -46,7 +46,6 @@ class Controller_game extends Controller
 
     public function action_level_choice()
     {
-        // $m=Game::get_model();
         if ($_SERVER["REQUEST_METHOD"] == "POST") 
         {
             $theme = $_POST['theme']; 
@@ -56,15 +55,15 @@ class Controller_game extends Controller
     }
 
     public function action_start_game()
-    {
-        // $m=Game::get_model();
-
+    {   
+        $m=Config::get_model();
+        $data=['quiz_duration'=>$m->get_quiz_duration()];
         if ($_SERVER["REQUEST_METHOD"] == "POST") 
         {
             $level = $_POST['level']; 
             $_SESSION['level'] = $level;
         }
-        $this->render("start_game");
+        $this->render("start_game", $data);
     }
 
 

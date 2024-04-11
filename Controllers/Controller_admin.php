@@ -22,7 +22,8 @@ class Controller_admin extends Controller
         $data=['users'=>$mu->get_count_users(),
                'games'=>$mg->get_count_games(),
                'questions'=>$mq->get_count_questions(),
-               'nbr_questions'=>$mc->get_nbr_questions()];
+               'nbr_questions'=>$mc->get_nbr_questions(),
+               'quiz_duration'=>$mc->get_quiz_duration()];
 
         $this->render("dashboard", $data);
     }
@@ -31,6 +32,12 @@ class Controller_admin extends Controller
     {
         $m = Config::get_model();
         $m->set_nbr_questions();
+        $this->action_dashboard();
+    }
+    public function action_quiz_duration()
+    {
+        $m = Config::get_model();
+        $m->set_quiz_duration();
         $this->action_dashboard();
     }
 

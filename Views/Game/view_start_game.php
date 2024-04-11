@@ -1,12 +1,10 @@
 <div id="game_container">
 
-  <!-- <?php
-        echo 'theme dans $_SESSION : ' . $_SESSION['theme'];
-        echo '<br>';
-        echo 'level dans $_SESSION : ' . $_SESSION['level'];
-        ?> -->
-
-  <div class="main-container">
+  <?php
+        // var_dump($quiz_duration);
+        ?> 
+<input type="hidden" class="quiz-duration" value="<?= $quiz_duration ?>">  
+<div class="main-container">
     <!-- En-tête -->
 
     <section class="progress-cross-container">

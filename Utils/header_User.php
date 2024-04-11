@@ -1,5 +1,5 @@
 
-     <div class="nav-item dropdown">
+     <!-- <div class="nav-item dropdown">
           <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Theme
           </a>
@@ -7,7 +7,7 @@
             <li><a class="dropdown-item" href="#"><img class="coeur" src="./Content/img/Coeur.png" alt="Image 1">Corp Humain</a></li>
             <li><a class="dropdown-item" href="#"><img  class= "space" src="./Content/img/space.png" alt="Image 1">Espace</a></li>
           </ul>
-     </div>     
+     </div>      -->
       
      <div class="nav-item dropdown">
           <a class="nav-link" href="?controller=game&action=new_game" >

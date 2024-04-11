@@ -22,17 +22,20 @@ let gameContainer = document.getElementById("game_container");
             "./Content/img/brain8.png",
         ];
 
+
+    /* ------------------------------ quiz duration ----------------------------- */
+        let quizDuration = document.querySelector(".quiz-duration").value
+        console.log('quiz duration', quizDuration)
+
     /* ---------------------------- barre progression --------------------------- */
         let progressBarBootstrap = document.querySelector(".progress-stacked");
     
 
     /* ---------------------------------- timer --------------------------------- */
         let timerContainer = document.querySelector(".timer");
-        const seconds = 10;
+        const seconds = quizDuration;
         let secondsDecrease = seconds;
         let runingChrono; 
-
-
 
     /* ---------------------------- fetch JSON OBJECT---------------------------- */
         async function fetchQuestions() {
