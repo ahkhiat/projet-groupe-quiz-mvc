@@ -23,10 +23,16 @@ let gameContainer = document.getElementById("game_container");
         ];
 
     /* ---------------------------- barre progression --------------------------- */
-        let progressBarBootstrap = document.querySelector(".progress-stacked")
+        let progressBarBootstrap = document.querySelector(".progress-stacked");
     
 
-        
+    /* ---------------------------------- timer --------------------------------- */
+        let timerContainer = document.querySelector(".timer");
+        const seconds = 10;
+        let secondsDecrease = seconds;
+        let runingChrono; 
+
+
 
     /* ---------------------------- fetch JSON OBJECT---------------------------- */
         async function fetchQuestions() {
@@ -45,6 +51,9 @@ let gameContainer = document.getElementById("game_container");
             await fetchQuestions();
         }
 
+        /* ---------------------------------- timer --------------------------------- */
+        
+
     /* -------------- waiting the fetch before generating questions ------------- */
         getListeQuestions().then(() => {
             console.log('question test : ', questions);
@@ -61,14 +70,43 @@ let gameContainer = document.getElementById("game_container");
             let progressBarInterval = 100 / nombreQuestions;
             // Interval for the progress bar
 
+            function timerInit() {
+                clearInterval(runingChrono);
+                secondsDecrease = seconds;
+                timerContainer.innerText = secondsDecrease;
+            }
+    
+            function timerUpdate() {
+                if(secondsDecrease == 0) {
+                    questionSuivante();
+                    addProgressBarRed();
+                } else {
+                    secondsDecrease--;
+                    timerContainer.innerText = secondsDecrease;
+                }
+            }
+                
+            function timerStart(){
+                timerInit()
+                runingChrono = setInterval(timerUpdate, 1000);
+            }
+
+            function timerStop() {
+                clearInterval(runingChrono)
+            }
+
             genererQuestion()
             afficherTotalQuestions()
 
             function genererQuestion() {
                 document.querySelector(".image-brain-container").innerHTML = "";
                 genererImage();
+
+                timerStart();
+
                 question.innerText = questions[questionActuelle].question;
                 bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
+
 
                 function tableauAleatoire(array) {
                     for (let i = array.length - 1; i > 0; i--) {
@@ -109,7 +147,7 @@ let gameContainer = document.getElementById("game_container");
                 cadreTotalQuestions.innerText = questions.length
             }
     
-            function questionSuivante () {
+            function questionSuivante() {
                 reponses.innerHTML = "";
     
                 if (questionActuelle < questions.length -1) {
@@ -120,6 +158,8 @@ let gameContainer = document.getElementById("game_container");
                         question.innerText = "";
                         question.innerHTML = `Merci d'avoir participé à ce quiz, votre score est de ${score} bonnes réponses sur ${questions.length} !`
                         reponses.remove();
+                        timerContainer.remove();
+                        timerStop();
                         afficherScore();
                 }
             }
@@ -133,7 +173,6 @@ let gameContainer = document.getElementById("game_container");
                 let progressBarSection = document.createElement("div");
                 progressBarSection.classList.add("progress-bar");
                 progressBarSection.classList.add("bg-success");
-                // progressBarSection.animate({width : progressBarInterval + "%"}, 1000)
                 progressSection.appendChild(progressBarSection);
             }
 
@@ -147,8 +186,9 @@ let gameContainer = document.getElementById("game_container");
                 progressBarSection.classList.add("progress-bar");
                 progressBarSection.classList.add("bg-danger");
                 progressSection.appendChild(progressBarSection);
-
             }
+
+            
 
             reponses.addEventListener("click", (event) => {
                 let reponseChoisie = event.target.innerText

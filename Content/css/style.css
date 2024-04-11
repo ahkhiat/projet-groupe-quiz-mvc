@@ -133,7 +133,7 @@ footer {
 /* ------------------------------ progress bar ------------------------------ */
 .progress-cross-container {
   width: 700px;
-  margin : 20px auto;
+  margin : 10px auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -163,10 +163,11 @@ footer {
   /* border: solid red; */
 }
 
+/* ---------------------- image and question container ---------------------- */
  .image-questions-container {
   /* border: 1px solid red; */
   width: 1000px;
-  margin : 30px auto;
+  margin : 20px auto;
   display: flex;
   justify-content: center;
   height: 200px;
@@ -210,9 +211,9 @@ footer {
    flex-direction: column;
    flex-wrap: wrap;
    justify-content: space-between;
-   margin: 20px auto;
+   margin: 10px auto;
    padding: 0;
-   /* border: solid orange; */
+   /* border: 1px solid orange; */
  }
  
  /* ------------------------------ answer button ----------------------------- */
@@ -255,8 +256,15 @@ ul {
   */
  
  .main-container .result-container p {
-   font-size: 1.2rem;
+   /* font-size: 1.2rem; */
+   display: none;
  }
+/* ---------------------------------- Timer --------------------------------- */
+
+  .timer {
+    font-size: 2rem;
+    text-align: center;
+  }
 
  /* ------------------------------- Big buttons ------------------------------ */
 

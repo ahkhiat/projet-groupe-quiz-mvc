@@ -30,8 +30,15 @@
 
       </section>
     </div>
+
+    <!-- Answers section -->
     <div class="answers-container">
       <ul id="answers"></ul>
+    </div>
+
+    <!-- Timer section -->
+    <div class="timer">
+      
     </div>
 
 
