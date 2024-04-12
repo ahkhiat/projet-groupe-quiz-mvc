@@ -70,11 +70,21 @@ let gameContainer = document.getElementById("game_container");
             let nombreQuestions = questions.length;
             console.log('nombre de questions :' + nombreQuestions)
 
+            // Button appears at end to store score in DB
             let storeGameButton = document.querySelector('#store_game_button');
 
-            let progressBarInterval = 100 / nombreQuestions;
+            // Mini cards appears at end to show scores
+            let miniCard1 = document.querySelector("#mini_card_1");
+            let miniCard2 = document.querySelector("#mini_card_2");
+            let miniCard3 = document.querySelector("#mini_card_3");
+            let miniCardBody1 = document.querySelector("#mini_card_body_1");
+            let miniCardBody2 = document.querySelector("#mini_card_body_2");
+            let miniCardBody3 = document.querySelector("#mini_card_body_3");
+           
             // Interval for the progress bar
+            let progressBarInterval = 100 / nombreQuestions;
 
+            /* ------------------------------ Timer config ------------------------------ */
             function timerInit() {
                 clearInterval(runingChrono);
                 secondsDecrease = seconds;
@@ -103,6 +113,7 @@ let gameContainer = document.getElementById("game_container");
             genererQuestion()
             afficherTotalQuestions()
 
+            /* ---------------------------- Generate question --------------------------- */
             function genererQuestion() {
                 document.querySelector(".image-brain-container").innerHTML = "";
                 genererImage();
@@ -167,6 +178,8 @@ let gameContainer = document.getElementById("game_container");
                         timerStop();
                         afficherScore();
                         formFillResults();
+                        miniCardsFill();
+                        showMiniCards();
                         storeGameButton.hidden = false;
                 }
             }
@@ -202,7 +215,18 @@ let gameContainer = document.getElementById("game_container");
                 let questionsQuantityInput = document.querySelector(".questions_quantity");
                 let gameScoreInput = document.querySelector(".game_score");
                 questionsQuantityInput.value = nombreQuestions;
-                gameScoreInput.value = score
+                gameScoreInput.value = score;
+            }
+
+            function miniCardsFill() {
+                miniCardBody1.innerText = score;
+
+            } 
+
+            function showMiniCards() {
+                miniCard1.hidden = false;
+                miniCard2.hidden = false;
+                miniCard3.hidden = false;
             }
 
             reponses.addEventListener("click", (event) => {

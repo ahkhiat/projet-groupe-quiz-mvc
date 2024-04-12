@@ -39,8 +39,24 @@
       
     </div>
 
+    <!-- Mini card section -->
+    <section class="mini-card-container d-flex justify-content-between w-50 mx-auto mb-5" id="mini-card-section" >
+      <div class="mini-card" id="mini_card_1" hidden>
+        <div class="mini-card-head" id="mini_card-head_1">Points</div>
+        <div class="mini-card-body" id="mini_card_body_1"></div>
+      </div>
+      <div class="mini-card" id="mini_card_2" hidden>
+        <div class="mini-card-head" id="mini_card-head_2">Temps</div>
+        <div class="mini-card-body" id="mini_card_body_2"></div>
+      </div>
+      <div class="mini-card" id="mini_card_3" hidden>
+        <div class="mini-card-head" id="mini_card-head_2">Réussite</div>
+        <div class="mini-card-body" id="mini_card_body_2"></div>
+      </div>
+</section>
 
-    <!-- Section résultat-->
+
+    <!-- Result section-->
     <section class="result-container d-flex justify-content-center">
       <p>Votre score est de: <span id="score">0</span>/<span id="total_questions">4</span></p>
       <!-- this form is sended to database when game is over -->
