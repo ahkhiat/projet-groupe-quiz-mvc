@@ -46,4 +46,42 @@ class User extends Model
         }
     }
 
+    public function get_user_profile()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT * FROM user WHERE user_id = :d');
+            $requete->execute(array(':d' => $_SESSION['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function set_user_profile()
+    {
+
+        try {
+            $requete = $this->bd->prepare('UPDATE user SET lastname = :ln, firstname = :fn, email = :em, birthdate = :birth  WHERE user_id = :d');
+            $requete->execute(array(':d' => $_SESSION['id'], ':ln' => $_POST['lastname'], ':fn' => $_POST['firstname'], ':em' => $_POST['email'], ':birth' => $_POST['birthdate'] ));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function get_public_profile()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT * FROM user WHERE user_id = :d');
+            $requete->execute(array(':d' => $_SESSION['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

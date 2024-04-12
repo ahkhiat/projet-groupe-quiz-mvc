@@ -48,3 +48,5 @@
 
 
 </div>
+
+<script type="module" src="./Content/js/game.js" defer></script>
