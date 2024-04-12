@@ -15,4 +15,4 @@
 
     
     ?>
-<!-- <script>window.location.href="?controller=home&action=home"</script> -->
+<script>window.location.href="?controller=home&action=home"</script>

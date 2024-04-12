@@ -1,5 +1,5 @@
 <?php
-var_dump($nbr_questions_themes)
+// var_dump($nbr_questions_themes)
 ?>
 <div class="title">
     <h2>Choisissez le thème</h2>

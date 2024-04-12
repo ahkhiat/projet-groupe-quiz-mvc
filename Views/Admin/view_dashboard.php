@@ -8,6 +8,31 @@
                         
                     </div>
 
+                    <!-- Links Container -->
+                    <div class="row">
+                        <!-- Area Chart -->
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Links</h6>
+                                    
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="chart-area d-flex flex-row justify-content-around">
+                                        <a href="?controller=game&action=all_games" class="btn btn-primary">Parties</a>
+                                        <a href="?controller=question&action=all_questions" class="btn btn-primary">Questions</a>
+                                        <a href="?controller=theme&action=all_themes" class="btn btn-primary">Thèmes</a>
+                                        <a href="?controller=user&action=all_users" class="btn btn-primary">Utilisateurs</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Row 1 -->
                     <div class="row">
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -136,9 +161,9 @@
 
                     </div>
 
+
                     <!-- Action Container -->
                     <div class="row">
-
                         <!-- Area Chart -->
                         <div class="col-xl-12 col-lg-7">
                             <div class="card shadow mb-4">
@@ -169,13 +194,11 @@
                                                 </div>
                                             </form>
                                         </div>
-
-
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
 
