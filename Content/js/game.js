@@ -11,6 +11,33 @@ let gameContainer = document.getElementById("game_container");
         let questions;
         let questionsArray;
 
+        const images = [
+            "./Content/img/brain1.png",
+            "./Content/img/brain2.png",
+            "./Content/img/brain3.png",
+            "./Content/img/brain4.png",
+            "./Content/img/brain5.png",
+            "./Content/img/brain6.png",
+            "./Content/img/brain7.png",
+            "./Content/img/brain8.png",
+        ];
+
+
+    /* ------------------------------ quiz duration ----------------------------- */
+        let quizDuration = document.querySelector(".quiz-duration").value
+        console.log('quiz duration', quizDuration)
+
+    /* ---------------------------- barre progression --------------------------- */
+        let progressBarBootstrap = document.querySelector(".progress-stacked");
+    
+
+    /* ---------------------------------- timer --------------------------------- */
+        let timerContainer = document.querySelector(".timer");
+        const seconds = quizDuration;
+        let secondsDecrease = seconds;
+        let runingChrono; 
+
+    /* ---------------------------- fetch JSON OBJECT---------------------------- */
         async function fetchQuestions() {
             const res = await fetch("?controller=game&action=fetch_questions", {
                 method: 'GET' ,
@@ -27,6 +54,10 @@ let gameContainer = document.getElementById("game_container");
             await fetchQuestions();
         }
 
+        /* ---------------------------------- timer --------------------------------- */
+        
+
+    /* -------------- waiting the fetch before generating questions ------------- */
         getListeQuestions().then(() => {
             console.log('question test : ', questions);
 
@@ -36,14 +67,51 @@ let gameContainer = document.getElementById("game_container");
             let score = 0;
             let bonneReponseIndex = 0;
             let bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
+            let nombreQuestions = questions.length;
+            console.log('nombre de questions :' + nombreQuestions)
 
+            let storeGameButton = document.querySelector('#store_game_button');
+
+            let progressBarInterval = 100 / nombreQuestions;
+            // Interval for the progress bar
+
+            function timerInit() {
+                clearInterval(runingChrono);
+                secondsDecrease = seconds;
+                timerContainer.innerText = secondsDecrease;
+            }
+    
+            function timerUpdate() {
+                if(secondsDecrease == 0) {
+                    questionSuivante();
+                    addProgressBarRed();
+                } else {
+                    secondsDecrease--;
+                    timerContainer.innerText = secondsDecrease;
+                }
+            }
+                
+            function timerStart(){
+                timerInit()
+                runingChrono = setInterval(timerUpdate, 1000);
+            }
+
+            function timerStop() {
+                clearInterval(runingChrono)
+            }
 
             genererQuestion()
             afficherTotalQuestions()
 
             function genererQuestion() {
+                document.querySelector(".image-brain-container").innerHTML = "";
+                genererImage();
+
+                timerStart();
+
                 question.innerText = questions[questionActuelle].question;
                 bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
+
 
                 function tableauAleatoire(array) {
                     for (let i = array.length - 1; i > 0; i--) {
@@ -65,6 +133,15 @@ let gameContainer = document.getElementById("game_container");
                 console.log(bonneReponse)
             }
 
+            function genererImage(){
+                const cheminImageAleatoire = images[Math.floor(Math.random() * images.length)];
+
+                let imageElement = document.createElement("img");
+                imageElement.src = cheminImageAleatoire;
+                imageElement.classList.add("image-brain");
+                document.querySelector(".image-brain-container").appendChild(imageElement);
+            }
+
             function afficherScore() {
                 let cadreScore = document.querySelector("#score")
                 cadreScore.innerText = score
@@ -75,7 +152,7 @@ let gameContainer = document.getElementById("game_container");
                 cadreTotalQuestions.innerText = questions.length
             }
     
-            function questionSuivante () {
+            function questionSuivante() {
                 reponses.innerHTML = "";
     
                 if (questionActuelle < questions.length -1) {
@@ -86,36 +163,63 @@ let gameContainer = document.getElementById("game_container");
                         question.innerText = "";
                         question.innerHTML = `Merci d'avoir participé à ce quiz, votre score est de ${score} bonnes réponses sur ${questions.length} !`
                         reponses.remove();
+                        timerContainer.remove();
+                        timerStop();
                         afficherScore();
+                        formFillResults();
+                        storeGameButton.hidden = false;
                 }
+            }
+
+            function addProgressBarGreen(){
+                let progressSection = document.createElement("div");
+                progressSection.classList.add("progress");
+                progressSection.style.width = progressBarInterval  + "%";
+                progressBarBootstrap.appendChild(progressSection);
+
+                let progressBarSection = document.createElement("div");
+                progressBarSection.classList.add("progress-bar");
+                progressBarSection.classList.add("bg-success");
+                progressSection.appendChild(progressBarSection);
+            }
+
+            function addProgressBarRed(){
+                let progressSection = document.createElement("div");
+                progressSection.classList.add("progress");
+                progressSection.style.width = progressBarInterval  + "%";
+                progressBarBootstrap.appendChild(progressSection);
+
+                let progressBarSection = document.createElement("div");
+                progressBarSection.classList.add("progress-bar");
+                progressBarSection.classList.add("bg-danger");
+                progressSection.appendChild(progressBarSection);
+            }
+
+            function formFillResults() {
+                // let themeInput = document.querySelector(".theme_id");
+                let userInput = document.querySelector(".user_id");
+                // let gameLevelInput = document.querySelector(".game_level");
+                let questionsQuantityInput = document.querySelector(".questions_quantity");
+                let gameScoreInput = document.querySelector(".game_score");
+                questionsQuantityInput.value = nombreQuestions;
+                gameScoreInput.value = score
             }
 
             reponses.addEventListener("click", (event) => {
                 let reponseChoisie = event.target.innerText
-                console.log('reponse choisie', reponseChoisie)
-    
                 if (reponseChoisie == bonneReponse) {
-                    console.log("c'est gagné")
                     score++;
-                    console.log("score", score)
-                    console.log("question actuelle", questionActuelle)
+                    addProgressBarGreen()
                     questionSuivante()
                 } else {
                     questionSuivante()
+                    addProgressBarRed()
                 }
             })
 
 
 
         });
-
-
-        
-        // let bonneReponseIndex = questions[questionActuelle].correctAnswerIndex;
-        // let bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
-
-
-        // genererQuestion();
 
         
 
