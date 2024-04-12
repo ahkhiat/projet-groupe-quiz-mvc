@@ -70,6 +70,8 @@ let gameContainer = document.getElementById("game_container");
             let nombreQuestions = questions.length;
             console.log('nombre de questions :' + nombreQuestions)
 
+            let storeGameButton = document.querySelector('#store_game_button');
+
             let progressBarInterval = 100 / nombreQuestions;
             // Interval for the progress bar
 
@@ -164,6 +166,8 @@ let gameContainer = document.getElementById("game_container");
                         timerContainer.remove();
                         timerStop();
                         afficherScore();
+                        formFillResults();
+                        storeGameButton.hidden = false;
                 }
             }
 
@@ -191,7 +195,15 @@ let gameContainer = document.getElementById("game_container");
                 progressSection.appendChild(progressBarSection);
             }
 
-            
+            function formFillResults() {
+                // let themeInput = document.querySelector(".theme_id");
+                let userInput = document.querySelector(".user_id");
+                // let gameLevelInput = document.querySelector(".game_level");
+                let questionsQuantityInput = document.querySelector(".questions_quantity");
+                let gameScoreInput = document.querySelector(".game_score");
+                questionsQuantityInput.value = nombreQuestions;
+                gameScoreInput.value = score
+            }
 
             reponses.addEventListener("click", (event) => {
                 let reponseChoisie = event.target.innerText

@@ -41,8 +41,17 @@
 
 
     <!-- Section résultat-->
-    <section class="result-container">
+    <section class="result-container d-flex justify-content-center">
       <p>Votre score est de: <span id="score">0</span>/<span id="total_questions">4</span></p>
+      <!-- this form is sended to database when game is over -->
+      <form action="?controller=game&action=store_game" method="POST">
+        <input type="hidden" name="theme_id" class="theme_id" value="<?=$_SESSION['theme']?>">
+        <input type="hidden" name="user_id" class="user_id" value="<?=$_SESSION['id']?>">
+        <input type="hidden" name="game_level" class="game_level" value="<?=$_SESSION['level']?>">
+        <input type="hidden" name="questions_quantity" class="questions_quantity">
+        <input type="hidden" name="game_score" class="game_score">
+        <button type=submit class="btn btn-primary" id="store_game_button" hidden>Continuer</button>
+      </form>
     </section>
   </div>
 

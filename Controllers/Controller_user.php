@@ -50,7 +50,7 @@ class Controller_user extends Controller
     public function action_leaderboard()
     {
         $m=User::get_model();
-        $data=['user'=>$m->get_leaderboard()];
+        $data=['users'=>$m->get_leaderboard()];
         $this->render("leaderboard", $data);
 
     }

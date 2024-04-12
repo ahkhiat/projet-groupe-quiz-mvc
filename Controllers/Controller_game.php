@@ -65,8 +65,11 @@ class Controller_game extends Controller
         }
         $this->render("start_game", $data);
     }
-
-    
+    public function action_store_game()
+    {
+        $m = Game::get_model();
+        $m->set_store_game();
+    }
 
 
 

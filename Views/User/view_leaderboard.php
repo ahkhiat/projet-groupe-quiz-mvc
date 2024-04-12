@@ -1,29 +1,55 @@
-<table class="table">
+<?php
+// var_dump($users)
+?>
+
+<div class="text-center">
+  <h2>Classement</h2>
+</div>
+
+<table class="table w-50 mx-auto mt-5">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th></th>
+      <th scope="col">Utilisateur</th>
+      <th scope="col">Score</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+   
+<?php
+      foreach ($users as $index => $user) {
+        $class = '';
+        if ($index < 3) {
+          if ($index == 0) {
+            $class = 'table-warning';
+            $icon = '<i class="fa-solid fa-medal" style="color: #FFD43B;"></i>';
+          } elseif ($index == 1) {
+            $class = 'table-secondary';
+            $icon = '<i class="fa-solid fa-medal" style="color: #949494;"></i>';
+          } elseif ($index == 2) {
+            $class = 'table-danger';
+            $icon = '<i class="fa-solid fa-medal" style="color: #d2852d;"></i>';
+          }
+          echo '
+          <tr class="'.$class.'">
+            <th scope="row">'.($index + 1).'</th>
+            <td>'.$icon.'</td>
+            <td>'.$user->username.'</td>
+            <td>'.$user->total_points.'</td>
+          </tr>
+          ';
+        } else {
+          echo '
+          <tr>
+            <th scope="row">'.($index + 1).'</th>
+            <td></td>
+            <td>'.$user->username.'</td>
+            <td>'.$user->total_points.'</td>
+          </tr>
+          ';
+        }
+      }
+    ?>
   </tbody>
 </table>

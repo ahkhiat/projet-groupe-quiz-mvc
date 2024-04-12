@@ -1,9 +1,9 @@
 <ul class="navbar-nav ms-5 me-auto mb-2 mb-lg-0">
   <li class="nav-item">
-    <a class="nav-link" href="?controller=game&action=new_game">JOUER</a>
+    <a href="?controller=game&action=new_game" class="nav-link text-light">JOUER</a>
   </li>
   <li class="nav-item">
-    <a href="?controller=user&action=leaderboard" class="nav-link">Classement</a>
+    <a href="?controller=user&action=leaderboard" class="nav-link text-light">Classement</a>
   </li>
 
   <?php // ---------------------Display dashboard if user is ADMIN --------------------
@@ -12,7 +12,7 @@
         echo
           '
                 <li class="nav-item">
-                  <a class="nav-link" href="?controller=admin&action=dashboard">Dashboard</a>
+                  <a href="?controller=admin&action=dashboard" class="nav-link text-light">Dashboard</a>
                 </li>
                     ';
       }

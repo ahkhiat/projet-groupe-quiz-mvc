@@ -27,7 +27,7 @@ session_start();
     <!-- -------------------------Navbar Bootstrap---------------------------------------- -->
 
 
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-light navbar-main">
 
       <div class="container-fluid">
 
