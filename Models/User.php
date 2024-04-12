@@ -84,4 +84,17 @@ class User extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function get_leaderboard()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT * FROM user WHERE user_id = :d');
+            $requete->execute(array(':d' => $_SESSION['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

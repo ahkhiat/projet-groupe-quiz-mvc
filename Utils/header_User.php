@@ -2,6 +2,9 @@
   <li class="nav-item">
     <a class="nav-link" href="?controller=game&action=new_game">JOUER</a>
   </li>
+  <li class="nav-item">
+    <a href="?controller=user&action=leaderboard" class="nav-link">Classement</a>
+  </li>
 
   <?php // ---------------------Display dashboard if user is ADMIN --------------------
     if (isset($_SESSION['email']) && $_SESSION['roles'] == 'admin') 

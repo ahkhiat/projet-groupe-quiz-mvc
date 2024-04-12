@@ -46,7 +46,16 @@ class Controller_user extends Controller
         $data=['user'=>$m->get_public_profile()];
         $this->render("public_profile", $data);
 
-}
+    }
+    public function action_leaderboard()
+    {
+        $m=User::get_model();
+        $data=['user'=>$m->get_leaderboard()];
+        $this->render("leaderboard", $data);
+
+    }
+
+
     
 
 }

@@ -66,6 +66,8 @@ class Controller_game extends Controller
         $this->render("start_game", $data);
     }
 
+    
+
 
 
 
