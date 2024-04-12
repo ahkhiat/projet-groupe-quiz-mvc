@@ -27,7 +27,7 @@ class Controller_security extends Controller
      {   
                 $m=Security::get_model();
                 
-                $data = ['identification'=>$m->get_login()];
+                $data = ['user'=>$m->get_login()];
                 $this->render("login",$data);           
 
          }
@@ -49,40 +49,40 @@ class Controller_security extends Controller
     }
 
 //.........................registration valid.............................
-
-//...................................function validData pour la securité des données recuperées dans les input........
-  
-    public function action_user_registration_valid( )
-         {   
-            
-       
+    
+    public function action_user_registration_valid()
+    {   
         if(isset($_POST['submit_registration']))
         {
-
-            if (
-                !empty($_POST['lastname']) && 
+            if (!empty($_POST['lastname']) && 
                 !empty($_POST['firstname']) && 
                 !empty($_POST['username']) && 
                 !empty($_POST['birthdate']) &&
                 !empty($_POST['email']) && 
                 !empty($_POST['password']))
-                {
-                   echo "tous les chants sont bien rempli";
-                
-                 if(strlen($_POST['password'])<11) {
-                    $message = "votre mot de passe est trop court.";
-                    echo $message;
-                 }
-                 
-                 $m=Security::get_model();
-                 $data = ['identification'=>$m->get_user_registration_valid()];
-                } else {
-                    echo "Veuillez completer tous les champs";
-                }
-        }
-         $this->render('login',$data);
-    }
+            {
+                 // Initialiser le message à vide
     
-
+                if(strlen($_POST['password']) < 11) {
+                    $message = " ";
+                    echo "<script>alert('Votre mot de passe est trop court.');</script>";
+                }
+                  $data=''; // initialiser la variable data a vide
+                if(empty($message)) {
+                    // Si le message est toujours vide, tous les champs sont remplis correctement
+                    echo "<script>alert('Tous les champs sont bien remplis');</script>";
+                    $m = Security::get_model();
+                    $data = ['identification' => $m->get_user_registration_valid()];
+                } else {
+                    // Sinon, afficher le message d'erreur
+                    echo $message;
+                }
+            } else {
+                echo "<script>alert('Veuillez compléter tous les champs !');</script>";
+            }
+        }
+    
+        $this->render('login', $data);
+    }
  
 } 
