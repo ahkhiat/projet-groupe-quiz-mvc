@@ -140,7 +140,7 @@ footer {
 /* ---------------------- image and question container ---------------------- */
  .image-questions-container {
   /* border: 1px solid red; */
-  width: 1000px;
+  /* width: 1000px; */
   margin : 20px auto;
   display: flex;
   justify-content: center;
@@ -162,7 +162,7 @@ footer {
    position: relative;
    text-align: justify;
    margin-left: 1rem;
-   width: 600px;
+   /* width: 600px; */
  }
  
  .main-container .question-container #question:before {
@@ -272,7 +272,7 @@ ul {
 
   .mini-card {
     border-radius: 10px;
-    width: 150px;
+    /* width: 150px; */
     height : 120px;
     font-weight: 900;
   }
