@@ -1,5 +1,7 @@
+<?php
+include('./Utils/header_admin.php')
+?>
 <div>
-
     <div class="align-self-end">
         <a href="?controller=theme&action=question_add"><button class="mt-3 btn btn-secondary">Ajouter un thème</button></a>
     </div>

@@ -37,7 +37,7 @@
               <tr class="'.$class.'">
                 <th scope="row">'.($index + 1).'</th>
                 <td>'.$icon.'</td>
-                <td>'.$user->username.'</td>
+                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark">'.$user->username.'</a></td>
                 <td>'.$user->total_points.'</td>
               </tr>
               ';
@@ -46,7 +46,7 @@
               <tr>
                 <th scope="row">'.($index + 1).'</th>
                 <td></td>
-                <td>'.$user->username.'</td>
+                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark">'.$user->username.'</a></td>
                 <td>'.$user->total_points.'</td>
               </tr>
               ';

@@ -1,3 +1,6 @@
+<?php 
+// var_dump($user);
+?>
 <div class="row gutters-sm">
 
 
@@ -19,9 +22,7 @@
   <hr>
   <div class="d-flex flex-column align-items-center text-center">
 
-  <?php 
-var_dump($user);
-?>
+ 
 
     <h6 class="mb-0">Nombre de points</h6>
   </div>

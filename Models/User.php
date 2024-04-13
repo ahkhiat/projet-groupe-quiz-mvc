@@ -76,7 +76,7 @@ class User extends Model
 
         try {
             $requete = $this->bd->prepare('SELECT * FROM user WHERE user_id = :d');
-            $requete->execute(array(':d' => $_SESSION['id']));
+            $requete->execute(array(':d' => $_GET['id']));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
@@ -88,7 +88,7 @@ class User extends Model
     {
 
         try {
-            $requete = $this->bd->prepare('SELECT u.username, SUM(g.game_score) AS total_points 
+            $requete = $this->bd->prepare('SELECT u.user_id, u.username, SUM(g.game_score) AS total_points 
                                             FROM game g 
                                             JOIN user u ON g.user_id = u.user_id 
                                             WHERE u.roles = "user" GROUP BY u.username

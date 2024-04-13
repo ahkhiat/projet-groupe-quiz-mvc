@@ -1,3 +1,6 @@
+<?php
+include('./Utils/header_admin.php')
+?>
 <div>
     
 <table id='table' class="table">
