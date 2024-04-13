@@ -29,31 +29,33 @@
       </section>
     </div>
 
-    <!-- Answers section -->
-    <div class="answers-container">
-      <ul id="answers"></ul>
-    </div>
-
     <!-- Timer section -->
     <div class="timer">
       
     </div>
 
+    <!-- Answers section -->
+    <div class="answers-container container-fluid">
+      <ul id="answers" class="row"></ul>
+    </div>
+
+    
+
     <!-- Mini card section -->
     <section class="mini-card-container d-flex justify-content-between w-50 mx-auto mb-5" id="mini-card-section" >
       <div class="mini-card" id="mini_card_1" hidden>
-        <div class="mini-card-head" id="mini_card-head_1">Points</div>
+        <div class="mini-card-head" id="mini_card_head_1">Points</div>
         <div class="mini-card-body" id="mini_card_body_1"></div>
       </div>
       <div class="mini-card" id="mini_card_2" hidden>
-        <div class="mini-card-head" id="mini_card-head_2">Temps</div>
+        <div class="mini-card-head" id="mini_card_head_2">Temps</div>
         <div class="mini-card-body" id="mini_card_body_2"></div>
       </div>
       <div class="mini-card" id="mini_card_3" hidden>
-        <div class="mini-card-head" id="mini_card-head_2">Réussite</div>
-        <div class="mini-card-body" id="mini_card_body_2"></div>
+        <div class="mini-card-head" id="mini_card_head_3">Réussite</div>
+        <div class="mini-card-body" id="mini_card_body_3"></div>
       </div>
-</section>
+    </section>
 
 
     <!-- Result section-->

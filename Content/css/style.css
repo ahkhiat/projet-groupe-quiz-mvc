@@ -180,7 +180,7 @@ footer {
  
  /* ---------------------------- answers container --------------------------- */
  .main-container  #answers {
-   width: 1000px;
+   /* width: 1000px; */
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
@@ -271,21 +271,19 @@ ul {
   /* -------------------------------- Mini card ------------------------------- */
 
   .mini-card {
-    border: 3px solid rgb(170, 170, 170);
-    border-radius: 5px;
+    border-radius: 10px;
     width: 150px;
     height : 120px;
     font-weight: 900;
   }
 
   .mini-card-head {
-    border-bottom : 1px solid rgb(170, 170, 170);
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: #f8f885;
+    color: white;
   }
 
   .mini-card-body {
@@ -295,5 +293,31 @@ ul {
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: larger;
-    transform: translate(0, -5%)
+    transform: translate(0, -5%);
+  }
+
+  #mini_card_1 {
+    border : 3px solid rgb(255, 174, 0);
+  }
+  #mini_card_2 {
+    border : 3px solid rgb(5, 142, 233);
+  }
+  #mini_card_3 {
+    border : 3px solid rgba(38, 192, 18, 0.664);
+  }
+
+  #mini_card_head_1 {
+    background-color: rgb(255, 174, 0);
+  }
+  #mini_card_head_2 {
+    background-color: rgb(5, 142, 233);
+  }
+  #mini_card_head_3 {
+    background-color: rgb(38, 192, 18, 0.664);
+  }
+
+  /* ------------------------------- retry game ------------------------------- */
+
+  .retry-game {
+    margin-top : 200px;
   }

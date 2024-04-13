@@ -2,7 +2,7 @@
 <!------------------------ Admin navbar --------------------->
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Administration </a>
+    <a class="navbar-brand" href="#">Administration dashboard</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,26 +32,18 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h2 class="h3 mb-0 text-gray-800">Panneau d'administration</h2>
-        
-    </div>
-
-    
     <!-- Row 1 -->
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-1">
+                <div class="card-header">Nombre d'inscrits</div>
                 <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Nombre d'inscrits</div>
+                    <div class="row no-gutters align-items-center ">
+                        <div class="col mr-2 ">
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $users ?> </div>
                         </div>
-                        <div class="col-auto">
-                        <i class="fa-solid fa-user fa-2xl"></i>
+                        <div class="col-auto ">
+                            <i class="fa-solid fa-user fa-2xl"></i>
                         </div>
                     </div>
                 </div>
@@ -60,11 +52,10 @@
 
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-header">Nombre de parties jouées</div>
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Nombre de parties jouées</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $games ?></div>
                         </div>
                         <div class="col-auto">
@@ -77,11 +68,10 @@
 
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-header">Nombre de questions en BDD</div>
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Nombre de questions en BDD</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $questions ?></div>
                         </div>
                         <div class="col-auto">
@@ -94,11 +84,10 @@
 
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-header">Nombre de questions en BDD</div>
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Nombre de questions par Quiz</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $nbr_questions ?></div>
                         </div>
                         <div class="col-auto">
@@ -114,15 +103,12 @@
     <!-- Row 2 -->
     <div class="row">
 
-        
-
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-header">Durée par question (s)</div>
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Durée par question (s)</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $quiz_duration ?></div>
                         </div>
                         <div class="col-auto">
@@ -138,14 +124,10 @@
             echo '
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-header">'.$nqt->theme_name.' (Nbe Questions)</div>
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                    '.
-                                    $nqt->theme_name
-                                    .' (Nbe Questions)
-                                </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                     '.
                                     $nqt->Total_questions
@@ -171,7 +153,7 @@
     <!-- Action Container -->
     <div class="row">
         <!-- Area Chart -->
-        <div class="col-xl-12 col-lg-7">
+        <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
