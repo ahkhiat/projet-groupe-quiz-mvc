@@ -11,8 +11,7 @@
     <table class="table mx-auto mt-5 ">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th></th>
+          <th scope="col" class="text-center">#</th>
           <th scope="col">Utilisateur</th>
           <th scope="col">Score</th>
         </tr>
@@ -25,28 +24,26 @@
             if ($index < 3) {
               if ($index == 0) {
                 $class = 'table-warning';
-                $icon = '<i class="fa-solid fa-medal" style="color: #FFD43B;"></i>';
+                $icon = '🥇';
               } elseif ($index == 1) {
                 $class = 'table-secondary';
-                $icon = '<i class="fa-solid fa-medal" style="color: #949494;"></i>';
+                $icon = '🥈';
               } elseif ($index == 2) {
                 $class = 'table-danger';
-                $icon = '<i class="fa-solid fa-medal" style="color: #d2852d;"></i>';
+                $icon = '🥉';
               }
               echo '
               <tr class="'.$class.'">
-                <th scope="row">'.($index + 1).'</th>
-                <td>'.$icon.'</td>
-                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark">'.$user->username.'</a></td>
+                <th scope="row" class="text-center">'.$icon.'</th>
+                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark fw-bold">'.$user->username.'</a></td>
                 <td>'.$user->total_points.'</td>
               </tr>
               ';
             } else {
               echo '
               <tr>
-                <th scope="row">'.($index + 1).'</th>
-                <td></td>
-                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark">'.$user->username.'</a></td>
+                <th scope="row" class="text-center fw-light">'.($index + 1).'</th>
+                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark fw-bold">'.$user->username.'</a></td>
                 <td>'.$user->total_points.'</td>
               </tr>
               ';

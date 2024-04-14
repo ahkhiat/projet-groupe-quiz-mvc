@@ -75,13 +75,31 @@ class User extends Model
     {
 
         try {
-            $requete = $this->bd->prepare('SELECT * FROM user WHERE user_id = :d');
-            $requete->execute(array(':d' => $_GET['id']));
+            $requete_user = $this->bd->prepare('SELECT * FROM user WHERE user_id = :d');
+            $requete_user->execute(array(':d' => $_GET['id']));
+
+            $requete_games = $this->bd->prepare('SELECT SUM(g.game_score) AS total_points, 
+                                                COUNT(g.game_id) as total_games, 
+                                                SUM(g.questions_quantity) as total_questions,
+                                                ROUND((SUM(g.game_score) * 100) / SUM(g.questions_quantity)) as success_rate 
+                                                FROM game g 
+                                                JOIN user u ON g.user_id = u.user_id 
+                                                WHERE u.user_id = :d;
+                                                ');
+            $requete_games->execute(array(':d' => $_GET['id']));
+
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
-        return $requete->fetchAll(PDO::FETCH_OBJ);
+        $user_info = $requete_user->fetchAll(PDO::FETCH_OBJ);
+        $games_info = $requete_games->fetchAll(PDO::FETCH_OBJ);
+
+        $result = array(
+            'user_info' => $user_info,
+            'games_info' => $games_info
+        );
+        return $result;
     }
 
     public function get_leaderboard()
@@ -102,3 +120,4 @@ class User extends Model
     }
 
 }
+// SELECT SUM(g.game_score) AS total_points, COUNT(g.game_id) as games_nbr, SUM(g.questions_quantity) as total_questions FROM game g JOIN user u ON g.user_id = u.user_id WHERE u.user_id = 8;
