@@ -1,5 +1,7 @@
 
-
+<?php
+var_dump($user)
+?>
 
 <section>
   <div class="container py-5">
@@ -8,7 +10,22 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-          <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+
+          <!-- <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110"> -->
+
+          <form action="?controller=user&action=profile_picture" class="img-form" id="img_form" enctype="multipart/form-data" method="POST">
+            <div class="upload">
+              <img src="Public/img/<?= $user[0]->image_name ?>" width=125 height=125 alt="" title="<?= $user[0]->image_name ?>">
+              <div class="round">
+                <input type="hidden" name="id" value="<?= $user[0]->user_id ?>">
+                <input type="hidden" name="username" value="<?= $user[0]->username ?>">
+                <input type="file" name="img_input" id="img_input" accept =".jpg, .jpeg, .png">
+                <i class="fa fa-camera" style="color: #fff"></i>
+                <button type="submit"></button>
+              </div>
+            </div>
+          </form>
+
             <h5 class="my-3"><?php echo $user[0]->firstname . "&nbsp" . $user[0]->lastname; ?></h5>
             <p class="text-muted mb-1"><?php echo $user[0]->roles ?></p>
           </div>

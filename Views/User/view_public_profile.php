@@ -1,10 +1,17 @@
 <?php 
-// var_dump($user['user_info']);
+var_dump($user['user_info']);
 // var_dump($user['games_info']);
 ?>
 <div class="row gutters-sm">
   <div class="profile-image-container container mb-3 text-center">
-          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+          <!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> -->
+    <form action="" class="img-form" id="img_form" enctype="multipart/form-data" method="POST">
+      <div class="upload">
+        <!-- <img src="Public/img/<?= $user ?>" alt=""> -->
+      </div>
+    </form>
+
+
   </div>
 <hr>
   <div class="mx-auto  col-xl-8 col-md-8 col-sm-8 col-10">
@@ -40,7 +47,7 @@
       </div>
     </div>
 
-    <div class="card-profile col-xl-3 col-md-3 col-sm-5 col-5 ">
+    <div class="card-profile col-xl-3 col-md-3 col-sm-5 col-5">
       <div class="card ">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
@@ -56,14 +63,14 @@
       </div>
     </div>
 
-    <div class="card-profile col-xl-3 col-md-3 col-sm-5 col-5 ">
+    <div class="card-profile col-xl-3 col-md-3 col-sm-5 col-5">
       <div class="card">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col-auto">
-              <i class="fa-solid fa-bolt fa-xl" style="color: rgb(255, 174, 0);"></i>
+            <i class="fa-solid fa-bullseye fa-xl me-2" style="color: rgb(38, 192, 18, 0.664);" ></i>            
             </div>
-            <div class="col ">
+            <div class="col">
               <h5 class="card-profile-title fs-4"><?= $user['games_info'][0]->success_rate ?> %</h5>
               <p class="card-profile-text  fw-light text-muted">réussite moyenne</p>
             </div>

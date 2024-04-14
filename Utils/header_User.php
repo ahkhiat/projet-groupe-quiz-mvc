@@ -20,17 +20,18 @@
 </ul>
 
 <!--------------------------- User badge and dropdown menu ------------------------>
-<ul class="navbar-nav me-2 mb-2 mb-lg-0 ">
+<ul class="navbar-nav me-2 mb-2 mb-lg-0 align-items-center">
         <li class="nav-item">
           <?php    // ------------ Display if user is ADMIN -------------------
               if(isset($_SESSION["roles"]) && $_SESSION["roles"]=="admin")  
-              {echo "<a class='nav-link text-danger' id='admin'>Mode Administrateur</a>";} 
+              {echo "<a class='nav-link text-danger' id='admin'><span class='btn btn-outline-warning rounded-pill disabled'>Mode Administrateur</span></a>";} 
           ?>
         </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-      <div class="user-badge"> <?= $_SESSION["firstname"] ?> </div>
+      <!-- <div class="user-badge"> <?= $_SESSION["firstname"] ?> </div> -->
+      <div class="user-badge"><strong><?= strtoupper(substr($_SESSION["firstname"], 0, 1)) ?> </strong></div>
 
     </a>
     <ul class="dropdown-menu dropdown-menu-end">

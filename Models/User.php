@@ -119,5 +119,17 @@ class User extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function set_profile_picture($newImageName)
+    {
+        try {
+            $requete = $this->bd->prepare('UPDATE user SET image_name = :new WHERE user_id = :id');
+            $requete->execute(array(':id' => $_POST['user_id'], ':new' => $newImageName));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+
+    }
+
 }
-// SELECT SUM(g.game_score) AS total_points, COUNT(g.game_id) as games_nbr, SUM(g.questions_quantity) as total_questions FROM game g JOIN user u ON g.user_id = u.user_id WHERE u.user_id = 8;
