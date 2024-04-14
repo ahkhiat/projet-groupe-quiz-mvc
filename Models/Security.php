@@ -32,8 +32,7 @@ class Security extends Model
             if($requete->rowCount() > 0) {
                 $user = $requete->fetch(PDO::FETCH_OBJ);
                 $password_hash = $user->pswd; // Récupérer le hachage du mot de passe depuis la base de données
-                $password = $_POST['password']; // Récupérer le mot de passe entré par l'utilisateur
-                // Vérifier si le mot de passe correspond au hachage dans la base de données
+                $password = $_POST['password']; // Récupérer le mot de passe entré par l'utilisateur   
                 if (password_verify($password, $password_hash)) {
                     // Mot de passe correct, retourner l'utilisateur
                     return $user;
@@ -50,7 +49,8 @@ class Security extends Model
         } catch (PDOException $e) {
             // Gestion des erreurs PDO
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage());
-        }
+        } 
+        
     }
 
 
@@ -102,11 +102,11 @@ public function get_user_registration_valid()
         
         if ($requete_verification->rowCount() > 0) {
             // L'email existe déjà, afficher un message d'erreur
-            echo "Cet email est déjà utilisé. Veuillez choisir un autre email.";
+        echo "<script>alert('Cet email est déjà utilisé. Veuillez choisir un autre email.');</script>";
             return false; // Arrêter le processus d'inscription
         } 
     else {
-            // L'email n'existe pas, procéder à l'inscription
+            // L'email n'existe pas, il faut s'inscription
             $user = "user";
             $requete_insertion = $this->bd->prepare('INSERT INTO user (user_id, email, roles, pswd, firstname, lastname, username, birthdate) 
                 VALUES(NULL, :e, :utilisateur, :p, :f, :l, :un, :b)');
@@ -127,7 +127,8 @@ public function get_user_registration_valid()
     } catch (PDOException $e) {
         // Gestion des erreurs PDO
         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage());
-    }
+    }  
+     
 }
 
 }

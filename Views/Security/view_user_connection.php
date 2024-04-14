@@ -8,11 +8,13 @@
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-lock"></i></span>  
-              <input  type="password" class="form-control" name="password" placeholder="Entrer votre mot de passe">    
+              <input  type="password"id='password' class="form-control" name="password" placeholder="Entrer votre mot de passe">
+              <button type="button" id="button" class="btn btn-outline-secondary"><i class="fa fa-eye"></i></button>    
             </div>
             <div class="col-md offset-md-8">
-            <button type="submit" name="submit_form_connection"class="btn btn-primary">Se connecter</button>
+            <button type="submit" name="submit_connection"class="btn btn-primary">Se connecter</button>
             </div>
+            
           
   </form>
 </div> 

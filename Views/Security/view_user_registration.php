@@ -1,6 +1,6 @@
 <div class="col-lg-4 bg-white m-auto rounded-top">
   <h2 class= "text-center"> Inscription</h2>
-    <form action="?controller=security&action=user_registration_valid" method="post" >
+    <form class="formulaire" action="?controller=security&action=user_registration_valid" method="post" >
         
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-user"></i></span>   
