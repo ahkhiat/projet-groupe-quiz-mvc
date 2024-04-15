@@ -1,6 +1,6 @@
 
 <?php
-var_dump($user)
+// var_dump($user)
 ?>
 
 <section>
@@ -17,11 +17,10 @@ var_dump($user)
             <div class="upload">
               <img src="Public/img/<?= $user[0]->image_name ?>" width=125 height=125 alt="" title="<?= $user[0]->image_name ?>">
               <div class="round">
-                <input type="hidden" name="id" value="<?= $user[0]->user_id ?>">
+                <input type="hidden" name="user_id" value="<?= $user[0]->user_id ?>">
                 <input type="hidden" name="username" value="<?= $user[0]->username ?>">
                 <input type="file" name="img_input" id="img_input" accept =".jpg, .jpeg, .png">
                 <i class="fa fa-camera" style="color: #fff"></i>
-                <button type="submit"></button>
               </div>
             </div>
           </form>

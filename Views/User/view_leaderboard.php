@@ -1,5 +1,5 @@
 <?php
-// var_dump($users)
+var_dump($users)
 ?>
 
 <div class="text-center">
@@ -35,7 +35,9 @@
               echo '
               <tr class="'.$class.'">
                 <th scope="row" class="text-center">'.$icon.'</th>
-                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark fw-bold">'.$user->username.'</a></td>
+                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark fw-bold">
+                <img src="Public/img/'.$user->image_name.'"  alt="" title="'.$user->image_name.'" class="pp-leaderboard">
+                '.$user->username.'</a></td>
                 <td>'.$user->total_points.'</td>
               </tr>
               ';
@@ -43,7 +45,9 @@
               echo '
               <tr>
                 <th scope="row" class="text-center fw-light">'.($index + 1).'</th>
-                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark fw-bold">'.$user->username.'</a></td>
+                <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark fw-bold">
+                <img src="Public/img/'.$user->image_name.'"  alt="" title="'.$user->image_name.'" class="pp-leaderboard">
+                '.$user->username.'</a></td>
                 <td>'.$user->total_points.'</td>
               </tr>
               ';

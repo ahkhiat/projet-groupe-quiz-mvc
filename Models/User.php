@@ -106,7 +106,8 @@ class User extends Model
     {
 
         try {
-            $requete = $this->bd->prepare('SELECT u.user_id, u.username, SUM(g.game_score) AS total_points 
+            $requete = $this->bd->prepare('SELECT u.user_id, u.username, u.image_name, 
+                                            SUM(g.game_score) AS total_points 
                                             FROM game g 
                                             JOIN user u ON g.user_id = u.user_id 
                                             WHERE u.roles = "user" GROUP BY u.username
@@ -130,6 +131,19 @@ class User extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
 
+    }
+
+    public function get_profile_picture($user_id)
+    {   
+        try {
+            $requete = $this->bd->prepare('SELECT image_name FROM user WHERE user_id = :id');
+            $requete->execute(array(':id' => $user_id));
+            $result = $requete->fetchColumn();
+            return $result;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
     }
 
 }

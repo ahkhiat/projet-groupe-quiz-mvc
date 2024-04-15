@@ -1,10 +1,10 @@
 <?php 
-var_dump($user['user_info']);
+// var_dump($user['user_info']);
 // var_dump($user['games_info']);
 ?>
 <div class="row gutters-sm">
-  <div class="profile-image-container container mb-3 text-center">
-          <!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> -->
+  <div class="profile-image-container upload container mb-3 mt-3 col-xl-8 col-md-8 col-sm-8 col-10">
+    <img src="Public/img/<?= $user['user_info'][0]->image_name ?>" width=125 height=125 alt="" title="<?= $user['user_info'][0]->image_name ?>">
     <form action="" class="img-form" id="img_form" enctype="multipart/form-data" method="POST">
       <div class="upload">
         <!-- <img src="Public/img/<?= $user ?>" alt=""> -->
@@ -14,7 +14,7 @@ var_dump($user['user_info']);
 
   </div>
 <hr>
-  <div class="mx-auto  col-xl-8 col-md-8 col-sm-8 col-10">
+  <div class="mx-auto  col-xl-8 col-md-8 col-sm-8 col-10 ps-4">
     <div class="fw-bold fs-3">
       <?= $user['user_info'][0]->firstname ?>
     </div>

@@ -324,7 +324,9 @@ ul {
     margin-top : 200px;
   }
 
-  /* ----------------------------- Public profile ----------------------------- */
+  /* -------------------------------------------------------------------------- */
+  /*                               Public profile                               */
+  /* -------------------------------------------------------------------------- */
 
   /* -------------------------------- Mini card ------------------------------- */
 
@@ -335,3 +337,56 @@ ul {
   .card-profile-text {
     font-size: 12px !important;
   }
+
+
+  /* -------------------------------------------------------------------------- */
+  /*                               Private profile                              */
+  /* -------------------------------------------------------------------------- */
+
+  /* ----------------------------- profile picture ---------------------------- */
+  .upload {
+    width : 125px;
+    position: relative;
+    margin: auto;
+  }
+
+  .upload img {
+    border-radius: 50%;
+    border: 8px solid #DCDCDC;
+  }
+
+  .upload .round {
+    position: absolute;
+    background: #00B4FF;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .upload .round input[type = "file"] {
+    position: absolute;
+    transform: scale(3);
+    opacity: 0;
+  }
+
+  input[type=file]::-webkit-file-upload-button {
+    cursor: pointer;
+  }
+
+/* -------------------------------------------------------------------------- */
+/*                                 Leaderboard                                */
+/* -------------------------------------------------------------------------- */
+
+/* ----------------------------- profile picture ---------------------------- */
+
+.pp-leaderboard {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid rgb(56, 56, 56);
+}
