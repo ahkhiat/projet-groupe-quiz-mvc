@@ -51,11 +51,14 @@ class Game extends Model
 
     public function get_fetch_questions($nbrQuestions)
     {
-        // $nbrQuestions = 5;
         $theme = $_SESSION['theme'];
         $level = $_SESSION['level'];
-        try {
 
+        // tests values
+        // $theme = 1;
+        // $level = 1;
+        try {
+            // questions id's are randomly selected
             $randomQuestionIdsQuery = $this->bd->prepare('SELECT question_id FROM question  WHERE theme_id = :theme AND question_level = :lvl ORDER BY RAND() LIMIT :lm');
             
             $randomQuestionIdsQuery->bindParam(':lm', $nbrQuestions, PDO::PARAM_INT);
@@ -65,9 +68,8 @@ class Game extends Model
             $randomQuestionIdsQuery->execute();
             $randomQuestionIds = $randomQuestionIdsQuery->fetchAll(PDO::FETCH_COLUMN);
 
-            // var_dump($randomQuestionIds);
-            // die;
-
+            // Questions and answers are found in its table by id's
+            // $placeholders is an array of random id's
             $placeholders = rtrim(str_repeat('?,', count($randomQuestionIds)), ',');
             $questionsQuery = $this->bd->prepare("SELECT q.question_id, q.question_content, a.answer_content, a.is_true FROM question q
                                                 JOIN answer a ON q.question_id = a.question_id
@@ -78,8 +80,7 @@ class Game extends Model
 
             $results = $questionsQuery->fetchAll(PDO::FETCH_ASSOC);
 
-
-
+            // This part organize questions and answers in a JSON object
             $organizedResults = [];
             foreach ($results as $row) {
                 $questionId = $row['question_id'];

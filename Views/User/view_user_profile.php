@@ -1,4 +1,6 @@
 
+<div id="profile_container">
+
 <?php
 // var_dump($user)
 ?>
@@ -177,3 +179,8 @@
                         </div>
                     </div>
                 </div> -->
+
+
+</div>
+
+
