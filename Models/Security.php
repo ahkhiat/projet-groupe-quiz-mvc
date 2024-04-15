@@ -23,15 +23,7 @@ class Security extends Model
     }
 /* ---------------------------- ancienne version ---------------------------- */
 
-<<<<<<< HEAD
-    public function get_login()
-    { 
-         try {
-            $Mdp = md5($_POST['password']);
-            $email = $_POST['email'];
-            $requete = $this->bd->prepare('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');
-            $requete->execute(array(':mdp' => $Mdp, ':nom' => $email));
-=======
+
     // public function get_login()
     // { 
     //      try {
@@ -39,7 +31,15 @@ class Security extends Model
     //         $email = $_POST['email'];
     //         $requete = $this->bd->prepare('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');
     //         $requete->execute(array(':mdp' => $Mdp, ':nom' => $email));
->>>>>>> 9b7f7b61f62d7c1d2d9a535dea10431ac4f3f327
+
+    // public function get_login()
+    // { 
+    //      try {
+    //         $Mdp = md5($_POST['password']);
+    //         $email = $_POST['email'];
+    //         $requete = $this->bd->prepare('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');
+    //         $requete->execute(array(':mdp' => $Mdp, ':nom' => $email));
+
             
     //     } catch (PDOException $e) {
     //         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
