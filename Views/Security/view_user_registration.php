@@ -1,6 +1,6 @@
 <div class="col-lg-4 bg-white m-auto rounded-top">
   <h2 class= "text-center"> Inscription</h2>
-    <form class="formulaire" action="?controller=security&action=user_registration_valid" method="post" >
+    <form id="registration-form" action="?controller=security&action=user_registration_valid" method="post" >
         
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-user"></i></span>   
@@ -24,14 +24,14 @@
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-lock"></i></span>  
-              <input  type="password"id='password' class="form-control" name="password" placeholder="Entrer votre mot de passe">
+              <input  type="password"id='current-password' class="form-control" name="password" placeholder="Entrer votre mot de passe">
               <button type="button" id="button" class="btn btn-outline-secondary"><i class="fa fa-eye"></i></button>    
             </div>
            
           
-                 <!-- <div class="col-md-1 offset-md-9"> -->
             <div class="d-grid">
-            <div id="error-message" class="text-danger"></div>
+              <div id="error-message" class="text-danger">
+              </div>
               <button type="submit" name="submit_registration" class="btn btn-primary">Envoyer</button>
           
             </div>
