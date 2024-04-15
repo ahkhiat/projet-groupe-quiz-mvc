@@ -1,5 +1,7 @@
 <?php
 
+require_once(dirname(__FILE__) . '/../Utils/functions.php');
+
 class Security extends Model
 {
     protected $bd;
@@ -19,7 +21,9 @@ class Security extends Model
     protected function __construct() {
         parent::__construct(); 
     }
+/* ---------------------------- ancienne version ---------------------------- */
 
+<<<<<<< HEAD
     public function get_login()
     { 
          try {
@@ -27,37 +31,129 @@ class Security extends Model
             $email = $_POST['email'];
             $requete = $this->bd->prepare('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');
             $requete->execute(array(':mdp' => $Mdp, ':nom' => $email));
+=======
+    // public function get_login()
+    // { 
+    //      try {
+    //         $Mdp = md5($_POST['password']);
+    //         $email = $_POST['email'];
+    //         $requete = $this->bd->prepare('SELECT * FROM user WHERE pswd = :mdp AND email = :nom');
+    //         $requete->execute(array(':mdp' => $Mdp, ':nom' => $email));
+>>>>>>> 9b7f7b61f62d7c1d2d9a535dea10431ac4f3f327
             
-        } catch (PDOException $e) {
-            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
-        }
-        return $requete->fetchAll(PDO::FETCH_OBJ);
-    }
-//....................user registration....................
-public function get_user_registration_valid()
+    //     } catch (PDOException $e) {
+    //         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+    //     }
+    //     return $requete->fetchAll(PDO::FETCH_OBJ);
+    // }
 
-{    
+/* ----------------------- version Nadia 15 avril 2024 ---------------------- */
+public function get_login()
+    { 
+        try {
+            $email = validData($_POST['email']);
+            $requete = $this->bd->prepare('SELECT * FROM user WHERE email = :email');
+            $requete->execute(array(':email' => $email));
+            
+            if($requete->rowCount() > 0) {
+                $user = $requete->fetch(PDO::FETCH_OBJ);
+                $password_hash = $user->pswd; // Récupérer le hachage du mot de passe depuis la base de données
+                $password = $_POST['password']; // Récupérer le mot de passe entré par l'utilisateur   
+                if (password_verify($password, $password_hash)) {
+                    // Mot de passe correct, retourner l'utilisateur
+                    return $user;
+                } else {
+                    // Mot de passe incorrect
+                    echo "<script>alert('Mot de passe incorrect !');</script>";
+                    return false;
+                }
+            } else {
+                // Utilisateur non trouvé
+                echo "<script>alert('Adresse email non enregistrée. Veuillez vous inscrire !');</script>";
+                return false;
+            }
+        } catch (PDOException $e) {
+            // Gestion des erreurs PDO
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage());
+        } 
+        
+    }
+
+
+//....................user registration....................
+
+/* ---------------------------- ancienne version ---------------------------- */
+// public function get_user_registration_valid()
+
+// {    
     
-    try {
-        $user="user";
-     $requete = $this->bd->prepare('INSERT INTO user (user_id,email,roles,pswd,firstname,lastname,username,birthdate) 
-     VALUES(NULL,:e,:utilisateur,:p,:f,:l,:un,:b)');
+//     try {
+//         $user="user";
+//      $requete = $this->bd->prepare('INSERT INTO user (user_id,email,roles,pswd,firstname,lastname,username,birthdate) 
+//      VALUES(NULL,:e,:utilisateur,:p,:f,:l,:un,:b)');
        
-     $requete->execute(array(':e'=>$_POST['email'],
-                             ':utilisateur'=>$user,
-                             ':p' => md5($_POST['password']),
-                             ':l'=>$_POST['lastname'],
-                             ':f'=>$_POST['firstname'],
-                             ':un'=>$_POST['username'],
-                             ':b'=>$_POST['birthdate'],
-                             ));
+//      $requete->execute(array(':e'=>$_POST['email'],
+//                              ':utilisateur'=>$user,
+//                              ':p' => md5($_POST['password']),
+//                              ':l'=>$_POST['lastname'],
+//                              ':f'=>$_POST['firstname'],
+//                              ':un'=>$_POST['username'],
+//                              ':b'=>$_POST['birthdate'],
+//                              ));
                                
                              
-    } catch (PDOException $e) {
-        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
-    }
-    return $requete->fetchAll(PDO::FETCH_OBJ);
+//     } catch (PDOException $e) {
+//         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+//     }
+//     return $requete->fetchAll(PDO::FETCH_OBJ);
    
+// }
+
+/* ------------------ Nouvelle version Nadia 15 avril 2024 ------------------ */
+
+public function get_user_registration_valid()
+{   
+    $email = validData($_POST['email']);
+    $password = validData(password_hash($_POST['password'], PASSWORD_DEFAULT));
+    $lastname = validData($_POST['lastname']);
+    $firstname = validData($_POST['firstname']);
+    $username = validData($_POST['username']);
+    $birthdate = validData($_POST['birthdate']);
+     
+    try {
+        // Vérifier si l'email existe déjà dans la base de données
+        $requete_verification = $this->bd->prepare('SELECT * FROM user WHERE email = :email');
+        $requete_verification->execute(array(':email' => $email));
+        
+        if ($requete_verification->rowCount() > 0) {
+            // L'email existe déjà, afficher un message d'erreur
+        echo "<script>alert('Cet email est déjà utilisé. Veuillez choisir un autre email.');</script>";
+            return null; // Arrêter le processus d'inscription
+        } else {
+            // L'email n'existe pas, il faut s'inscription
+            //'user' is the default role
+            $user = "user";
+            $requete_insertion = $this->bd->prepare('INSERT INTO user (user_id, email, roles, pswd, firstname, lastname, username, birthdate) 
+                VALUES(NULL, :e, :utilisateur, :p, :f, :l, :un, :b)');
+            
+            $requete_insertion->execute(array(
+                ':e' => $email,
+                ':utilisateur' => $user,
+                ':p' => $password,
+                ':l' => $lastname,
+                ':f' => $firstname,
+                ':un' => $username,
+                ':b' => $birthdate
+                ));
+
+            return $requete_insertion->fetchAll(PDO::FETCH_OBJ);
+
+}
+    } catch (PDOException $e) {
+        // Gestion des erreurs PDO
+        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage());
+    }  
+
 }
 
 }

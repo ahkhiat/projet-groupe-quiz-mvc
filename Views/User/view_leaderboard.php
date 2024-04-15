@@ -1,5 +1,5 @@
 <?php
-var_dump($users)
+// var_dump($users)
 ?>
 
 <div class="text-center">
