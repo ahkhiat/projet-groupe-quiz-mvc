@@ -1,57 +1,24 @@
 
 <!------------------------ Admin navbar --------------------->
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Administration </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-        <li class="nav-item me-4">
-        <a class="nav-link" href="?controller=game&action=all_games">Parties</a>
-        </li>
-        <li class="nav-item me-4">
-          <a class="nav-link" href="?controller=question&action=all_questions">Questions</a>
-        </li>
-        <li class="nav-item me-4">
-          <a class="nav-link" href="?controller=theme&action=all_themes">Thèmes</a>
-        </li>
-        <li class="nav-item me-4">
-          <a class="nav-link" href="?controller=user&action=all_users">Utilisateurs</a>
-        </li>
-        
-      </ul>
-      
-    </div>
-  </div>
-</nav>
-
+<?php
+include('./Utils/header_admin.php')
+?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h2 class="h3 mb-0 text-gray-800">Panneau d'administration</h2>
-        
-    </div>
-
-    
     <!-- Row 1 -->
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-1">
+                <div class="card-header">Nombre d'inscrits</div>
                 <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Nombre d'inscrits</div>
+                    <div class="row no-gutters align-items-center ">
+                        <div class="col mr-2 ">
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $users ?> </div>
                         </div>
-                        <div class="col-auto">
-                        <i class="fa-solid fa-user fa-2xl"></i>
+                        <div class="col-auto ">
+                            <i class="fa-solid fa-user fa-2xl"></i>
                         </div>
                     </div>
                 </div>
@@ -60,11 +27,10 @@
 
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-header">Nombre de parties jouées</div>
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Nombre de parties jouées</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $games ?></div>
                         </div>
                         <div class="col-auto">
@@ -77,11 +43,10 @@
 
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-header">Nombre de questions en BDD</div>
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Nombre de questions en BDD</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $questions ?></div>
                         </div>
                         <div class="col-auto">
@@ -94,18 +59,29 @@
 
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
+            <a href="#nbr_questions" class="text-decoration-none link-dark" >
+                <div class="card-header">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Nombre de questions par Quiz</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $nbr_questions ?></div>
+                            Nombre de questions par quiz
                         </div>
                         <div class="col-auto">
-                        <i class="fa-solid fa-clipboard-question fa-2xl"></i>
+                            <i class="fa-solid fa-gear"></i>
                         </div>
                     </div>
                 </div>
+                
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $nbr_questions ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-clipboard-question fa-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
             </div>
         </div>
 
@@ -114,22 +90,30 @@
     <!-- Row 2 -->
     <div class="row">
 
-        
-
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
+            <a href="#quiz_duration" class="text-decoration-none link-dark">
+                <div class="card-header">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Durée par question (s)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $quiz_duration ?></div>
+                            Durée par question (s)                        
                         </div>
                         <div class="col-auto">
-                        <i class="fa-solid fa-stopwatch fa-2xl"></i>
+                            <i class="fa-solid fa-gear"></i>
                         </div>
                     </div>
                 </div>
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= $quiz_duration ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-stopwatch fa-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
             </div>
         </div>
     <?php
@@ -138,14 +122,10 @@
             echo '
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-header">'.$nqt->theme_name.' (Nbe Questions)</div>
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                    '.
-                                    $nqt->theme_name
-                                    .' (Nbe Questions)
-                                </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                     '.
                                     $nqt->Total_questions
@@ -171,7 +151,7 @@
     <!-- Action Container -->
     <div class="row">
         <!-- Area Chart -->
-        <div class="col-xl-12 col-lg-7">
+        <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
@@ -180,22 +160,22 @@
                     
                 </div>
                 <div class="card-body">
-                    <div class="chart-area d-flex flex-column">
-                        <div class="w-25 mb-3">
+                    <div class="chart-area d-flex flex-column col-xl-2 col-md-4 col-sm-4 col-6">
+                        <div class=" mb-3">
                             <form action="?controller=admin&action=nbr_questions" method="POST">
                                 <label for="nbr_questions" class="form-label">Nb de questions par quiz</label>
                                 <div class="d-flex">
-                                    <input type="text" class="form-control me-3" id="nbr_questions" name="nbr_questions">
+                                    <input type="text" class="form-control me-3" id="nbr_questions" name="nbr_questions" value="<?= $nbr_questions ?>">
                                     <button type="submit" class="btn btn-primary">Changer</button>
                                 </div>
                             </form>
                         </div>
 
-                        <div class="w-25 mb-3">
+                        <div class=" mb-3">
                             <form action="?controller=admin&action=quiz_duration" method="POST">
                                 <label for="nbr_questions" class="form-label">Durée par question</label>
                                 <div class="d-flex">
-                                    <input type="text" class="form-control me-3" id="quiz_duration" name="quiz_duration">
+                                    <input type="text" class="form-control me-3" id="quiz_duration" name="quiz_duration" value="<?= $quiz_duration ?>">
                                     <button type="submit" class="btn btn-primary">Changer</button>
                                 </div>
                             </form>

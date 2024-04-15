@@ -35,10 +35,16 @@ session_start();
           <a href="?controller=home&action=home" class="href"><img class="logo" src="./Content/img/logo.png" alt="logo.png"></a>
         </div>
 
+        <?php
+            if (isset($_SESSION["email"])) 
+            { echo 
+              '
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
+            ';
+            }
+            ?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <?php
@@ -54,7 +60,7 @@ session_start();
           if (!isset($_SESSION["email"])) 
           {
             echo '
-            <ul class="navbar-nav me-3 mb-2 mb-lg-0 ">
+            <ul class="nav-item me-3 mb-2 mb-lg-0">
               <a href="?controller=security&action=user_connection" ><i class="home-user fa-solid fa-user fa-xl"></i></a>
             </ul>
             ';

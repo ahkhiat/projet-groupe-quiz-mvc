@@ -1,3 +1,6 @@
+<?php
+include('./Utils/header_admin.php')
+?>
 <div>
 
     <div class="align-self-end">

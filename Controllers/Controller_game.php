@@ -69,6 +69,7 @@ class Controller_game extends Controller
     {
         $m = Game::get_model();
         $m->set_store_game();
+        $this->render("retry");
     }
 
 

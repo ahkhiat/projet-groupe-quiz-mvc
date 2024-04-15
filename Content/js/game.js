@@ -33,9 +33,15 @@ let gameContainer = document.getElementById("game_container");
 
     /* ---------------------------------- timer --------------------------------- */
         let timerContainer = document.querySelector(".timer");
-        const seconds = quizDuration;
-        let secondsDecrease = seconds;
+        const quizDurationConst = quizDuration;
+        let secondsDecrease = quizDurationConst;
         let runingChrono; 
+
+    /* ------------------------------- chronometer ------------------------------ */
+        let chronoSeconds = 0;
+        let chronoMinutes = 0;
+        let chronoRun;
+        let runningChrono = false;
 
     /* ---------------------------- fetch JSON OBJECT---------------------------- */
         async function fetchQuestions() {
@@ -53,8 +59,6 @@ let gameContainer = document.getElementById("game_container");
         async function getListeQuestions() {
             await fetchQuestions();
         }
-
-        /* ---------------------------------- timer --------------------------------- */
         
 
     /* -------------- waiting the fetch before generating questions ------------- */
@@ -70,23 +74,42 @@ let gameContainer = document.getElementById("game_container");
             let nombreQuestions = questions.length;
             console.log('nombre de questions :' + nombreQuestions)
 
+            // Hidden HTML form to store game data in DB
+            let questionsQuantityInput = document.querySelector(".questions_quantity");
+            let gameScoreInput = document.querySelector(".game_score");
+
+            // Button appears at end to store score in DB
             let storeGameButton = document.querySelector('#store_game_button');
 
-            let progressBarInterval = 100 / nombreQuestions;
+            // Mini cards appears at end to show scores
+            let miniCard1 = document.querySelector("#mini_card_1");
+            let miniCard2 = document.querySelector("#mini_card_2");
+            let miniCard3 = document.querySelector("#mini_card_3");
+            let miniCardBody1 = document.querySelector("#mini_card_body_1");
+            let miniCardBody2 = document.querySelector("#mini_card_body_2");
+            let miniCardBody3 = document.querySelector("#mini_card_body_3");
+           
             // Interval for the progress bar
+            let progressBarInterval = 100 / nombreQuestions;
 
+            /* ------------------------------ Timer config ------------------------------ */
             function timerInit() {
                 clearInterval(runingChrono);
-                secondsDecrease = seconds;
+                secondsDecrease = quizDurationConst;
                 timerContainer.innerText = secondsDecrease;
             }
     
             function timerUpdate() {
+                timerContainer.classList.remove("text-danger")
+
                 if(secondsDecrease == 0) {
                     questionSuivante();
                     addProgressBarRed();
                 } else {
                     secondsDecrease--;
+                    if(secondsDecrease <4){
+                        timerContainer.classList.add("text-danger")
+                    } 
                     timerContainer.innerText = secondsDecrease;
                 }
             }
@@ -100,6 +123,43 @@ let gameContainer = document.getElementById("game_container");
                 clearInterval(runingChrono)
             }
 
+            /* --------------------------- Chronometer config --------------------------- */
+
+            function updateMs() {
+                chronoSeconds++;
+                // To test and show permanently the chronometer, uncomment this line
+                // testChrono();
+                if(chronoSeconds == 60){
+                    chronoMinutes++;
+                    chronoSeconds = 0;
+                }
+            }
+
+            function startChrono() {
+                if(!runningChrono) {
+                chronoRun = setInterval(updateMs, 1000);
+                runningChrono = true;
+                }
+            }
+
+            function stopChrono() {
+                clearInterval(chronoRun);
+                runningChrono = false;
+            }
+
+            function showChrono() {
+                miniCardBody2.innerHTML = '<i class="fa-regular fa-clock fa-xl me-2" style="color: rgb(5, 142, 233);"></i>' + chronoMinutes + ":" + chronoSeconds;
+            }
+
+            function testChrono() {
+                miniCard2.hidden = false;
+                miniCardBody2.innerHTML = '<i class="fa-regular fa-clock fa-xl me-2" style="color: rgb(5, 142, 233);"></i>' + chronoMinutes + " : " + chronoSeconds;
+            }
+            
+
+
+
+            /* ---------------------------- Generate question --------------------------- */
             genererQuestion()
             afficherTotalQuestions()
 
@@ -108,6 +168,7 @@ let gameContainer = document.getElementById("game_container");
                 genererImage();
 
                 timerStart();
+                startChrono();
 
                 question.innerText = questions[questionActuelle].question;
                 bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
@@ -126,6 +187,10 @@ let gameContainer = document.getElementById("game_container");
                 for (let i=0; i < questions[questionActuelle].answers.length; i++) {
                     let reponse = document.createElement("li");
                     reponse.classList.add("answer");
+                    reponse.classList.add("col-xl-6");
+                    reponse.classList.add("col-md-6");
+                    reponse.classList.add("col-sm-9");
+                    reponse.classList.add("col-9");
                     reponse.innerText = questions[questionActuelle].answers[i]
                     reponses.appendChild(reponse)
                 }
@@ -161,12 +226,16 @@ let gameContainer = document.getElementById("game_container");
                         afficherScore();
                     } else {
                         question.innerText = "";
-                        question.innerHTML = `Merci d'avoir participé à ce quiz, votre score est de ${score} bonnes réponses sur ${questions.length} !`
+                        question.innerHTML = `Partie terminée !`
                         reponses.remove();
                         timerContainer.remove();
                         timerStop();
+                        stopChrono();
+                        showChrono();
                         afficherScore();
                         formFillResults();
+                        miniCardsFill();
+                        showMiniCards();
                         storeGameButton.hidden = false;
                 }
             }
@@ -196,15 +265,22 @@ let gameContainer = document.getElementById("game_container");
             }
 
             function formFillResults() {
-                // let themeInput = document.querySelector(".theme_id");
-                let userInput = document.querySelector(".user_id");
-                // let gameLevelInput = document.querySelector(".game_level");
-                let questionsQuantityInput = document.querySelector(".questions_quantity");
-                let gameScoreInput = document.querySelector(".game_score");
                 questionsQuantityInput.value = nombreQuestions;
-                gameScoreInput.value = score
+                gameScoreInput.value = score;
             }
 
+            function miniCardsFill() {
+                miniCardBody1.innerHTML = '<i class="fa-solid fa-bolt fa-xl me-2" style="color: rgb(255, 174, 0);"></i>' + score;
+                miniCardBody3.innerHTML = '<i class="fa-solid fa-bullseye fa-xl me-2" style="color: rgb(38, 192, 18, 0.664);" ></i>' + Math.round((score*100)/nombreQuestions) + " %";
+            } 
+
+            function showMiniCards() {
+                miniCard1.hidden = false;
+                miniCard2.hidden = false;
+                miniCard3.hidden = false;
+            }
+
+            /* ----------------------- When click on aswer button ----------------------- */
             reponses.addEventListener("click", (event) => {
                 let reponseChoisie = event.target.innerText
                 if (reponseChoisie == bonneReponse) {

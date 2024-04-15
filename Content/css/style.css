@@ -7,6 +7,8 @@ body {
     background-size: 150%; 
 }
 
+
+
 /* ------------------------------- cancel game cross ------------------------------ */
 .fa-solid {
   color: rgb(95, 95, 95);
@@ -140,7 +142,7 @@ footer {
 /* ---------------------- image and question container ---------------------- */
  .image-questions-container {
   /* border: 1px solid red; */
-  width: 1000px;
+  /* width: 1000px; */
   margin : 20px auto;
   display: flex;
   justify-content: center;
@@ -162,7 +164,7 @@ footer {
    position: relative;
    text-align: justify;
    margin-left: 1rem;
-   width: 600px;
+   /* width: 600px; */
  }
  
  .main-container .question-container #question:before {
@@ -180,7 +182,7 @@ footer {
  
  /* ---------------------------- answers container --------------------------- */
  .main-container  #answers {
-   width: 1000px;
+   /* width: 1000px; */
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
@@ -268,3 +270,123 @@ ul {
 
   }
 
+  /* -------------------------------- Mini card at end game------------------------------- */
+
+  .mini-card {
+    border-radius: 10px;
+    /* width: 150px; */
+    height : 120px;
+    font-weight: 900;
+  }
+
+  .mini-card-head {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+  }
+
+  .mini-card-body {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: larger;
+    transform: translate(0, -5%);
+  }
+
+  #mini_card_1 {
+    border : 3px solid rgb(255, 174, 0);
+  }
+  #mini_card_2 {
+    border : 3px solid rgb(5, 142, 233);
+  }
+  #mini_card_3 {
+    border : 3px solid rgba(38, 192, 18, 0.664);
+  }
+
+  #mini_card_head_1 {
+    background-color: rgb(255, 174, 0);
+  }
+  #mini_card_head_2 {
+    background-color: rgb(5, 142, 233);
+  }
+  #mini_card_head_3 {
+    background-color: rgb(38, 192, 18, 0.664);
+  }
+
+  /* ------------------------------- retry game ------------------------------- */
+
+  .retry-game {
+    margin-top : 200px;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                               Public profile                               */
+  /* -------------------------------------------------------------------------- */
+
+  /* -------------------------------- Mini card ------------------------------- */
+
+  .card-profile {
+    min-width: 170px ;
+  }
+
+  .card-profile-text {
+    font-size: 12px !important;
+  }
+
+
+  /* -------------------------------------------------------------------------- */
+  /*                               Private profile                              */
+  /* -------------------------------------------------------------------------- */
+
+  /* ----------------------------- profile picture ---------------------------- */
+  .upload {
+    width : 125px;
+    position: relative;
+    margin: auto;
+  }
+
+  .upload img {
+    border-radius: 50%;
+    border: 8px solid #DCDCDC;
+  }
+
+  .upload .round {
+    position: absolute;
+    background: #00B4FF;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .upload .round input[type = "file"] {
+    position: absolute;
+    transform: scale(3);
+    opacity: 0;
+  }
+
+  input[type=file]::-webkit-file-upload-button {
+    cursor: pointer;
+  }
+
+/* -------------------------------------------------------------------------- */
+/*                                 Leaderboard                                */
+/* -------------------------------------------------------------------------- */
+
+/* ----------------------------- profile picture ---------------------------- */
+
+.pp-leaderboard {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid rgb(56, 56, 56);
+}

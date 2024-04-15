@@ -1,6 +1,9 @@
 <div>
 <?php
 // var_dump($games)
+
+include('./Utils/header_admin.php')
+
 ?>
 <table id='table' class="table">
     <thead>
