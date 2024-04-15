@@ -1,5 +1,7 @@
+<?php
+include('./Utils/header_admin.php')
+?>
 <div>
-
     <div class="align-self-end">
         <a href="?controller=theme&action=question_add"><button class="mt-3 btn btn-secondary">Ajouter un thème</button></a>
     </div>
@@ -7,14 +9,16 @@
     <table id='table' class="table">
         <thead>
             <th>id</th>
-            <th>theme</th>
+            <th>Theme</th>
+            <th>Nb questions</th>
             <th>Action</th>
         
         </thead>
-        <?php  foreach($themes as $t ): ?>
+        <?php  foreach($nbr_questions_themes as $t ): ?>
         <tr>
             <td><?=$t->theme_id?></td>
             <td><?=$t->theme_name?></td>
+            <td><?=$t->Total_questions?></td>
             <td>
                 <div class="d-flex flex-row">
                     <form action="?controller=admin&action=theme_update" method="POST">

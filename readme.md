@@ -8,7 +8,7 @@ Nadia Hammiche
 Mustapha Mabrouk
 Thierry Leung
 
-## Application developpée sur le paradigme MVC
+## Application developpée en php sur le paradigme MVC sans framework
 
 ### Base de données :
 C'est une base de données Mysql

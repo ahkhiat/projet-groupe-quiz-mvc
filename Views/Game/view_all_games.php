@@ -1,5 +1,10 @@
 <div>
-    <p> <?= isset($search)?'Recherche par '.$search:'' ?></p>
+<?php
+// var_dump($games)
+
+include('./Utils/header_admin.php')
+
+?>
 <table id='table' class="table">
     <thead>
         <th>id</th>
@@ -14,9 +19,10 @@
     <?php  foreach($games as $g ): ?>
     <tr>
         <td><?=$g->game_id?></td>
-        <td><?=$g->theme_id?></td>
-        <td><?=$g->user_id?></td>
-        <td><?=$g->game_date?></td>
+        <td><?=$g->theme_name?></td>
+        <td><?=$g->username?></td>
+        <!-- <td><?=$g->game_date?></td> -->
+        <td><?= date("d-m-Y à H:i", strtotime($g->game_date)) ?></td>
         <td><?=$g->game_level?></td>
         <td><?=$g->questions_quantity?></td>
         <td><?=$g->game_score?></td>
