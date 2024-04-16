@@ -25,11 +25,9 @@ class Controller_security extends Controller
 
     {
         $m=Security::get_model();
-<<<<<<< HEAD
-        $data = ['identification'=>$m->get_login()];
-=======
+
         $data = ['user'=>$m->get_login()];
->>>>>>> 9b7f7b61f62d7c1d2d9a535dea10431ac4f3f327
+
         $this->render("login",$data);
         
     }
@@ -48,33 +46,6 @@ class Controller_security extends Controller
 
 //.........................registration valid.............................
 
-    // ancienne version
-
-    // public function action_user_registration_valid()
-    // {    
-             
-    //     $m=Security::get_model();
-    //     $data = ['identification'=>$m->get_user_registration_valid()];
-
-    //     if($data){
-
-<<<<<<< HEAD
-            $email = $_POST['email'];
-            $data = ['identification'=>$m->get_login($email)];
-=======
-    //         $email = $_POST['email'];
-    //         $data = ['identification'=>$m->get_login_connection($email)];
->>>>>>> 9b7f7b61f62d7c1d2d9a535dea10431ac4f3f327
-
-    //     }
-
-<<<<<<< HEAD
-        $this->render("login", $data);
-=======
-    //     $this->render("login_connection", $data);
->>>>>>> 9b7f7b61f62d7c1d2d9a535dea10431ac4f3f327
-        
-    // }
 
     // version Nadia 15 04 2024
     public function action_user_registration_valid()
