@@ -25,6 +25,7 @@ class Security extends Model
 
 
 
+ 
 /* ----------------------- version Nadia 15 avril 2024 ---------------------- */
 public function get_login()
     { 
@@ -60,32 +61,6 @@ public function get_login()
 
 //....................user registration....................
 
-/* ---------------------------- ancienne version ---------------------------- */
-// public function get_user_registration_valid()
-
-// {    
-    
-//     try {
-//         $user="user";
-//      $requete = $this->bd->prepare('INSERT INTO user (user_id,email,roles,pswd,firstname,lastname,username,birthdate) 
-//      VALUES(NULL,:e,:utilisateur,:p,:f,:l,:un,:b)');
-       
-//      $requete->execute(array(':e'=>$_POST['email'],
-//                              ':utilisateur'=>$user,
-//                              ':p' => md5($_POST['password']),
-//                              ':l'=>$_POST['lastname'],
-//                              ':f'=>$_POST['firstname'],
-//                              ':un'=>$_POST['username'],
-//                              ':b'=>$_POST['birthdate'],
-//                              ));
-                               
-                             
-//     } catch (PDOException $e) {
-//         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
-//     }
-//     return $requete->fetchAll(PDO::FETCH_OBJ);
-   
-// }
 
 /* ------------------ Nouvelle version Nadia 15 avril 2024 ------------------ */
 

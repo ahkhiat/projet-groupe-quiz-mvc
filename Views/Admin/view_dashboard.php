@@ -162,21 +162,21 @@ include('./Utils/header_admin.php')
                 <div class="card-body">
                     <div class="chart-area d-flex flex-column col-xl-2 col-md-4 col-sm-4 col-6">
                         <div class=" mb-3">
-                            <form action="?controller=admin&action=nbr_questions" method="POST">
+                            <form action="?controller=admin&action=nbr_questions" method="POST" id="nbr_questions_form">
                                 <label for="nbr_questions" class="form-label">Nb de questions par quiz</label>
                                 <div class="d-flex">
                                     <input type="text" class="form-control me-3" id="nbr_questions" name="nbr_questions" value="<?= $nbr_questions ?>">
-                                    <button type="submit" class="btn btn-primary">Changer</button>
+                                    <button type="submit" class="btn btn-primary" onclick="return modifyConfirmation()">Changer</button>
                                 </div>
                             </form>
                         </div>
 
                         <div class=" mb-3">
-                            <form action="?controller=admin&action=quiz_duration" method="POST">
-                                <label for="nbr_questions" class="form-label">Durée par question</label>
+                            <form action="?controller=admin&action=quiz_duration" method="POST" id="quiz_duration_form">
+                                <label for="quiz_duration" class="form-label">Durée par question</label>
                                 <div class="d-flex">
                                     <input type="text" class="form-control me-3" id="quiz_duration" name="quiz_duration" value="<?= $quiz_duration ?>">
-                                    <button type="submit" class="btn btn-primary">Changer</button>
+                                    <button type="submit" class="btn btn-primary" onclick="return modifyConfirmation()">Changer</button>
                                 </div>
                             </form>
                         </div>
