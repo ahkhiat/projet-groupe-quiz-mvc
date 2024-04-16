@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(registrationContainer)
     {
         console.log('registration_form_verify loaded');
-        // ..............verification du mot de passe avant enregistrement
+// ..............verification du mot de passe avant validation..................
         let groupForm = document.getElementById("registration-form");
         let input = groupForm.password;
         let caractere = document.querySelector(".caractere");
