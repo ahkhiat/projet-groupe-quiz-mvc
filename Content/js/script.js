@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.getElementById("nbr_questions_form").addEventListener("submit", function(event) {
         event.preventDefault();
-        
         if (confirm("Etes-vous certain de modifier cette valeur ?")) {
           this.submit(); 
         }
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.getElementById("quiz_duration_form").addEventListener("submit", function(event) {
         event.preventDefault();
-        
         if (confirm("Etes-vous certain de modifier cette valeur ?")) {
           this.submit(); 
         }
