@@ -14,12 +14,8 @@
           '. $nqt->theme_name .'
         </button>
         ';
-
       }
-
-
     ?>
-
   </div>
 </form>
 

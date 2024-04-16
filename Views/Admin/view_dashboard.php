@@ -1,4 +1,4 @@
-
+<div id="dashboard_container">
 <!------------------------ Admin navbar --------------------->
 <?php
 include('./Utils/header_admin.php')
@@ -192,7 +192,7 @@ include('./Utils/header_admin.php')
 
 <!-- End Container fluid -->
 </div>
-
+</div>
     
 
 

@@ -76,5 +76,18 @@ class Controller_question extends Controller
         $this->render("question_result", $data);
 
     }
+
+    public function action_question_delete()
+    {
+        $mq=Question::get_model();
+        $ma=Answer::get_model();
+
+        $ma->set_answers_delete();
+        $mq->set_question_delete();
+        $data=['questions'=>$mq->get_all_questions(),
+        'answers'=>$ma->get_all_answers()];
+        $this->render("all_questions",$data);
+
+    }
     
 }
