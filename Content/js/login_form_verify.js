@@ -1,3 +1,5 @@
+console.log("login_form_verify loaded");
+
 document.addEventListener("DOMContentLoaded", () => {
 
   let loginContainer = document.getElementById("user_login_container");

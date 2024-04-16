@@ -95,7 +95,7 @@ class Controller_security extends Controller
 
                             if($data){
                                 $email = $_POST['email'];
-                                $data = ['user'=>$m->get_login($email)];
+                                $data = ['user'=>$m->get_login()];
                             }
                     
                     } else {
