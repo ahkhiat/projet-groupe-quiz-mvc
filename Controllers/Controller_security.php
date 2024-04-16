@@ -69,24 +69,25 @@ class Controller_security extends Controller
                         $email = $_POST['email'];
 
                         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                            echo "<script>alert('L\'adresse e-mail n\'est pas valide.');</script>";
-                            return;
+                            $message = 'L\'adresse e-mail n\'est pas valide.';
+                            $this->action_error($message);
+                           
                         }
                         
                         // Validation du mot de passe
                         $password = $_POST['password'];
                         if (!preg_match('/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[a-zA-Z]).{11,}$/', $password)) {
-                            // echo "<script>alert('Votre mot de passe doit contenir au moins une lettre majuscule, un caractère spécial et avoir une longueur d\'au moins 11 caractères.');</script>";
                             $message = 'Votre mot de passe doit contenir au moins une lettre majuscule, un caractère spécial et avoir une longueur d\'au moins 11 caractères.';
+                            
                             $this->action_error($message);
-                            // return;
                         }
                         
                         // Validation de la date de naissance (format YYYY-MM-DD)
                         $birthdate = $_POST['birthdate'];
                         if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $birthdate)) {
-                            echo "<script>alert('La date de naissance n\'est pas au bon format. Utilisez YYYY-MM-DD.');</script>";
-                            return;
+                            $message = 'La date de naissance n\'est pas au bon format. Utilisez YYYY-MM-DD.';
+                            $this->action_error($message);
+
                         }
 
                         $m = Security::get_model();
