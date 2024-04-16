@@ -390,3 +390,37 @@ ul {
   border-radius: 50%;
   border: 2px solid rgb(56, 56, 56);
 }
+
+/* ......................validator password................... */
+ 
+
+input #current-password {
+  border:1px solid black; 
+}
+
+form .block-input input.invalide {
+  border-color: red;
+}
+form .block-input input.succes {
+  border-color: #97df07;
+}
+
+div .validator-criters {
+  display:flex;
+  flex-direction: column;
+  padding: 10px 50px;
+  margin: auto;
+}
+ div .validator-criters span {
+  display: block;
+  color: #cacaca;
+  font-size: 13px;
+  margin: 5px 0;
+}
+ div .validator-criters span.error {
+  color: #a70b0b;
+}
+ div .validator-criters span.succes {
+  color: #97df07;
+}
+
