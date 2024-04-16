@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
           inputPassword.type =  inputPassword.type === 'password' ? 'text' : 'password';
 
             //........................Changer l'icône de l'œil
-          const iconEye = document.querySelector('#btn i');
+          // const iconEye = document.querySelector('#btn i');
           iconEye.classList.toggle('fa-eye');
           iconEye.classList.toggle('fa-eye-slash');
           
