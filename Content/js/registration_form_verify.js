@@ -9,29 +9,58 @@ document.addEventListener("DOMContentLoaded", () => {
         const uppercaseRegex = /[A-Z]/;
         const lowercaseRegex = /[a-z]/;
         const specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+        const numbers = /[0-9]/g;
 
         const registrationForm = document.getElementById('registration-form');
         // let password = document.querySelector('input[name="password"]').value;
         let errorContainer = document.getElementById('error-message');
+
+        let letter = document.getElementById("letter");
+        let capital = document.getElementById("capital");
+        let number = document.getElementById("number");
+        let length = document.getElementById("length");
+        let special = document.getElementById("special");
 
         // EN COURS 
         document.querySelector('input[name="password"]').addEventListener('input', (event) => {
             let password = event.target.value;
 
             if(uppercaseRegex.test(password)) {
-                console.log('Il y a une majuscule');
-                errorContainer.innerText += 'Il y a bien une majuscule'
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+                } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
             }
             if(lowercaseRegex.test(password)) {
-                console.log('Il y a une minuscule');
-                errorContainer.innerText += 'Il y a bien une minuscule'
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+                } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
 
             }
             if(specialCharRegex.test(password)) {
-                console.log('Il y a un caractère spécial');
-                errorContainer.innerText += 'Il y a bien un caractère spécial'
-
+                special.classList.remove("invalid");
+                special.classList.add("valid");
+                } else {
+                special.classList.remove("valid");
+                special.classList.add("invalid");
             }
+            if(numbers.test(password)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+                } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+            if(myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+              } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+              }
 
         })
     
@@ -52,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // .......pouvoir voir ou cacher le mot de passe tapperdans le formulaire d'enregistrement.................
+        // .......hide and show password.................
 
         const passwordInput = document.getElementById('current-password');
         const eyeIcon = document.querySelector('#button i');
