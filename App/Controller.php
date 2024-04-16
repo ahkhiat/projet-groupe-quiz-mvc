@@ -46,7 +46,7 @@ abstract class Controller		//Ceci est le controleur par defaut
 
 		protected function action_error($message)		// en cas d'erreur 
 		{
-			$data=['erreur'=>$message];
+			$data=['error'=>$message];
 			$this->render('error',$data);
 			die();										//Pour faire terminer le script vu qu'il y a une erreur
 		}
