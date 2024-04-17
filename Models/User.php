@@ -58,6 +58,7 @@ class User extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function set_user_profile()
     {
 
@@ -144,6 +145,32 @@ class User extends Model
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
+    }
+
+    public function get_followers_number()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(followed_id) AS total_followers FROM follow WHERE followed_id = :d');
+            $requete->execute(array(':d' => $_SESSION['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function get_followed_number()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(followed_id) AS total_followed FROM follow WHERE follower_id = :d');
+            $requete->execute(array(':d' => $_SESSION['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
 }

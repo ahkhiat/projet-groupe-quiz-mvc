@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   let profileContainer = document.getElementById("profile_container");
-
+  let dashboardContainer = document.getElementById("dashboard_container");
   
 
       console.log("script standard chargé");
@@ -14,20 +14,24 @@ document.addEventListener("DOMContentLoaded", () => {
         return confirm("Etes-vous certain de revenir en arrière ? Toute progression sera perdue !");
       }
       
+      if(dashboardContainer) {
+        document.getElementById("nbr_questions_form").addEventListener("submit", function(event) {
+          event.preventDefault();
+          if (confirm("Etes-vous certain de modifier cette valeur ?")) {
+            this.submit(); 
+          }
+        });
 
-      document.getElementById("nbr_questions_form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        if (confirm("Etes-vous certain de modifier cette valeur ?")) {
-          this.submit(); 
-        }
-      });
+        document.getElementById("quiz_duration_form").addEventListener("submit", function(event) {
+          event.preventDefault();
+          if (confirm("Etes-vous certain de modifier cette valeur ?")) {
+            this.submit(); 
+          }
+        });
 
-      document.getElementById("quiz_duration_form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        if (confirm("Etes-vous certain de modifier cette valeur ?")) {
-          this.submit(); 
-        }
-      });
+
+      }
+      
 
       /* ------------------------- upload profile picture ------------------------- */
 
