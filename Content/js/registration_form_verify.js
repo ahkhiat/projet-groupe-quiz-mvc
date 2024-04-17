@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         console.log('registration_form_verify loaded');
      
+
         /* ---------------------------- Targeting messages containers ---------------------------- */
         let groupForm = document.getElementById("registration-form");
+
         let input = groupForm.password;
         let caractere = document.querySelector(".caractere");
         let majuscule = document.querySelector(".majuscule");
@@ -121,11 +123,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             chiffre.classList.remove("succes")
             chiffre.classList.remove("error");
+
         } 
         
         // .......Hide and show password.................
         const passwordInput = document.getElementById('current-password');
-        const eyeIcon = document.querySelector('#button i');
+        // const eyeIcon = document.querySelector('#button i');
         const btn=document.getElementById('button');
         btn.addEventListener('click', function() {
             passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';

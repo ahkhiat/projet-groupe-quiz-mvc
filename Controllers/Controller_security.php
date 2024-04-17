@@ -46,6 +46,9 @@ class Controller_security extends Controller
 
 //.........................registration valid.............................
 
+
+
+
     // version Nadia 15 04 2024
     public function action_user_registration_valid()
     {   
