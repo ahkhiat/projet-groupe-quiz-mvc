@@ -106,6 +106,9 @@ footer {
     background-color:rgb(0, 102, 255);
    
 }
+span{
+  content: "\00A9";
+  }
 
 .buttons-container{
   display: flex;
