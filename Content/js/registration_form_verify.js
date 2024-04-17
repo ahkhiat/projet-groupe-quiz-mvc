@@ -116,6 +116,17 @@ document.addEventListener("DOMContentLoaded", () => {
             chiffre.classList.remove("succes")
             chiffre.classList.remove("error");
         }
+        const passwordInput = document.getElementById('current-password');
+        // const eyeIcon = document.querySelector('#button i');
+        const btn=document.getElementById('button');
+        btn.addEventListener('click', function() {
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+            //......................Changer l'icône de l'œil
+            const eyeIcon = document.querySelector('#button i');
+            eyeIcon.classList.toggle('fa-eye');
+            eyeIcon.classList.toggle('fa-eye-slash');
+        });
+    }
         // const registrationForm = document.getElementById('registration-form');
         // let password = document.querySelector('input[name="password"]').value;
 
@@ -218,16 +229,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // .......hide and show password.................
 
-        const passwordInput = document.getElementById('current-password');
-        // const eyeIcon = document.querySelector('#button i');
-        const btn=document.getElementById('button');
-        btn.addEventListener('click', function() {
-            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-            //......................Changer l'icône de l'œil
-            const eyeIcon = document.querySelector('#button i');
-            eyeIcon.classList.toggle('fa-eye');
-            eyeIcon.classList.toggle('fa-eye-slash');
-        });
-    }
+     
 
 });
