@@ -18,7 +18,7 @@
                 <input type="text" class="form-control" name="username" placeholder="Entrer votre nom d'utilisateur" required>    
               </div>
               <div class="input-group mb-3">
-                <span><i class="fa-solid fa-calendar-days"></i></span> 
+                <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span> 
                 <input  type="date" class="form-control" name="birthdate" placeholder="Entrer votre Date de naissance" required>    
               </div>
               <div class="input-group mb-3">
