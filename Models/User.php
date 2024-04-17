@@ -172,5 +172,56 @@ class User extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
+    public function get_followers_number_public()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(followed_id) AS total_followers FROM follow WHERE followed_id = :d');
+            $requete->execute(array(':d' => $_GET['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function get_followed_number_public()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(followed_id) AS total_followed FROM follow WHERE follower_id = :d');
+            $requete->execute(array(':d' => $_GET['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function get_all_followers()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT * FROM follow f
+                                            JOIN user u ON f.follower_id = u.user_id WHERE followed_id = :d
+                                            JOIN game g WHERE g.user_id = f.follower_id');
+            $requete->execute(array(':d' => $_GET['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function get_all_followed()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(followed_id) AS total_followed FROM follow WHERE follower_id = :d');
+            $requete->execute(array(':d' => $_GET['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
 
 }

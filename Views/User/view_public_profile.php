@@ -1,5 +1,5 @@
 <?php 
-// var_dump($user['user_info']);
+var_dump($user['user_info']);
 // var_dump($user['games_info']);
 ?>
 <div class="row gutters-sm">
@@ -24,11 +24,10 @@
     <div class="fw-light fs-6 text-muted">
     Membre depuis <?= (new DateTime($user['user_info'][0]->created_at))->format("F Y") ?>
     </div>
-    <!-- <div class="d-flex justify-content-start mb-2">
-      <p class="mb-4 text-primary fw-bold me-3"><?= $followers[0]->total_followers ?> abonnés </p>
-      
-      <p class="mb-4 text-primary fw-bold"><?php echo $followed[0]->total_followed ?> abonnements</p>
-    </div> -->
+    <div class="d-flex justify-content-start mb-2">
+      <a href="?controller=user&action=all_followers&id= <?=$user['user_info'][0]->user_id?> "><p class="mb-4 text-primary fw-bold me-3"><?= $followers[0]->total_followers ?> abonnés </p></a>
+      <a href="?controller=user&action=all_followed"><p class="mb-4 text-primary fw-bold"><?php echo $followed[0]->total_followed ?> abonnements</p></a>
+    </div>
   </div>
   <div class="col-sm-9 text-secondary">
   </div>

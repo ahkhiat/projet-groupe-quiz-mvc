@@ -166,7 +166,7 @@ include('./Utils/header_admin.php')
                                 <label for="nbr_questions" class="form-label">Nb de questions par quiz</label>
                                 <div class="d-flex">
                                     <input type="text" class="form-control me-3" id="nbr_questions" name="nbr_questions" value="<?= $nbr_questions ?>">
-                                    <button type="submit" class="btn btn-primary" onclick="return modifyConfirmation()">Changer</button>
+                                    <button type="submit" class="btn btn-primary" >Changer</button>
                                 </div>
                             </form>
                         </div>
@@ -176,7 +176,7 @@ include('./Utils/header_admin.php')
                                 <label for="quiz_duration" class="form-label">Durée par question</label>
                                 <div class="d-flex">
                                     <input type="text" class="form-control me-3" id="quiz_duration" name="quiz_duration" value="<?= $quiz_duration ?>">
-                                    <button type="submit" class="btn btn-primary" onclick="return modifyConfirmation()">Changer</button>
+                                    <button type="submit" class="btn btn-primary" >Changer</button>
                                 </div>
                             </form>
                         </div>

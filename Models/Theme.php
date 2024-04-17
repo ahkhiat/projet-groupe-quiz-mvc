@@ -35,8 +35,12 @@ class Theme extends Model
     public function get_nbr_questions_themes()
     {
         try {
-            $requete = $this->bd->prepare('SELECT theme_name, q.theme_id, COUNT(*) AS Total_questions FROM question q JOIN theme t ON q.theme_id = t.theme_id GROUP BY theme_name;
-            ');
+            // $requete = $this->bd->prepare('SELECT theme_name, q.theme_id, COUNT(*) AS Total_questions FROM question q JOIN theme t ON q.theme_id = t.theme_id GROUP BY theme_name;');
+            $requete = $this->bd->prepare('SELECT t.theme_name, t.theme_id, COUNT(q.theme_id) AS Total_questions 
+                                            FROM theme t 
+                                            LEFT JOIN question q ON q.theme_id = t.theme_id 
+                                            GROUP BY t.theme_name, q.theme_id
+                                            ORDER BY t.theme_id');
             $requete->execute();
             
         } catch (PDOException $e) {
