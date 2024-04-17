@@ -172,6 +172,7 @@ class User extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function get_followers_number_public()
     {
 
@@ -197,13 +198,21 @@ class User extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function get_all_followers()
     {
 
         try {
-            $requete = $this->bd->prepare('SELECT * FROM follow f
-                                            JOIN user u ON f.follower_id = u.user_id WHERE followed_id = :d
-                                            JOIN game g WHERE g.user_id = f.follower_id');
+            $requete = $this->bd->prepare('SELECT u.user_id AS follow_id, 
+                                        u.username, u.image_name,
+                                        COALESCE(SUM(g.game_score), 0) AS total_points 
+                                        FROM follow f 
+                                        JOIN user u ON f.follower_id = u.user_id 
+                                        LEFT JOIN game g ON g.user_id = f.follower_id 
+                                        WHERE f.followed_id = :d 
+                                        GROUP BY u.user_id, u.username
+                                        ORDER BY total_points DESC;
+            ');
             $requete->execute(array(':d' => $_GET['id']));
             
         } catch (PDOException $e) {
@@ -211,11 +220,21 @@ class User extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function get_all_followed()
     {
 
         try {
-            $requete = $this->bd->prepare('SELECT COUNT(followed_id) AS total_followed FROM follow WHERE follower_id = :d');
+            $requete = $this->bd->prepare('SELECT u.user_id AS follow_id, 
+                                            u.username , u.image_name, 
+                                            COALESCE(SUM(g.game_score), 0) AS total_points 
+                                            FROM follow f 
+                                            JOIN user u ON f.followed_id = u.user_id 
+                                            LEFT JOIN game g ON g.user_id = f.followed_id 
+                                            WHERE follower_id = :d
+                                            GROUP BY u.user_id, u.username
+                                            ORDER BY total_points DESC;
+            ');
             $requete->execute(array(':d' => $_GET['id']));
             
         } catch (PDOException $e) {

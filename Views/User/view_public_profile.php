@@ -1,5 +1,5 @@
 <?php 
-var_dump($user['user_info']);
+// var_dump($user['user_info']);
 // var_dump($user['games_info']);
 ?>
 <div class="row gutters-sm">
@@ -26,7 +26,7 @@ var_dump($user['user_info']);
     </div>
     <div class="d-flex justify-content-start mb-2">
       <a href="?controller=user&action=all_followers&id= <?=$user['user_info'][0]->user_id?> "><p class="mb-4 text-primary fw-bold me-3"><?= $followers[0]->total_followers ?> abonnés </p></a>
-      <a href="?controller=user&action=all_followed"><p class="mb-4 text-primary fw-bold"><?php echo $followed[0]->total_followed ?> abonnements</p></a>
+      <a href="?controller=user&action=all_followed&id= <?=$user['user_info'][0]->user_id?>"><p class="mb-4 text-primary fw-bold"><?php echo $followed[0]->total_followed ?> abonnements</p></a>
     </div>
   </div>
   <div class="col-sm-9 text-secondary">
@@ -34,7 +34,7 @@ var_dump($user['user_info']);
 </div>
 
 <hr>
-<div class="container d-flex flex-wrap col-xl-8 col-md-9 col-sm-10 col-12 gap-xl-5 gap-md-5 gap-sm-5 gap-3 mx-auto">
+<div class="container d-flex flex-wrap col-xl-8 col-md-9 col-sm-10 col-12 gap-xl-5 gap-md-5 gap-sm-5 gap-3 mx-auto border">
     <div class="card-profile col-xl-3 col-md-3 col-sm-5 col-5">
       <div class="card " >
         <div class="card-body">

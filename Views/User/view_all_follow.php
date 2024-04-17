@@ -1,5 +1,5 @@
 <?php
-var_dump($follow);
+// var_dump($follow);
 ?>
 <div class="container">
   <div class="mx-auto col-xl-6 col-md-9 col-sm-9 col-9">
@@ -16,10 +16,10 @@ var_dump($follow);
       <tbody>
       <?php foreach ($follow as $f) : ?>
             <tr>
-                <td><?= $f->follower_id ?></td>
-                <td><a href="?controller=user&action=public_profile&id= <?=$f->user_id?> " class="text-decoration-none link-dark fw-bold">
+                <td><?= $f->follow_id ?></td>
+                <td><a href="?controller=user&action=public_profile&id= <?=$f->follow_id?> " class="text-decoration-none link-dark fw-bold">
                 <img src="Public/img/<?=$f->image_name ?>"  alt="" title="<?=$f->image_name?>" class="pp-leaderboard"><?= $f->username ?></a></td>
-                
+                <td><?= $f->total_points ?></td>
                 
 
                 

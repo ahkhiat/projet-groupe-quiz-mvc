@@ -31,7 +31,26 @@
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
       <!-- <div class="user-badge"> <?= $_SESSION["firstname"] ?> </div> -->
-      <div class="user-badge"><strong><?= strtoupper(substr($_SESSION["firstname"], 0, 1)) ?> </strong></div>
+      <?php
+      if(isset($_SESSION['image_name']))
+      {
+        echo '
+        <img src="Public/img/<?= $_SESSION["image_name"] ?>" width=125 height=125 alt="" title="<?= $_SESSION["image_name"] ?>" class="pp-navbar">
+        ';
+      } else {
+        echo '
+        <div class="user-badge">
+      <strong><?= strtoupper(substr($_SESSION["firstname"], 0, 1)) ?> </strong>
+      </div>
+        '
+
+      }
+
+      ?>
+      
+
+      
+
 
     </a>
     <ul class="dropdown-menu dropdown-menu-end">
