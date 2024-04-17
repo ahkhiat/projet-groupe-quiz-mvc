@@ -36,25 +36,21 @@
       if(isset($_SESSION['image_name']))
       {
         echo '
-        <img src="Public/img/<?= $_SESSION["image_name"] ?>" width=125 height=125 alt="" title="<?= $_SESSION["image_name"] ?>" class="pp-navbar">
+        <img src="Public/img/'.$_SESSION["image_name"].'" width=125 height=125 alt="" title="'.$_SESSION["image_name"].'" class="pp-navbar">
         ';
       } else {
         echo '
-        <div class="user-badge">
-      <strong><?= strtoupper(substr($_SESSION["firstname"], 0, 1)) ?> </strong>
-      </div>
-        '
-
+        <div class="user-badge"><strong>'.strtoupper(substr($_SESSION["firstname"], 0, 1)).'</strong></div>
+        ';
       }
 
       ?>
-      
-
-      
-
-
     </a>
     <ul class="dropdown-menu dropdown-menu-end">
+      <li><p class=" text-muted fs-6 ms-3"><?= $_SESSION['firstname']. str_repeat('&nbsp;', 1) .$_SESSION['lastname']; ?></p></li>
+      <li>
+      <hr class="dropdown-divider">
+
       <li><a class="dropdown-item" href="?controller=user&action=user_profile">Profil</a></li>
       <li>
         <hr class="dropdown-divider">

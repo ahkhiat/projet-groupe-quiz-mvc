@@ -61,7 +61,7 @@ class Controller_user extends Controller
     {
         $m=User::get_model();
         $data=['follow'=>$m->get_all_followers(),
-               'message'=>'Liste de vos abonnés'];
+               'message'=>'Liste des abonnés'];
         $this->render("all_follow", $data);
     }
 
@@ -69,10 +69,16 @@ class Controller_user extends Controller
     {
         $m=User::get_model();
         $data=['follow'=>$m->get_all_followed(),
-               'message'=>'Liste de vos abonnments'];
+               'message'=>'Liste des abonnments'];
         $this->render("all_follow", $data);
     }
 
+    public function action_follow()
+    {
+        $m=User::get_model();
+        $data=['users'=>$m->set_follow()];
+        $this->action_public_profile();
+    }
 
 
     public function action_profile_picture()

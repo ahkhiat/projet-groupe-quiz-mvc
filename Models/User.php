@@ -243,4 +243,18 @@ class User extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function set_follow()
+    {
+        try {
+            $requete = $this->bd->prepare('INSERT INTO follow (follower_id, followed_id)
+            VALUES (:fwr, :fwd)');
+            $requete->execute(array(':fwr' => $_SESSION['id'], ':fwd' => $_POST['followed_id']));
+            $count = $requete->fetchColumn();
+            return $count;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
+
 }
