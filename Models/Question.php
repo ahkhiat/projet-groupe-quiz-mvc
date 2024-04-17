@@ -87,4 +87,16 @@ class Question extends Model
         }
     }
 
+    public function set_question_delete()
+    {
+        try {
+            $requete = $this->bd->prepare('DELETE FROM question WHERE question_id = :id');
+            $requete->execute(array(':id' => $_POST['question_id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

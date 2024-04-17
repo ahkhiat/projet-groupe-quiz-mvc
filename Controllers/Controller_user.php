@@ -22,7 +22,9 @@ class Controller_user extends Controller
     public function action_user_profile()
     {
         $m=User::get_model();
-        $data=['user'=>$m->get_user_profile()];
+        $data=['user'=>$m->get_user_profile(),
+               'followers'=>$m->get_followers_number(),
+               'followed'=>$m->get_followed_number()];
         $this->render("user_profile", $data);
     }
 
@@ -43,7 +45,9 @@ class Controller_user extends Controller
     public function action_public_profile()
     {
         $m=User::get_model();
-        $data=['user'=>$m->get_public_profile()];
+        $data=['user'=>$m->get_public_profile(),
+               'followers'=>$m->get_followers_number(),
+               'followed'=>$m->get_followed_number()];
         $this->render("public_profile", $data);
     }
     public function action_leaderboard()

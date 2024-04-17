@@ -24,6 +24,11 @@
     <div class="fw-light fs-6 text-muted">
     Membre depuis <?= (new DateTime($user['user_info'][0]->created_at))->format("F Y") ?>
     </div>
+    <!-- <div class="d-flex justify-content-start mb-2">
+      <p class="mb-4 text-primary fw-bold me-3"><?= $followers[0]->total_followers ?> abonnés </p>
+      
+      <p class="mb-4 text-primary fw-bold"><?php echo $followed[0]->total_followed ?> abonnements</p>
+    </div> -->
   </div>
   <div class="col-sm-9 text-secondary">
   </div>

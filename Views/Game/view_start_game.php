@@ -40,7 +40,6 @@
     </div>
 
     
-
     <!-- Mini card section -->
     <section class="mini-card-container d-flex justify-content-between mx-auto mb-5 mt-5 col-xl-6 col-md-6 col-sm-11 col-11" id="mini-card-section" >
       <div class="mini-card col-xl-3 col-md-4 col-sm-4 col-3 me-3" id="mini_card_1" hidden>
