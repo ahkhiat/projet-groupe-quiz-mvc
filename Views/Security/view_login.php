@@ -17,6 +17,7 @@
     $_SESSION['birthdate'] = $user->birthdate;
     $_SESSION['roles'] = $user->roles;
     $_SESSION['id'] = $user->user_id;
+    $_SESSION['image_name'] = $user->image_name;
    
 
 

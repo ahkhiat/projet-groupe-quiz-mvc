@@ -47,8 +47,10 @@ class Controller_theme extends Controller
     public function action_theme_delete()
     {
         $m=Theme::get_model();
-        $data=['themes'=>$m->set_theme_delete(),];
-        $this->render("theme_update", $data);
+        $m->set_theme_delete();
+        $data=['themes'=>$m->get_all_themes(),
+                'nbr_questions_themes'=>$m->get_nbr_questions_themes()];
+        $this->render("all_themes", $data);
     }
 
     

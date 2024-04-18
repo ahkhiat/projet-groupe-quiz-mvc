@@ -76,7 +76,7 @@ class User extends Model
     {
 
         try {
-            $requete_user = $this->bd->prepare('SELECT * FROM user WHERE user_id = :d');
+            $requete_user = $this->bd->prepare('SELECT user_id, firstname, username, created_at, image_name  FROM user WHERE user_id = :d');
             $requete_user->execute(array(':d' => $_GET['id']));
 
             $requete_games = $this->bd->prepare('SELECT SUM(g.game_score) AS total_points, 
@@ -171,6 +171,117 @@ class User extends Model
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function get_followers_number_public()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(followed_id) AS total_followers FROM follow WHERE followed_id = :d');
+            $requete->execute(array(':d' => $_GET['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function get_followed_number_public()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(followed_id) AS total_followed FROM follow WHERE follower_id = :d');
+            $requete->execute(array(':d' => $_GET['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function get_all_followers()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT u.user_id AS follow_id, 
+                                        u.username, u.image_name,
+                                        COALESCE(SUM(g.game_score), 0) AS total_points 
+                                        FROM follow f 
+                                        JOIN user u ON f.follower_id = u.user_id 
+                                        LEFT JOIN game g ON g.user_id = f.follower_id 
+                                        WHERE f.followed_id = :d 
+                                        GROUP BY u.user_id, u.username
+                                        ORDER BY total_points DESC;
+            ');
+            $requete->execute(array(':d' => $_GET['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function get_all_followed()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT u.user_id AS follow_id, 
+                                            u.username , u.image_name, 
+                                            COALESCE(SUM(g.game_score), 0) AS total_points 
+                                            FROM follow f 
+                                            JOIN user u ON f.followed_id = u.user_id 
+                                            LEFT JOIN game g ON g.user_id = f.followed_id 
+                                            WHERE follower_id = :d
+                                            GROUP BY u.user_id, u.username
+                                            ORDER BY total_points DESC;
+            ');
+            $requete->execute(array(':d' => $_GET['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function set_follow()
+    {
+        try {
+            $requete = $this->bd->prepare('INSERT INTO follow (follower_id, followed_id)
+            VALUES (:fwr, :fwd)');
+            $requete->execute(array(':fwr' => $_SESSION['id'], ':fwd' => $_POST['followed_id']));
+            $count = $requete->fetchColumn();
+            return $count;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
+    public function set_unfollow()
+    {
+        try {
+            $requete = $this->bd->prepare('DELETE FROM follow WHERE follower_id = :fwr AND  followed_id = :fwd');
+            $requete->execute(array(':fwr' => $_SESSION['id'], ':fwd' => $_POST['followed_id']));
+            $count = $requete->fetchColumn();
+            return $count;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
+    public function get_is_following()
+    {
+        try {
+            if ($_SESSION['id'] == $_GET['id']) {
+                return -1; 
+            }
+            $requete = $this->bd->prepare('SELECT COUNT(*) FROM follow WHERE follower_id = :fwr AND followed_id = :fwd');
+            $requete->execute(array(':fwr' => $_SESSION['id'], ':fwd' => $_GET['id']));
+            $count = $requete->fetchColumn();
+            return $count > 0;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
     }
 
 }
