@@ -295,7 +295,12 @@ class User extends Model
             $requete = $this->bd->prepare('SELECT COUNT(*) FROM follow WHERE follower_id = :fwr AND followed_id = :fwd');
             $requete->execute(array(':fwr' => $_SESSION['id'], ':fwd' => $_GET['id']));
             $count = $requete->fetchColumn();
-            return $count > 0;
+            // return $count > 0;
+            if ($count > 0) {
+                return 1; // when followed_id is followed by follower_id
+            } else {
+                return 0; // when followed_id is NOT followed by follower_id
+            }
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');

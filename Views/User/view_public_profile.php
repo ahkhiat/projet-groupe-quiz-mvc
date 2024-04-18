@@ -1,7 +1,7 @@
 <?php 
-// var_dump($user['user_info']);
+var_dump($user['user_info']);
 // var_dump($user['games_info']);
-// var_dump($isFollowing);
+var_dump($isFollowing);
 // var_dump($_GET)
 ?>
 <div class="row gutters-sm">
@@ -35,23 +35,23 @@
     <div>
       <!-- --------------follow & unfollow buttons------------------------ -->
       <?php
-      if($isFollowing != -1) {
-        if($isFollowing == false) {
+        if($isFollowing == 0) {
         echo '
         <form action="?controller=user&action=follow&id='.$user["user_info"][0]->user_id.'" method="POST">
         <input type="hidden" name="followed_id" value="'.$user["user_info"][0]->user_id .'">
         <button type="submit" class="btn btn-outline-primary border-2"><i class="fa-solid fa-user-plus" style="color: #4268ff;"></i></button>
       </form>
         ';
-        } else {
+        } 
+      
+        elseif($isFollowing == 1) {
           echo '
-          <form action="?controller=user&action=unfollow&id='.$user["user_info"][0]->user_id.'" method="POST">
-          <input type="hidden" name="followed_id" value="'.$user["user_info"][0]->user_id .'">
-          <button type="submit" class="btn btn-outline-secondary border-2"><i class="fa-solid fa-user-check"></i></button>
-        </form>
-          ';
+            <form action="?controller=user&action=unfollow&id='.$user["user_info"][0]->user_id.'" method="POST">
+            <input type="hidden" name="followed_id" value="'.$user["user_info"][0]->user_id .'">
+            <button type="submit" class="btn btn-outline-secondary border-2"><i class="fa-solid fa-user-check"></i></button>
+          </form>
+            ';
         }
-      }
       
       ?>
 
