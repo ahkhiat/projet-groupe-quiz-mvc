@@ -47,22 +47,5 @@ class Model
     }
 
 
-    // public function get_all_users()
-    // {
-    //     try {
-    //         $requete = $this->bd->prepare('SELECT * FROM user');
-    //         $requete->execute();
-            
-    //     } catch (PDOException $e) {
-    //         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
-    //     }
-    //     return $requete->fetchAll(PDO::FETCH_OBJ);
-    // }
-
-/* -------------------------------------------------------------------------- */
-/*                                    Game                                    */
-/* -------------------------------------------------------------------------- */
-
-
-
+   
 }

@@ -21,12 +21,12 @@
 
 <!--------------------------- User badge and dropdown menu ------------------------>
 <ul class="navbar-nav me-2 mb-2 mb-lg-0 align-items-center">
-        <li class="nav-item">
-          <?php    // ------------ Display if user is ADMIN -------------------
-              if(isset($_SESSION["roles"]) && $_SESSION["roles"]=="admin")  
-              {echo "<a class='nav-link text-danger' id='admin'><span class='btn btn-outline-warning rounded-pill disabled'>Mode Administrateur</span></a>";} 
-          ?>
-        </li>
+  <li class="nav-item">
+    <?php    // ------------ Display if user is ADMIN -------------------
+      if(isset($_SESSION["roles"]) && $_SESSION["roles"]=="admin")  
+      {echo "<a class='nav-link text-danger' id='admin'><span class='btn btn-outline-warning rounded-pill disabled'>Mode Administrateur</span></a>";} 
+    ?>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 

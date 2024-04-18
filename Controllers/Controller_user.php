@@ -47,7 +47,8 @@ class Controller_user extends Controller
         $m=User::get_model();
         $data=['user'=>$m->get_public_profile(),
                'followers'=>$m->get_followers_number_public(),
-               'followed'=>$m->get_followed_number_public()];
+               'followed'=>$m->get_followed_number_public(),
+               'isFollowing'=>$m->get_is_following()];
         $this->render("public_profile", $data);
     }
     public function action_leaderboard()
@@ -76,7 +77,13 @@ class Controller_user extends Controller
     public function action_follow()
     {
         $m=User::get_model();
-        $data=['users'=>$m->set_follow()];
+        $m->set_follow();
+        $this->action_public_profile();
+    }
+    public function action_unfollow()
+    {
+        $m=User::get_model();
+        $m->set_unfollow();
         $this->action_public_profile();
     }
 

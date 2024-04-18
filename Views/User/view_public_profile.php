@@ -1,6 +1,8 @@
 <?php 
 // var_dump($user['user_info']);
 // var_dump($user['games_info']);
+// var_dump($isFollowing);
+// var_dump($_GET)
 ?>
 <div class="row gutters-sm">
   <div class="profile-image-container upload container mb-3 mt-3 col-xl-8 col-md-8 col-sm-8 col-10">
@@ -32,12 +34,26 @@
     </div>
     <div>
       <!-- --------------follow & unfollow buttons------------------------ -->
-      <form action="?controller=user&action=follow" method="POST">
-        <input type="hidden" name="followed_id" value="<?= $user['user_info'][0]->user_id ?>">
+      <?php
+      if($isFollowing != -1) {
+        if($isFollowing == false) {
+        echo '
+        <form action="?controller=user&action=follow&id='.$user["user_info"][0]->user_id.'" method="POST">
+        <input type="hidden" name="followed_id" value="'.$user["user_info"][0]->user_id .'">
         <button type="submit" class="btn btn-outline-primary border-2"><i class="fa-solid fa-user-plus" style="color: #4268ff;"></i></button>
       </form>
+        ';
+        } else {
+          echo '
+          <form action="?controller=user&action=unfollow&id='.$user["user_info"][0]->user_id.'" method="POST">
+          <input type="hidden" name="followed_id" value="'.$user["user_info"][0]->user_id .'">
+          <button type="submit" class="btn btn-outline-secondary border-2"><i class="fa-solid fa-user-check"></i></button>
+        </form>
+          ';
+        }
+      }
       
-      <button type="button" class="btn btn-outline-secondary border-2"><i class="fa-solid fa-user-check"></i></button>
+      ?>
 
     </div>
   </div>
@@ -46,7 +62,7 @@
 </div>
 
 <hr>
-<div class="container d-flex flex-wrap col-xl-8 col-md-9 col-sm-10 col-12 gap-xl-5 gap-md-5 gap-sm-5 gap-3 mx-auto border">
+<div class="container d-flex flex-wrap col-xl-8 col-md-9 col-sm-10 col-12 gap-xl-5 gap-md-5 gap-sm-5 gap-3 mx-auto">
     <div class="card-profile col-xl-3 col-md-3 col-sm-5 col-5">
       <div class="card " >
         <div class="card-body">
