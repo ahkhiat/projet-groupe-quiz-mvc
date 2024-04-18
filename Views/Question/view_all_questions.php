@@ -42,7 +42,7 @@ include('./Utils/header_admin.php')
                         </form>
                         <form action="?controller=question&action=question_delete" method="POST" id="question_delete_form">
                             <input type="hidden" name="question_id" class="form-control" id="hide" value=<?= $q->question_id  ?> >
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmation()"><i class="fa-regular fa-trash-can"></i></button>
+                            <button type="submit" class="btn btn-danger btn-sm delete-button" onclick="return confirmation()"><i class="fa-regular fa-trash-can"></i></button>
                         </form>
                     </div>
                 </td>
