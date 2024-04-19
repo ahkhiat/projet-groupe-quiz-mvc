@@ -121,15 +121,43 @@ class Controller_user extends Controller
                     document.location.href = '?controller=user&action=user_profile'
                 </script>
                 ";
-            } elseif ($imageSize > 1200000){
-                echo 
-                "
-                <script>
-                    alert('Image trop lourde ! 1,2 Mo max !')
-                    document.location.href = '?controller=user&action=user_profile'
-                </script>
-                ";
+
+                /* ------------------------------- ancien code ------------------------------ */
+            // } elseif ($imageSize > 1200000){
+            //     echo 
+            //     "
+            //     <script>
+            //         alert('Image trop lourde ! 1,2 Mo max !')
+            //         document.location.href = '?controller=user&action=user_profile'
+            //     </script>
+            //     ";
+            // } else {
+                /* ------------------------------- ancien code ------------------------------ */
+
             } else {
+                // Limite de taille de fichier
+                $maxFileSize = 1200000; // 1,2 Mo
+    
+                // Vérifier si la taille de l'image dépasse la limite
+                if ($imageSize > $maxFileSize) {
+                    // Charger l'image avec Imagick
+                    $image = new Imagick($tmpName);
+    
+                    // Réduire la qualité de l'image pour réduire la taille du fichier
+                    $compressionQuality = 80; // Qualité de compression (entre 0 et 100)
+                    $image->setImageCompressionQuality($compressionQuality);
+    
+                    // Enregistrer l'image compressée
+                    $newImageName = $username."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
+                    $image->writeImage('Public/img/' . $newImageName);
+    
+                    // Libérer la mémoire
+                    $image->destroy();
+                } else {
+                    // L'image est dans les limites, utiliser l'image originale
+                    $newImageName = $username."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
+                    move_uploaded_file($tmpName, 'Public/img/' . $newImageName);
+                }
 
                 $m=User::get_model();
                 $oldImageName = $m->get_profile_picture($user_id);
@@ -138,7 +166,7 @@ class Controller_user extends Controller
                 
 
                 // Delete old image if exists
-                if($oldImageName !== null && file_exists('Public/img/' . $oldImageName)) {
+                if($oldImageName !== null && $oldImageName !== 'noprofile.png' && file_exists('Public/img/' . $oldImageName)) {
                     unlink('Public/img/' . $oldImageName);
                 }
 
