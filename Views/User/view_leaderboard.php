@@ -19,6 +19,7 @@
       <tbody>
       
     <?php
+          // conditions to change background color of the first three people
           foreach ($users as $index => $user) {
             $class = '';
             if ($index < 3) {
@@ -36,7 +37,7 @@
               <tr class="'.$class.'">
                 <th scope="row" class="text-center">'.$icon.'</th>
                 <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark fw-bold">
-                <img src="Public/img/'.$user->image_name.'"  alt="" title="'.$user->image_name.'" class="pp-leaderboard">
+                <img src="Public/img/'.$user->image_name.'"  alt="" title="'.$user->image_name.'" class="pp-leaderboard me-2">
                 '.$user->username.'</a></td>
                 <td>'.$user->total_points.'</td>
               </tr>
@@ -46,7 +47,7 @@
               <tr>
                 <th scope="row" class="text-center fw-light">'.($index + 1).'</th>
                 <td><a href="?controller=user&action=public_profile&id='.$user->user_id.'" class="text-decoration-none link-dark fw-bold">
-                <img src="Public/img/'.$user->image_name.'"  alt="" title="'.$user->image_name.'" class="pp-leaderboard">
+                <img src="Public/img/'.$user->image_name.'"  alt="" title="'.$user->image_name.'" class="pp-leaderboard me-2">
                 '.$user->username.'</a></td>
                 <td>'.$user->total_points.'</td>
               </tr>

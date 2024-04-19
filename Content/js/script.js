@@ -5,17 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionsContainer = document.getElementById("questions_container");
   const themesContainer = document.getElementById("themes_container");
 
-  
-
-  console.log("script standard chargé");
+  // console.log("script standard chargé");
 
   function returnConfirmation() {
     return confirm("Etes-vous certain de revenir en arrière ? Toute progression sera perdue !");
   }
   
-      
+/* ------------------------ execute only in dashboard ----------------------- */
   if(dashboardContainer) {
-    console.log("dashboard container")
+    // console.log("dashboard container")
     document.getElementById("nbr_questions_form").addEventListener("submit", function(event) {
       event.preventDefault();
       if (confirm("Etes-vous certain de modifier cette valeur ?")) {
@@ -31,29 +29,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+/* --------------------- execute only in theme container -------------------- */
   if(themesContainer) {
-    console.log("themes container")
-    document.querySelector("#theme_delete_form").addEventListener("submit", function(event) {
-      console.log('toto');
-  
-      event.preventDefault();
-      if (confirm("Etes-vous certain de supprimer ce thème ? Cette action est irréversible !")) {
-        this.submit(); 
-      }
-    });
-
+    // console.log("themes container")
+    let deleteButton = document.querySelectorAll(".delete-button");
+    deleteButton.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Êtes-vous sûr de vouloir supprimer le thème ?")) {
+          button.closest('form').submit();
+        } 
+      })
+    })
   }
 
+/* ------------------- execute only in questions container ------------------ */
   if(questionsContainer) {
-    console.log("questions container")
-    document.getElementById("question_delete_form").addEventListener("submit", function(event) {
-      event.preventDefault();
-      if (confirm("Etes-vous certain de supprimer cette question ? Cette action est irréversible !")) {
-        this.submit(); 
-      }
-    });
+    // console.log("questions container")
+    let deleteButton = document.querySelectorAll(".delete-button");
+    deleteButton.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Êtes-vous sûr de vouloir supprimer la question ?")) {
+          button.closest('form').submit();
+        }
+      })
+    })
   }
-      
 
 /* ------------------------- upload profile picture ------------------------- */
 

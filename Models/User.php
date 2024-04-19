@@ -52,11 +52,29 @@ class User extends Model
         try {
             $requete = $this->bd->prepare('SELECT * FROM user WHERE user_id = :d');
             $requete->execute(array(':d' => $_SESSION['id']));
+
+            $requete_games = $this->bd->prepare('SELECT SUM(g.game_score) AS total_points, 
+                                                COUNT(g.game_id) as total_games, 
+                                                SUM(g.questions_quantity) as total_questions,
+                                                ROUND((SUM(g.game_score) * 100) / SUM(g.questions_quantity)) as success_rate 
+                                                FROM game g 
+                                                JOIN user u ON g.user_id = u.user_id 
+                                                WHERE u.user_id = :d;
+                                                ');
+            $requete_games->execute(array(':d' => $_SESSION['id']));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
-        return $requete->fetchAll(PDO::FETCH_OBJ);
+        // return $requete->fetchAll(PDO::FETCH_OBJ);
+        $user_info = $requete->fetchAll(PDO::FETCH_OBJ);
+        $games_info = $requete_games->fetchAll(PDO::FETCH_OBJ);
+
+        $result = array(
+            'user_info' => $user_info,
+            'games_info' => $games_info
+        );
+        return $result;
     }
 
     public function set_user_profile()
@@ -277,7 +295,12 @@ class User extends Model
             $requete = $this->bd->prepare('SELECT COUNT(*) FROM follow WHERE follower_id = :fwr AND followed_id = :fwd');
             $requete->execute(array(':fwr' => $_SESSION['id'], ':fwd' => $_GET['id']));
             $count = $requete->fetchColumn();
-            return $count > 0;
+            // return $count > 0;
+            if ($count > 0) {
+                return 1; // when followed_id is followed by follower_id
+            } else {
+                return 0; // when followed_id is NOT followed by follower_id
+            }
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');

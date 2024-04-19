@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   {
 
       // .......pouvoir voir ou cacher le mot de passe tapperdans le formulaire de connecxion.................
-      console.log('login_form_verify loaded');
+      // console.log('login_form_verify loaded');
 
       const inputPassword = document.getElementById('pswd');
       const toggleButton = document.getElementById('btn');

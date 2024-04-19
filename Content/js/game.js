@@ -1,4 +1,4 @@
-console.log("script game chargé");
+// console.log("script game chargé");
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -6,7 +6,7 @@ let gameContainer = document.getElementById("game_container");
 
     if(gameContainer)
     {
-        console.log("game container loaded")
+        // console.log("game container loaded")
 
         let questions;
         let questionsArray;
@@ -25,7 +25,7 @@ let gameContainer = document.getElementById("game_container");
 
     /* ------------------------------ quiz duration ----------------------------- */
         let quizDuration = document.querySelector(".quiz-duration").value
-        console.log('quiz duration', quizDuration)
+        // console.log('quiz duration', quizDuration)
 
     /* ---------------------------- barre progression --------------------------- */
         let progressBarBootstrap = document.querySelector(".progress-stacked");
@@ -63,7 +63,7 @@ let gameContainer = document.getElementById("game_container");
 
     /* -------------- waiting the fetch before generating questions ------------- */
         getListeQuestions().then(() => {
-            console.log('question test : ', questions);
+            // console.log('question test : ', questions);
 
             let question = document.querySelector("#question");
             let reponses = document.querySelector("#answers");
@@ -72,7 +72,7 @@ let gameContainer = document.getElementById("game_container");
             let bonneReponseIndex = 0;
             let bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
             let nombreQuestions = questions.length;
-            console.log('nombre de questions :' + nombreQuestions)
+            // console.log('nombre de questions :' + nombreQuestions)
 
             // Hidden HTML form to store game data in DB
             let questionsQuantityInput = document.querySelector(".questions_quantity");
@@ -195,7 +195,7 @@ let gameContainer = document.getElementById("game_container");
                     reponses.appendChild(reponse)
                 }
 
-                console.log(bonneReponse)
+                // console.log(bonneReponse)
             }
 
             function genererImage(){
