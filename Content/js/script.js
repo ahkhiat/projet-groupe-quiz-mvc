@@ -5,11 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionsContainer = document.getElementById("questions_container");
   const themesContainer = document.getElementById("themes_container");
 
-
-
-  
-
-  console.log("script standard chargé");
+  // console.log("script standard chargé");
 
   function returnConfirmation() {
     return confirm("Etes-vous certain de revenir en arrière ? Toute progression sera perdue !");
@@ -17,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 /* ------------------------ execute only in dashboard ----------------------- */
   if(dashboardContainer) {
-    console.log("dashboard container")
+    // console.log("dashboard container")
     document.getElementById("nbr_questions_form").addEventListener("submit", function(event) {
       event.preventDefault();
       if (confirm("Etes-vous certain de modifier cette valeur ?")) {
@@ -35,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* --------------------- execute only in theme container -------------------- */
   if(themesContainer) {
-    console.log("themes container")
+    // console.log("themes container")
     let deleteButton = document.querySelectorAll(".delete-button");
     deleteButton.forEach((button) => {
       button.addEventListener("click", (event) => {
@@ -49,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ------------------- execute only in questions container ------------------ */
   if(questionsContainer) {
-    console.log("questions container")
+    // console.log("questions container")
     let deleteButton = document.querySelectorAll(".delete-button");
     deleteButton.forEach((button) => {
       button.addEventListener("click", (event) => {

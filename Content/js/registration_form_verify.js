@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(registrationContainer)
     {
-        console.log('registration_form_verify loaded');
+        // console.log('registration_form_verify loaded');
      
 
         /* ---------------------------- Targeting messages containers ---------------------------- */
