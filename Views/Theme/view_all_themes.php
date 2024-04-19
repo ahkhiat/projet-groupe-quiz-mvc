@@ -42,7 +42,6 @@
                 </tr>
 
             <?php endforeach; ?>
-            <button id="bouton_toto" class="btn">bouton toto</button>
         </table>
     </div>
 

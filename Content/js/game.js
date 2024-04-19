@@ -8,6 +8,12 @@ let gameContainer = document.getElementById("game_container");
     {
         // console.log("game container loaded")
 
+          
+
+        /* ---------------------- hide navbar & footer in-game ---------------------- */
+       document.getElementById("navbar_main").style.display = "none";
+       document.getElementById("footer_main").style.display = "none";
+
         let questions;
         let questionsArray;
 
@@ -204,6 +210,11 @@ let gameContainer = document.getElementById("game_container");
                 let imageElement = document.createElement("img");
                 imageElement.src = cheminImageAleatoire;
                 imageElement.classList.add("image-brain");
+                // imageElement.classList.add("col-xl-9");
+                // imageElement.classList.add("col-lg-9");
+                imageElement.classList.add("col-md-12");
+                imageElement.classList.add("col-sm-12");
+                imageElement.classList.add("col-12");
                 document.querySelector(".image-brain-container").appendChild(imageElement);
             }
 

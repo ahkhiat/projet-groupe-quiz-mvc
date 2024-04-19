@@ -4,13 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const dashboardContainer = document.getElementById("dashboard_container");
   const questionsContainer = document.getElementById("questions_container");
   const themesContainer = document.getElementById("themes_container");
+  const gameContainer = document.getElementById("game_container")
 
   // console.log("script standard chargé");
-
-  function returnConfirmation() {
-    return confirm("Etes-vous certain de revenir en arrière ? Toute progression sera perdue !");
-  }
+ 
+/* --------------------- execute only in game container --------------------- */
+if(gameContainer) {
+  console.log("game container")
+  let returnButton = document.getElementById("return_button").addEventListener("click", (event) => {
+    event.preventDefault();
+    if (confirm("Etes-vous certain de revenir en arrère ?")) {
+      window.location.href = event.currentTarget.href; 
+    }
+  });
   
+
+}
+
 /* ------------------------ execute only in dashboard ----------------------- */
   if(dashboardContainer) {
     // console.log("dashboard container")

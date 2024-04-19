@@ -6,7 +6,7 @@
       <h2>Choisissez le thème</h2>
   </div>
   <form action="?controller=game&action=level_choice" method="POST">
-    <div class="buttons-container container-fluid border ">
+    <div class="buttons-container container-fluid ">
       <?php
         foreach($nbr_questions_themes as $nqt) 
         {
