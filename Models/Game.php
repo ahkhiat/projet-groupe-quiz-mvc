@@ -115,6 +115,10 @@ class Game extends Model
             VALUES (NULL, :th, :user, :gl, :qq, :gs)');
             $requete->execute(array(':th' => $_POST['theme_id'], ':user' => $_POST['user_id'], ':gl' => $_POST['game_level'], 
                                     ':qq' => $_POST['questions_quantity'], ':gs' => $_POST['game_score']));
+
+            $updateQuery = $this->bd->prepare('UPDATE User SET lastActivityTime = CURRENT_TIMESTAMP WHERE user_id = :userId');
+            $updateQuery->execute(array(':userId' => $_POST['user_id']));   
+                                 
             $count = $requete->fetchColumn();
             return $count;
             

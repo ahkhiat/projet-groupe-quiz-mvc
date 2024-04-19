@@ -94,7 +94,7 @@ class User extends Model
     {
 
         try {
-            $requete_user = $this->bd->prepare('SELECT user_id, firstname, username, created_at, image_name  FROM user WHERE user_id = :d');
+            $requete_user = $this->bd->prepare('SELECT user_id, firstname, username, created_at, image_name, lastActivityTime  FROM user WHERE user_id = :d');
             $requete_user->execute(array(':d' => $_GET['id']));
 
             $requete_games = $this->bd->prepare('SELECT SUM(g.game_score) AS total_points, 
@@ -125,7 +125,7 @@ class User extends Model
     {
 
         try {
-            $requete = $this->bd->prepare('SELECT u.user_id, u.username, u.image_name, 
+            $requete = $this->bd->prepare('SELECT u.user_id, u.username, u.image_name, u.lastActivityTime,
                                             SUM(g.game_score) AS total_points 
                                             FROM game g 
                                             JOIN user u ON g.user_id = u.user_id 

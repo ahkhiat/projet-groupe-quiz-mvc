@@ -33,6 +33,9 @@ public function get_login()
             $email = validData($_POST['email']);
             $requete = $this->bd->prepare('SELECT * FROM user WHERE email = :email');
             $requete->execute(array(':email' => $email));
+
+            $updateQuery = $this->bd->prepare('UPDATE User SET lastActivityTime = CURRENT_TIMESTAMP WHERE email = :em');
+            $updateQuery->execute(array(':em' => $email));
             
             if($requete->rowCount() > 0) {
                 $user = $requete->fetch(PDO::FETCH_OBJ);

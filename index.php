@@ -40,5 +40,5 @@ if(file_exists($nom_fichier))
 else 
     exit("ERROR 404:not found");
 
-require_once('Utils/footer.php');
+// require_once('Utils/footer.php');
 

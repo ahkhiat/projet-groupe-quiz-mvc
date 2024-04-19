@@ -45,18 +45,47 @@ class Controller_user extends Controller
     public function action_public_profile()
     {
         $m=User::get_model();
-        $data=['user'=>$m->get_public_profile(),
-               'followers'=>$m->get_followers_number_public(),
+        $user = $m->get_public_profile();
+        
+        $lastActivityTimestamp = strtotime($user['user_info'][0]->lastActivityTime);
+        $currentTimestamp = time();
+        $timeDifference = $currentTimestamp - $lastActivityTimestamp;
+
+        $user['user_info'][0]->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
+
+
+        $data=[
+            // 'user'=>$m->get_public_profile(),
+                'user'=>$user,
+                'followers'=>$m->get_followers_number_public(),
                'followed'=>$m->get_followed_number_public(),
                'isFollowing'=>$m->get_is_following()];
-        $this->render("public_profile", $data);
+        $this->
+        render("public_profile", $data);
     }
+    // public function action_leaderboard()
+    // {
+    //     $m=User::get_model();
+    //     $data=['users'=>$m->get_leaderboard()];
+    //     $this->render("leaderboard", $data);
+    // }
+
     public function action_leaderboard()
-    {
-        $m=User::get_model();
-        $data=['users'=>$m->get_leaderboard()];
-        $this->render("leaderboard", $data);
+{
+    $m = User::get_model();
+    $users = $m->get_leaderboard();
+
+    foreach ($users as $user) {
+        $lastActivityTimestamp = strtotime($user->lastActivityTime);
+        $currentTimestamp = time();
+        $timeDifference = $currentTimestamp - $lastActivityTimestamp;
+
+        $user->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
     }
+
+    $data = ['users' => $users];
+    $this->render("leaderboard", $data);
+}
 
     public function action_all_followers()
     {
@@ -135,26 +164,23 @@ class Controller_user extends Controller
                 /* ------------------------------- ancien code ------------------------------ */
 
             } else {
-                // Limite de taille de fichier
                 $maxFileSize = 1200000; // 1,2 Mo
     
-                // Vérifier si la taille de l'image dépasse la limite
                 if ($imageSize > $maxFileSize) {
-                    // Charger l'image avec Imagick
                     $image = new Imagick($tmpName);
+
+                    if($this->isMobileImage($image)) {
+                        $image->trimImage(0);
+                    }
     
-                    // Réduire la qualité de l'image pour réduire la taille du fichier
                     $compressionQuality = 80; // Qualité de compression (entre 0 et 100)
                     $image->setImageCompressionQuality($compressionQuality);
     
-                    // Enregistrer l'image compressée
                     $newImageName = $username."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
                     $image->writeImage('Public/img/' . $newImageName);
     
-                    // Libérer la mémoire
                     $image->destroy();
                 } else {
-                    // L'image est dans les limites, utiliser l'image originale
                     $newImageName = $username."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
                     move_uploaded_file($tmpName, 'Public/img/' . $newImageName);
                 }
@@ -187,6 +213,22 @@ class Controller_user extends Controller
         }
     }
 
-    
+    private function isMobileImage($image) {
+        $width = $image->getImageWidth();
+        $height = $image->getImageHeight();
+
+        // Vous pouvez ajuster ces valeurs en fonction de votre expérience
+        $mobileWidthThreshold = 1000;
+        $mobileHeightThreshold = 1000;
+
+        if($width <= $mobileWidthThreshold && $height <= $mobileHeightThreshold) {
+            $size = min($width, $height);
+            $image->cropImage($size, $size, 0, 0);
+            return true;
+        }
+
+        return false;
+    }
+
 
 }

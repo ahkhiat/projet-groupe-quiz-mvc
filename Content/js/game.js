@@ -12,7 +12,7 @@ let gameContainer = document.getElementById("game_container");
 
         /* ---------------------- hide navbar & footer in-game ---------------------- */
        document.getElementById("navbar_main").style.display = "none";
-       document.getElementById("footer_main").style.display = "none";
+    //    document.getElementById("footer_main").style.display = "none";
 
         let questions;
         let questionsArray;

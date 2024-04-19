@@ -1,4 +1,5 @@
 <?php 
+// var_dump($user);
 // var_dump($user['user_info']);
 // var_dump($user['games_info']);
 // var_dump($isFollowing);
@@ -7,7 +8,9 @@
 <div class="row gutters-sm">
   <div class="profile-image-container upload container mb-3 mt-3 col-xl-8 col-md-8 col-sm-8 col-10">
     <img src="Public/img/<?= $user['user_info'][0]->image_name ?>" width=125 height=125 alt="" title="<?= $user['user_info'][0]->image_name ?>">
-
+      <span class="badge-online-public-profile position-absolute p-2 <?= $user['user_info'][0]->active ? 'bg-success' : 'bg-danger';?> border border-light rounded-circle">
+      <span class="visually-hidden">New alerts</span>
+      </span>
     <form action="" class="img-form" id="img_form" enctype="multipart/form-data" method="POST">
       <div class="upload">
       </div>
@@ -62,7 +65,7 @@
 </div>
 
 <hr>
-<div class="container d-flex flex-wrap col-xl-8 col-md-9 col-sm-10 col-12 gap-xl-5 gap-md-5 gap-sm-5 gap-3 mx-auto">
+<div class="container d-flex flex-wrap col-xl-8 col-md-9 col-sm-10 col-12 gap-xl-5 gap-md-5 gap-sm-5 gap-2 mx-auto">
     <div class="card-profile col-xl-3 col-md-3 col-sm-5 col-5">
       <div class="card " >
         <div class="card-body">

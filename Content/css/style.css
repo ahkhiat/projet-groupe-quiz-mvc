@@ -384,6 +384,10 @@ ul {
     font-size: 12px !important;
   }
 
+  .badge-online-public-profile {
+    transform: translate(-40px, 100px);
+  }
+
 
   /* -------------------------------------------------------------------------- */
   /*                               Private profile                              */
@@ -435,6 +439,10 @@ ul {
   width: 40px;
   border-radius: 50%;
   border: 2px solid rgb(56, 56, 56);
+}
+
+.badge-online {
+  transform: translate(-25px, 30px);
 }
 
 /* ......................validator password................... */
