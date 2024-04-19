@@ -1,7 +1,7 @@
 <?php 
-var_dump($user['user_info']);
+// var_dump($user['user_info']);
 // var_dump($user['games_info']);
-var_dump($isFollowing);
+// var_dump($isFollowing);
 // var_dump($_GET)
 ?>
 <div class="row gutters-sm">
