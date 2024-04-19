@@ -24,7 +24,7 @@
                   <div class="round">
                     <input type="hidden" name="user_id" value="<?= $user['user_info'][0]->user_id ?>">
                     <input type="hidden" name="username" value="<?= $user['user_info'][0]->username ?>">
-                    <input type="file" name="img_input" id="img_input" accept=".jpg, .jpeg, .png">
+                    <input type="file" name="img_input" id="img_input" accept=".jpg, .jpeg, .png" capture="camera">
                     <i class="fa fa-camera" style="color: #fff"></i>
                   </div>
                 </div>
