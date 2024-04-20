@@ -6,11 +6,15 @@ include('./Utils/header_admin.php')
 
     <div class="table-responsive">
 
+        
+
+        <table id='table' class="table w-75 mx-auto">
+        <h2 class="text-center">Liste des questions</h2>
+
         <div class="align-self-end">
             <a href="?controller=question&action=question_add"><button class="mt-3 btn btn-secondary">Ajouter une question</button></a>
         </div>
 
-        <table id='table' class="table">
             <thead>
                 <th>id</th>
                 <th>theme</th>

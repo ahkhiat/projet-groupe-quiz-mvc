@@ -12,13 +12,29 @@ class Controller_user extends Controller
     }
 
 
+    // public function action_all_users()
+    // {
+    //     $m=User::get_model();
+    //     $data=['users'=>$m->get_all_users()];
+    //     $this->render("all_users",$data);
+    // }
     public function action_all_users()
     {
         $m=User::get_model();
-        $data=['users'=>$m->get_all_users()];
-        $this->render("all_users",$data);
+        $users = $m->get_all_users();
+        foreach ($users as $user) {
+            $lastActivityTimestamp = strtotime($user->lastActivityTime);
+            $currentTimestamp = time();
+            $timeDifference = $currentTimestamp - $lastActivityTimestamp;
+    
+            $user->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
+        }
 
+        $data=['users'=> $users];
+        $this->render("all_users",$data);
     }
+
+
     public function action_user_profile()
     {
         $m=User::get_model();
@@ -63,6 +79,7 @@ class Controller_user extends Controller
         $this->
         render("public_profile", $data);
     }
+    
     // public function action_leaderboard()
     // {
     //     $m=User::get_model();
@@ -87,18 +104,52 @@ class Controller_user extends Controller
     $this->render("leaderboard", $data);
 }
 
+    // public function action_all_followers()
+    // {
+    //     $m=User::get_model();
+    //     $data=['follow'=>$m->get_all_followers(),
+    //            'message'=>'Liste des abonnés'];
+    //     $this->render("all_follow", $data);
+    // }
     public function action_all_followers()
     {
         $m=User::get_model();
-        $data=['follow'=>$m->get_all_followers(),
+        $followers = $m->get_all_followers();
+
+        foreach ($followers as $follow) {
+            $lastActivityTimestamp = strtotime($follow->lastActivityTime);
+            $currentTimestamp = time();
+            $timeDifference = $currentTimestamp - $lastActivityTimestamp;
+    
+            $follow->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
+        }
+
+        $data=['follow'=>$followers,
                'message'=>'Liste des abonnés'];
         $this->render("all_follow", $data);
     }
 
+    // public function action_all_followed()
+    // {
+    //     $m=User::get_model();
+    //     $data=['follow'=>$m->get_all_followed(),
+    //            'message'=>'Liste des abonnments'];
+    //     $this->render("all_follow", $data);
+    // }
     public function action_all_followed()
     {
         $m=User::get_model();
-        $data=['follow'=>$m->get_all_followed(),
+        $followed = $m->get_all_followed();
+
+        foreach ($followed as $follow) {
+        $lastActivityTimestamp = strtotime($follow->lastActivityTime);
+        $currentTimestamp = time();
+        $timeDifference = $currentTimestamp - $lastActivityTimestamp;
+
+        $follow->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
+        }
+
+        $data=['follow'=>$followed,
                'message'=>'Liste des abonnments'];
         $this->render("all_follow", $data);
     }
@@ -200,6 +251,7 @@ class Controller_user extends Controller
                 $newImageName.=".".$imageExtension;
                 $m=User::get_model();
                 $m->set_profile_picture($newImageName);
+                $_SESSION['image_name'] = $newImageName;
                 move_uploaded_file($tmpName, 'Public/img/' . $newImageName);
                 echo 
                 "

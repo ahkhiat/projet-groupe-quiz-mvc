@@ -5,7 +5,9 @@ include('./Utils/header_admin.php')
 ?>
 
 <div class="table-responsive">
-    <table id='table' class="table">
+
+    <table id='table' class="table w-75 mx-auto">
+    <h2 class="text-center">Liste des parties</h2>
         <thead>
             <th>id</th>
             <th>Theme</th>
