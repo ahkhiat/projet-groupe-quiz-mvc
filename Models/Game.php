@@ -118,13 +118,18 @@ class Game extends Model
 
             $updateQuery = $this->bd->prepare('UPDATE User SET lastActivityTime = CURRENT_TIMESTAMP WHERE user_id = :userId');
             $updateQuery->execute(array(':userId' => $_POST['user_id']));   
+
+            $requeteBadge = $this->bd->prepare('SELECT COUNT(*) FROM game WHERE user_id = :user');
+            $requeteBadge->execute(array(':user'=>$_POST['user_id']));
                                  
-            $count = $requete->fetchColumn();
-            return $count;
+            // $count = $requete->fetchColumn();
+            // return $count;
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
+        return $requeteBadge->fetchAll(PDO::FETCH_OBJ);
+
     }
 
 

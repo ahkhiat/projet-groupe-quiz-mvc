@@ -54,13 +54,13 @@ let gameContainer = document.getElementById("game_container");
             const res = await fetch("?controller=game&action=fetch_questions", {
                 method: 'GET' ,
                 headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-type': 'application/json'
+                    'Accept': 'application/json',
+                    // 'Content-type': 'application/json'
                 } 
             });
             questionsArray = await res.json();
             questions = questionsArray.game
-            // console.log(questions);
+            console.log(questions);
             }
         async function getListeQuestions() {
             await fetchQuestions();

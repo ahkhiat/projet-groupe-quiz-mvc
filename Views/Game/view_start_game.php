@@ -1,8 +1,7 @@
-<div id="game_container">
-
-  <?php
+<?php
         // var_dump($quiz_duration);
         ?> 
+<div id="game_container">
 <input type="hidden" class="quiz-duration" value="<?= $quiz_duration ?>">  
 <div class="main-container container">
     <!-- En-tête -->

@@ -28,8 +28,8 @@ class Controller_game extends Controller
         $nbr_questions = $mc->get_nbr_questions();
 
         $data=['game'=>$m->get_fetch_questions($nbr_questions)];
-        ob_clean();
-        header('Content-Type: application/json');
+        // ob_clean();
+        // header('Content-Type: application/json');
 
         $jsonData = json_encode($data);
 
@@ -68,8 +68,8 @@ class Controller_game extends Controller
     public function action_store_game()
     {
         $m = Game::get_model();
-        $m->set_store_game();
-        $this->render("retry");
+        $data=['nb_parties'=>$m->set_store_game()];
+        $this->render("retry", $data);
     }
 
 
