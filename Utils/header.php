@@ -21,17 +21,12 @@ session_start();
   <!-- ------------------------------- scripts ------------------------------ -->
   <script src="./Content/js/script.js" defer></script>
 
-<<<<<<< HEAD
   
    <script src="./Content/js/login_form_verify.js" defer></script>
   <script src="./Content/js/registration_form_verify.js" defer></script> 
 
 
 
-=======
-  <script src="./Content/js/login_form_verify.js" defer></script>
-  <script src="./Content/js/registration_form_verify.js" defer></script> 
->>>>>>> 2c519ceeb3b2220d281a21293ebb58aa02ad76be
 
   <!-- The game script is in the game view (view_start_game.php) -->
 
