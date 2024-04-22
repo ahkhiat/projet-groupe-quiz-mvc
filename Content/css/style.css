@@ -102,10 +102,11 @@ header .navbar{
     display: inline-block;
    
 } 
+/* rgba(127, 255, 212, 0.564); */
 
 h1{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: rgba(127, 255, 212, 0.564);
+    background-color: rgba(127, 227, 255, 0.511)!important;
     text-align: center;
 }
 

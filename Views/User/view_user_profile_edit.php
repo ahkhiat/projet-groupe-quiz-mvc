@@ -45,7 +45,7 @@
                                 <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="email" class="form-control" value="<?= $user["user_info"][0]->email ?>" name="email">
+                                    <input type="text" class="form-control" value="<?= $user["user_info"][0]->email ?>" name="email">
                                 </div>
                             </div>
                             <div class="row mb-3">
