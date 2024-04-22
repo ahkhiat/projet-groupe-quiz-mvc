@@ -20,8 +20,8 @@
     $_SESSION['id'] = $user->user_id;
     $_SESSION['image_name'] = $user->image_name;
    
-var_dump($user);
+// var_dump($user);
 
     
     ?>
-<!-- <script>window.location.href="?controller=home&action=home"</script> -->
+<script>window.location.href="?controller=home&action=home"</script>

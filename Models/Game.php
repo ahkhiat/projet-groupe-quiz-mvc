@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . '/../App/Model.php');
+
 class Game extends Model
 {
     protected $bd;
@@ -51,8 +53,8 @@ class Game extends Model
 
     public function get_fetch_questions($nbrQuestions)
     {
-        $theme = $_SESSION['theme'];
-        $level = $_SESSION['level'];
+        $theme = intval($_SESSION['theme']);
+        $level = intval($_SESSION['level']);
 
         // tests values
         // $theme = 1;

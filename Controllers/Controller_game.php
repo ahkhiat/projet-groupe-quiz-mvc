@@ -20,32 +20,34 @@ class Controller_game extends Controller
 
     }
 
-    public function action_fetch_questions()
-    {
-        $m=Game::get_model();
-        $mc=Config::get_model();
+    // public function action_fetch_questions()
+    // {
+    //     $m=Game::get_model();
+    //     $mc=Config::get_model();
 
-        // var_dump($_SESSION);
-        // die;
+    //     // var_dump($_SESSION);
+    //     // die;
 
-        ob_clean();
-        header('Content-Type: application/json');
+    //     ob_clean();
+    //     // header('Content-Type: application/json');
 
-        $nbr_questions = $mc->get_nbr_questions();
+    //     $nbr_questions = $mc->get_nbr_questions();
 
-        $data=$m->get_fetch_questions($nbr_questions);
+    //     $data=$m->get_fetch_questions($nbr_questions);
        
 
-        $jsonData = json_encode($data);
+    //     $jsonData = json_encode($data);
 
-        if ($jsonData === false) {
-            http_response_code(500); // Erreur interne du serveur
-            exit;
-        }
+    //     if ($jsonData === false) {
+    //         http_response_code(500); // Erreur interne du serveur
+    //         exit;
+    //     }
+        
+    //     echo $jsonData;
+    //     exit;
+    // }
 
-        echo $jsonData;
-        exit;
-    }
+
 
     public function action_new_game()
     {
@@ -59,7 +61,7 @@ class Controller_game extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST") 
         {
             $theme = $_POST['theme']; 
-            $_SESSION['theme'] = $theme;
+            $_SESSION['theme'] = intval($theme);
         }
         $this->render("level_choice");
     }
@@ -71,7 +73,7 @@ class Controller_game extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST") 
         {
             $level = $_POST['level']; 
-            $_SESSION['level'] = $level;
+            $_SESSION['level'] = intval($level);
         }
         $this->render("start_game", $data);
     }
