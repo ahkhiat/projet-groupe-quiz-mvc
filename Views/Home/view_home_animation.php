@@ -7,6 +7,9 @@
 				<p class="lead">
                     Plongez dans un Monde de Découvertes avec Nos Quiz Scientifiques : Stimulez Votre Esprit et Élargissez Votre Horizon 
 				</p>
+				<p class="lead">
+				De l'Espace au corps humain, testez Votre Intelligence Scientifique avec Nos Quiz Interactifs et Développez Votre Compréhension du Monde qui Vous Entoure !
+				</p>
 				
 
 					<br>
@@ -98,8 +101,8 @@
 
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="Content/js/template.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" defer></script>
+<script src="Content/js/template.js" defer></script>
 
 
 

@@ -11,6 +11,7 @@
     // $_SESSION['roles']  = $identification[0]->roles;
     // $_SESSION['id']  = $identification[0]->user_id;
 
+
     $_SESSION['email'] = $user->email;
     $_SESSION['lastname'] = $user->lastname;
     $_SESSION['firstname'] = $user->firstname;

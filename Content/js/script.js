@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
  
 /* --------------------- execute only in game container --------------------- */
 if(gameContainer) {
-  console.log("game container")
+  // console.log("game container")
   let returnButton = document.getElementById("return_button").addEventListener("click", (event) => {
     event.preventDefault();
     if (confirm("Etes-vous certain de revenir en arrère ?")) {

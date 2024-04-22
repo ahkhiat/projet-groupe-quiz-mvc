@@ -15,6 +15,7 @@ session_start();
   <!-- ------------------------------- stylesheets ------------------------------ -->
   <link rel="stylesheet" href="./Content/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="Content/css/styles_home.css">
 
   <!-- ------------------------------- libraries scripts  ------------------------------ -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -25,7 +26,7 @@ session_start();
 
   <!-- --------------------------------fonts-------------------------------------------- -->
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> 
-	<link rel="stylesheet" href="Content/css/styles_home.css">
+	
 
   <!-- ------------------------------- scripts ------------------------------ -->
   <script type="module" src="./Content/js/script.js" defer></script>

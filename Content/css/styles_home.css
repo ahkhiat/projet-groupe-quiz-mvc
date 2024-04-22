@@ -39,6 +39,7 @@ a:visited { color: #D87563; }
 	color: rgb(63, 63, 63);
 	margin-bottom: 0;
 	padding-bottom: 0px;
+	padding-top: 15vh;
 }
 .header-home h1 {
 	font-family: "Open sans", Arial;
@@ -66,13 +67,13 @@ a:visited { color: #D87563; }
 	font-size: 18px;
 	font-weight: 300;
 	text-align: center;
-	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+	/* text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1); */
 }
 .header-home .small { 
 	font-size: 0.9em; 
 	line-height: 1.2em;
 	text-align: center;
-	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+	/* text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1); */
 }
 .header-home .text-muted { color:rgb(75, 75, 75); opacity: 0.5; }
 
@@ -171,7 +172,7 @@ a:visited { color: #D87563; }
 	.header-home h2 { margin-bottom: 40px;}
 	.header-home p { font-size: 15px; }
 
-	#illustration { margin-bottom:-380px;}
+	#illustration { margin-bottom:-600px;}
 	.expand img{ margin-bottom:370px; margin-top:-260px; }
 
 	.space-before { padding-top:40px; }

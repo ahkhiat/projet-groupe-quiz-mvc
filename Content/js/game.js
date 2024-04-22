@@ -8,10 +8,8 @@ let gameContainer = document.getElementById("game_container");
     {
         // console.log("game container loaded")
 
-          
-
         /* ---------------------- hide navbar & footer in-game ---------------------- */
-       document.getElementById("navbar_main").style.display = "none";
+    //    document.getElementById("navbar_main").style.display = "none";
     //    document.getElementById("footer_main").style.display = "none";
 
         let questions;
@@ -55,7 +53,7 @@ let gameContainer = document.getElementById("game_container");
                 method: 'GET' ,
                 headers: {
                     'Accept': 'application/json',
-                    // 'Content-type': 'application/json'
+                    'Content-type': 'application/json'
                 } 
             });
             questionsArray = await res.json();

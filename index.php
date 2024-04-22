@@ -18,6 +18,7 @@ require_once('Utils/header.php');
 
 
 
+
 $controllers=['home', 'user', 'game','security', 'admin', 'question', 'answer', 'theme', 'config'];
 $controller_default='home';
 

@@ -25,13 +25,23 @@ class Controller_game extends Controller
         $m=Game::get_model();
         $mc=Config::get_model();
 
-        $nbr_questions = $mc->get_nbr_questions();
+        // var_dump($_SESSION);
+        // die;
 
-        $data=['game'=>$m->get_fetch_questions($nbr_questions)];
         ob_clean();
         header('Content-Type: application/json');
 
+        $nbr_questions = $mc->get_nbr_questions();
+
+        $data=$m->get_fetch_questions($nbr_questions);
+       
+
         $jsonData = json_encode($data);
+
+        if ($jsonData === false) {
+            http_response_code(500); // Erreur interne du serveur
+            exit;
+        }
 
         echo $jsonData;
         exit;
