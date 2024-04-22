@@ -1,46 +1,70 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  let profileContainer = document.getElementById("profile_container");
-  let dashboardContainer = document.getElementById("dashboard_container");
+  const profileContainer = document.getElementById("profile_container");
+  const dashboardContainer = document.getElementById("dashboard_container");
+  const questionsContainer = document.getElementById("questions_container");
+  const themesContainer = document.getElementById("themes_container");
+
+  // console.log("script standard chargé");
+
+  function returnConfirmation() {
+    return confirm("Etes-vous certain de revenir en arrière ? Toute progression sera perdue !");
+  }
   
-
-      console.log("script standard chargé");
-
-      //-----------------Confirmation avant suppression------------------------
-      function confirmation() {
-        return confirm("Etes-vous certain de supprimer cette question ? Cette action est irréversible !");
+/* ------------------------ execute only in dashboard ----------------------- */
+  if(dashboardContainer) {
+    // console.log("dashboard container")
+    document.getElementById("nbr_questions_form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      if (confirm("Etes-vous certain de modifier cette valeur ?")) {
+        this.submit(); 
       }
-      function returnConfirmation() {
-        return confirm("Etes-vous certain de revenir en arrière ? Toute progression sera perdue !");
+    });
+
+    document.getElementById("quiz_duration_form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      if (confirm("Etes-vous certain de modifier cette valeur ?")) {
+        this.submit(); 
       }
-      
-      if(dashboardContainer) {
-        document.getElementById("nbr_questions_form").addEventListener("submit", function(event) {
-          event.preventDefault();
-          if (confirm("Etes-vous certain de modifier cette valeur ?")) {
-            this.submit(); 
-          }
-        });
+    });
+  }
 
-        document.getElementById("quiz_duration_form").addEventListener("submit", function(event) {
-          event.preventDefault();
-          if (confirm("Etes-vous certain de modifier cette valeur ?")) {
-            this.submit(); 
-          }
-        });
+/* --------------------- execute only in theme container -------------------- */
+  if(themesContainer) {
+    // console.log("themes container")
+    let deleteButton = document.querySelectorAll(".delete-button");
+    deleteButton.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Êtes-vous sûr de vouloir supprimer le thème ?")) {
+          button.closest('form').submit();
+        } 
+      })
+    })
+  }
 
-
-      }
-      
-
-      /* ------------------------- upload profile picture ------------------------- */
-
-
-    if(profileContainer) {
-        document.querySelector("#img_input").onchange = function() {
-        document.querySelector("#img_form").submit();
+/* ------------------- execute only in questions container ------------------ */
+  if(questionsContainer) {
+    // console.log("questions container")
+    let deleteButton = document.querySelectorAll(".delete-button");
+    deleteButton.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Êtes-vous sûr de vouloir supprimer la question ?")) {
+          button.closest('form').submit();
         }
+      })
+    })
+  }
+
+/* ------------------------- upload profile picture ------------------------- */
+
+  // The form is automatically sended when the pic is changed
+  if(profileContainer) {
+      document.querySelector("#img_input").onchange = function() {
+      document.querySelector("#img_form").submit();
       }
+    }
 
 });
 

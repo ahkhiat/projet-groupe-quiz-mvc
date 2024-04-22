@@ -1,6 +1,8 @@
 <?php 
 // var_dump($user['user_info']);
 // var_dump($user['games_info']);
+// var_dump($isFollowing);
+// var_dump($_GET)
 ?>
 <div class="row gutters-sm">
   <div class="profile-image-container upload container mb-3 mt-3 col-xl-8 col-md-8 col-sm-8 col-10">
@@ -24,11 +26,36 @@
     <div class="fw-light fs-6 text-muted">
     Membre depuis <?= (new DateTime($user['user_info'][0]->created_at))->format("F Y") ?>
     </div>
-    <!-- <div class="d-flex justify-content-start mb-2">
-      <p class="mb-4 text-primary fw-bold me-3"><?= $followers[0]->total_followers ?> abonnés </p>
+
+    <!-- --------------number of followers and followed------------------ -->
+    <div class="d-flex justify-content-start mt-2">
+      <a href="?controller=user&action=all_followers&id= <?=$user['user_info'][0]->user_id?>" ><p class="text-primary fw-bold me-3"><?= $followers[0]->total_followers ?> abonnés </p></a>
+      <a href="?controller=user&action=all_followed&id= <?=$user['user_info'][0]->user_id?>" ><p class="text-primary fw-bold"><?php echo $followed[0]->total_followed ?> abonnements</p></a>
+    </div>
+    <div>
+      <!-- --------------follow & unfollow buttons------------------------ -->
+      <?php
+        if($isFollowing == 0) {
+        echo '
+        <form action="?controller=user&action=follow&id='.$user["user_info"][0]->user_id.'" method="POST">
+        <input type="hidden" name="followed_id" value="'.$user["user_info"][0]->user_id .'">
+        <button type="submit" class="btn btn-outline-primary border-2"><i class="fa-solid fa-user-plus" style="color: #4268ff;"></i></button>
+      </form>
+        ';
+        } 
       
-      <p class="mb-4 text-primary fw-bold"><?php echo $followed[0]->total_followed ?> abonnements</p>
-    </div> -->
+        elseif($isFollowing == 1) {
+          echo '
+            <form action="?controller=user&action=unfollow&id='.$user["user_info"][0]->user_id.'" method="POST">
+            <input type="hidden" name="followed_id" value="'.$user["user_info"][0]->user_id .'">
+            <button type="submit" class="btn btn-outline-secondary border-2"><i class="fa-solid fa-user-check"></i></button>
+          </form>
+            ';
+        }
+      
+      ?>
+
+    </div>
   </div>
   <div class="col-sm-9 text-secondary">
   </div>
@@ -84,40 +111,3 @@
       </div>
     </div>
 </div>
-<!-- 
-<div class="d-flex flex-column align-items-center text-center">
-  <div class="col-md-8">
-    <div class="card mb-3">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Nom</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            <?= $user[0]->lastname ?>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Prénom</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            <?= $user[0]->firstname ?>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Date d'inscription</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            <?= date("d-m-Y", strtotime($user[0]->created_at)) ?>
-          </div>
-          <hr>
-
-        </div>
-        <hr>
-      </div>
-    </div>
-  </div> -->

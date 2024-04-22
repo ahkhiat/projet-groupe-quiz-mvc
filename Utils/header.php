@@ -19,7 +19,7 @@ session_start();
   <script src="https://kit.fontawesome.com/29aef3fc25.js" crossorigin="anonymous"></script>
 
   <!-- ------------------------------- scripts ------------------------------ -->
-  <script src="./Content/js/script.js" defer></script>
+  <script type="module" src="./Content/js/script.js" defer></script>
 
   
    <script src="./Content/js/login_form_verify.js" defer></script>

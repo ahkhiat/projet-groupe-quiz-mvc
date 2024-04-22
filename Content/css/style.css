@@ -7,6 +7,24 @@ body {
     background-size: 150%; 
 }
 
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   navbar                                   */
+/* -------------------------------------------------------------------------- */
+
+.pp-navbar {
+  
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid rgb(56, 56, 56);
+  
+}
+
 /* -------------------------------------------------------------------------- */
 /*                              Registration form                             */
 /* -------------------------------------------------------------------------- */
@@ -114,10 +132,11 @@ span{
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
+  margin-top: 20vh;
+  /* position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
 }
 
 /**

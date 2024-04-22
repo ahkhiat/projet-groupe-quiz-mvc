@@ -23,12 +23,15 @@ class Model
 
     private static $instance=null;
 
+
     protected function __construct()
     {
         try {
             $this->bd = new PDO('mysql:host=localhost:3306;dbname=science-quiz-mvc', 'root', '');
             $this->bd->query("SET NAMES 'utf8'");
             $this->bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
         } 
         catch (PDOException $e) 
         {
@@ -47,22 +50,5 @@ class Model
     }
 
 
-    // public function get_all_users()
-    // {
-    //     try {
-    //         $requete = $this->bd->prepare('SELECT * FROM user');
-    //         $requete->execute();
-            
-    //     } catch (PDOException $e) {
-    //         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
-    //     }
-    //     return $requete->fetchAll(PDO::FETCH_OBJ);
-    // }
-
-/* -------------------------------------------------------------------------- */
-/*                                    Game                                    */
-/* -------------------------------------------------------------------------- */
-
-
-
+   
 }
