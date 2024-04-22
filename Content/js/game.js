@@ -6,7 +6,7 @@ let gameContainer = document.getElementById("game_container");
 
     if(gameContainer)
     {
-        // console.log("game container loaded")
+        console.log("game container loaded")
 
         /* ---------------------- hide navbar & footer in-game ---------------------- */
     //    document.getElementById("navbar_main").style.display = "none";
@@ -52,7 +52,7 @@ let gameContainer = document.getElementById("game_container");
             const res = await fetch("?controller=game&action=fetch_questions", {
                 method: 'GET' ,
                 headers: {
-                    'Accept': 'application/json',
+                    'Accept': 'application/json, text/plain, */*',
                     'Content-type': 'application/json'
                 } 
             });
