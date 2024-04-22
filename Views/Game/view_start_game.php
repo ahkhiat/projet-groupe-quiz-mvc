@@ -1,14 +1,14 @@
-<div id="game_container">
-
-  <?php
+<?php
         // var_dump($quiz_duration);
+        var_dump($_SESSION)
         ?> 
+<div id="game_container">
 <input type="hidden" class="quiz-duration" value="<?= $quiz_duration ?>">  
 <div class="main-container container">
     <!-- En-tête -->
 
     <section class="progress-cross-container col-xxl-6 col-xl-6 col-md-10 col-sm-10 col-11">
-      <a href="?controller=game&action=new_game" onclick="return returnConfirmation()"><i class="fa-solid fa-xmark fa-2xl me-3"></i></a>
+      <a href="?controller=game&action=new_game" id="return_button"><i class="fa-solid fa-xmark fa-2xl me-3"></i></a>
       <div class="progress-container">
 
         <div class="progress-stacked">
@@ -20,11 +20,12 @@
 
     <!-- Section question-->
     <div class="image-questions-container  col-xl-6 col-md-6 col-sm-12 col-12">
-      <section class="image-brain-container ">
+      <!-- image brain container -->
+      <section class="image-brain-container border align-self-end col-3">
 
       </section>
       <section class="question-container">
-        <p id="question"></p>
+        <p id="question" class="fs-6"></p>
 
       </section>
     </div>

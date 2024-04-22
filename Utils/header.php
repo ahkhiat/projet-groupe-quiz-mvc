@@ -10,13 +10,23 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
+
   <!-- ------------------------------- stylesheets ------------------------------ -->
   <link rel="stylesheet" href="./Content/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="Content/css/styles_home.css">
 
   <!-- ------------------------------- libraries scripts  ------------------------------ -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/29aef3fc25.js" crossorigin="anonymous"></script>
+
+  <!-- ---------------------------------icons---------------------------------------- -->
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> 
+
+  <!-- --------------------------------fonts-------------------------------------------- -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> 
+	
 
   <!-- ------------------------------- scripts ------------------------------ -->
   <script type="module" src="./Content/js/script.js" defer></script>
@@ -25,6 +35,8 @@ session_start();
   <script src="./Content/js/registration_form_verify.js" defer></script> 
 
   <!-- The game script is in the game view (view_start_game.php) -->
+
+  <!-- Home page scripts are called on the Home view -->
 
 
   <title>ScienceQuiz</title>
@@ -36,7 +48,7 @@ session_start();
     <!-- -------------------------Navbar Bootstrap---------------------------------------- -->
 
 
-    <nav class="navbar navbar-expand-lg bg-light navbar-main">
+    <nav class="navbar navbar-expand-lg bg-light navbar-main" id="navbar_main">
 
       <div class="container-fluid">
 

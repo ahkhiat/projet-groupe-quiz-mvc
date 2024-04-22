@@ -18,6 +18,7 @@ require_once('Utils/header.php');
 
 
 
+
 $controllers=['home', 'user', 'game','security', 'admin', 'question', 'answer', 'theme', 'config'];
 $controller_default='home';
 
@@ -40,5 +41,5 @@ if(file_exists($nom_fichier))
 else 
     exit("ERROR 404:not found");
 
-require_once('Utils/footer.php');
+// require_once('Utils/footer.php');
 

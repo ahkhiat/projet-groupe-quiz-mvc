@@ -9,7 +9,7 @@
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="Public/img/<?= $_SESSION['image_name'] ?>" width=125 height=125 alt="" title="<?= $_SESSION['image_name'] ?>">
                             <div class="mt-3">
-                                <h4><?= $_SESSION['lastname'] ?> <?= $_SESSION['firstname'] ?></h4>
+                                <h4><?= $_SESSION['firstname'] ?> <?= $_SESSION['lastname'] ?></h4>
                                 
                             </div>
                         </div>
@@ -42,12 +42,22 @@
 
                             <div class="row mb-3">
                                 <div class="col-sm-3">
+                                <p class="mb-0">Nom d'utilisateur</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="email" class="form-control" value="<?= $user["user_info"][0]->username ?>" name="username">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
                                 <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <input type="email" class="form-control" value="<?= $user["user_info"][0]->email ?>" name="email">
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <div class="col-sm-3">
                                 <p class="mb-0">Date de naissance</p>
@@ -61,7 +71,7 @@
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
                                     <input type="hidden" name="" id="" value="<?php echo $_SESSION['id'] ?>">
-                                    <button type="submit" class="btn btn-primary px-4" value="Save Changes">Modifier</button>
+                                    <button type="submit" class="btn btn-primary px-4" value="Save Changes">Valider</button>
                                 </div>
                             </div>
                         </form>

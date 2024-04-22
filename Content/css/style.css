@@ -13,6 +13,15 @@ a {
 }
 
 /* -------------------------------------------------------------------------- */
+/*                                  home page                                 */
+/* -------------------------------------------------------------------------- */
+
+#home_page_section {
+  margin-top: 25vh;
+}
+
+
+/* -------------------------------------------------------------------------- */
 /*                                   navbar                                   */
 /* -------------------------------------------------------------------------- */
 
@@ -129,11 +138,9 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20vh;
-  /* position: absolute;
-  top: 50%;
-  left: 50%; */
-  /* transform: translate(-50%, -50%); */
+  margin: 20vh auto;
+  
+
 }
 
 /**
@@ -369,7 +376,7 @@ ul {
   /* ------------------------------- retry game ------------------------------- */
 
   .retry-game {
-    margin-top : 200px;
+    margin : 40vh auto;
   }
 
   /* -------------------------------------------------------------------------- */
@@ -384,6 +391,10 @@ ul {
 
   .card-profile-text {
     font-size: 12px !important;
+  }
+
+  .badge-online-public-profile {
+    transform: translate(-40px, 100px);
   }
 
 
@@ -439,6 +450,10 @@ ul {
   border: 2px solid rgb(56, 56, 56);
 }
 
+.badge-online {
+  transform: translate(-25px, 30px);
+}
+
 /* ......................validator password................... */
  
 
@@ -472,3 +487,10 @@ div .validator-criters {
   color: #97df07;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                              all follow table                              */
+/* -------------------------------------------------------------------------- */
+
+.badge-online-all-follow {
+  transform: translate(-32px, 30px);
+}

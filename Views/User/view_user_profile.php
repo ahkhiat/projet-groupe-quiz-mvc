@@ -19,11 +19,12 @@
               <!-- profile picture auto send form -->
               <form action="?controller=user&action=profile_picture" class="img-form" id="img_form" enctype="multipart/form-data" method="POST">
                 <div class="upload">
-                  <img src="Public/img/<?= $user['user_info'][0]->image_name ?>" width=125 height=125 alt="" title="<?= $user['user_info'][0]->image_name ?>">
+                <img src="Public/img/<?= $user['user_info'][0]->image_name ?>" width=125 height=125 alt="" title="<?= $user['user_info'][0]->image_name ?>">
+
                   <div class="round">
                     <input type="hidden" name="user_id" value="<?= $user['user_info'][0]->user_id ?>">
                     <input type="hidden" name="username" value="<?= $user['user_info'][0]->username ?>">
-                    <input type="file" name="img_input" id="img_input" accept=".jpg, .jpeg, .png">
+                    <input type="file" name="img_input" id="img_input" accept="image/*" capture="camera">
                     <i class="fa fa-camera" style="color: #fff"></i>
                   </div>
                 </div>
@@ -44,8 +45,15 @@
               </div>
 
             </div>
+
           </div>
+          <!-- /* ------------------------------ modify button ----------------------------- */ -->
+          <div class="d-flex justify-content-center mb-2">
+            <a href="?controller=user&action=user_profile_edit"><button type="button" class="btn btn-outline-primary btn-sm">Modifier ses infos</button></a>
+          </div>
+
         </div>
+        
 
         <!-- /* --------------------------- user info container -------------------------- */ -->
         <div class="col-lg-8">
@@ -69,6 +77,17 @@
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0"><?php echo $user['user_info'][0]->firstname ?></p>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Nom d'utilisateur</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><?php echo $user['user_info'][0]->username ?></p>
                 </div>
               </div>
 
@@ -109,10 +128,7 @@
           </div>
           <!-- /* ----------------------- end of user infos container ---------------------- */ -->
 
-          <!-- /* ------------------------------ modify button ----------------------------- */ -->
-          <div class="d-flex justify-content-center mb-2">
-            <a href="?controller=user&action=user_profile_edit"><button type="button" class="btn btn-primary">Modifier</button></a>
-          </div>
+    
 
           <!-- /* -------------------------- mini cards container -------------------------- */ -->
           <div class="container d-flex flex-wrap justify-content-between gap-xl-3 gap-md-3 gap-sm-3 gap-3">

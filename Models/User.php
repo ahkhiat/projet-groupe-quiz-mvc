@@ -24,7 +24,7 @@ class User extends Model
     {
 
         try {
-            $requete = $this->bd->prepare('SELECT * FROM user');
+            $requete = $this->bd->prepare('SELECT user_id, email, roles, lastname, firstname, username, birthdate, created_at, image_name, lastActivityTime FROM user');
             $requete->execute();
             
         } catch (PDOException $e) {
@@ -94,7 +94,7 @@ class User extends Model
     {
 
         try {
-            $requete_user = $this->bd->prepare('SELECT user_id, firstname, username, created_at, image_name  FROM user WHERE user_id = :d');
+            $requete_user = $this->bd->prepare('SELECT user_id, firstname, username, created_at, image_name, lastActivityTime  FROM user WHERE user_id = :d');
             $requete_user->execute(array(':d' => $_GET['id']));
 
             $requete_games = $this->bd->prepare('SELECT SUM(g.game_score) AS total_points, 
@@ -125,7 +125,7 @@ class User extends Model
     {
 
         try {
-            $requete = $this->bd->prepare('SELECT u.user_id, u.username, u.image_name, 
+            $requete = $this->bd->prepare('SELECT u.user_id, u.username, u.image_name, u.lastActivityTime,
                                             SUM(g.game_score) AS total_points 
                                             FROM game g 
                                             JOIN user u ON g.user_id = u.user_id 
@@ -222,7 +222,7 @@ class User extends Model
 
         try {
             $requete = $this->bd->prepare('SELECT u.user_id AS follow_id, 
-                                        u.username, u.image_name,
+                                        u.username, u.image_name, u.lastActivityTime,
                                         COALESCE(SUM(g.game_score), 0) AS total_points 
                                         FROM follow f 
                                         JOIN user u ON f.follower_id = u.user_id 
@@ -244,7 +244,7 @@ class User extends Model
 
         try {
             $requete = $this->bd->prepare('SELECT u.user_id AS follow_id, 
-                                            u.username , u.image_name, 
+                                            u.username , u.image_name, u.lastActivityTime,
                                             COALESCE(SUM(g.game_score), 0) AS total_points 
                                             FROM follow f 
                                             JOIN user u ON f.followed_id = u.user_id 

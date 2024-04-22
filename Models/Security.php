@@ -33,6 +33,9 @@ public function get_login()
             $email = validData($_POST['email']);
             $requete = $this->bd->prepare('SELECT * FROM user WHERE email = :email');
             $requete->execute(array(':email' => $email));
+
+            $updateQuery = $this->bd->prepare('UPDATE User SET lastActivityTime = CURRENT_TIMESTAMP WHERE email = :em');
+            $updateQuery->execute(array(':em' => $email));
             
             if($requete->rowCount() > 0) {
                 $user = $requete->fetch(PDO::FETCH_OBJ);
@@ -86,8 +89,8 @@ public function get_user_registration_valid()
             // L'email n'existe pas, il faut s'inscription
             //'user' is the default role
             $user = "user";
-            $requete_insertion = $this->bd->prepare('INSERT INTO user (user_id, email, roles, pswd, firstname, lastname, username, birthdate) 
-                VALUES(NULL, :e, :utilisateur, :p, :f, :l, :un, :b)');
+            $requete_insertion = $this->bd->prepare('INSERT INTO user (user_id, email, roles, pswd, firstname, lastname, username, birthdate, image_name) 
+                VALUES(NULL, :e, :utilisateur, :p, :f, :l, :un, :b, :img)');
             
             $requete_insertion->execute(array(
                 ':e' => $email,
@@ -96,7 +99,8 @@ public function get_user_registration_valid()
                 ':l' => $lastname,
                 ':f' => $firstname,
                 ':un' => $username,
-                ':b' => $birthdate
+                ':b' => $birthdate,
+                ':img' => 'noprofile.png'
                 ));
 
             return $requete_insertion->fetchAll(PDO::FETCH_OBJ);

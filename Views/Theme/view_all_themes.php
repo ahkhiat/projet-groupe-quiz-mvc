@@ -11,7 +11,8 @@
             <a href="?controller=theme&action=theme_add"><button class="mt-3 btn btn-secondary">Ajouter un thème</button></a>
         </div>
 
-        <table id='table' class="table">
+        <table id='table' class="table w-75 mx-auto">
+        <h2 class="text-center">Liste des thèmes</h2>            
             <thead>
                 <th>id</th>
                 <th>Theme</th>
@@ -42,7 +43,6 @@
                 </tr>
 
             <?php endforeach; ?>
-            <button id="bouton_toto" class="btn">bouton toto</button>
         </table>
     </div>
 
