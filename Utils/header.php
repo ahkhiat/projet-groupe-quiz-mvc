@@ -20,6 +20,13 @@ session_start();
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/29aef3fc25.js" crossorigin="anonymous"></script>
 
+  <!-- ---------------------------------icons---------------------------------------- -->
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> 
+
+  <!-- --------------------------------fonts-------------------------------------------- -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> 
+	<link rel="stylesheet" href="Content/css/styles_home.css">
+
   <!-- ------------------------------- scripts ------------------------------ -->
   <script type="module" src="./Content/js/script.js" defer></script>
 
@@ -27,6 +34,8 @@ session_start();
   <script src="./Content/js/registration_form_verify.js" defer></script> 
 
   <!-- The game script is in the game view (view_start_game.php) -->
+
+  <!-- Home page scripts are called on the Home view -->
 
 
   <title>ScienceQuiz</title>

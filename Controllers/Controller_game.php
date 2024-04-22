@@ -28,8 +28,8 @@ class Controller_game extends Controller
         $nbr_questions = $mc->get_nbr_questions();
 
         $data=['game'=>$m->get_fetch_questions($nbr_questions)];
-        // ob_clean();
-        // header('Content-Type: application/json');
+        ob_clean();
+        header('Content-Type: application/json');
 
         $jsonData = json_encode($data);
 
