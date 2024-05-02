@@ -12,7 +12,7 @@ Thierry Leung
 ### Base de données :
 C'est une base de données Mysql
 
-# Lors de la création d'un controller, ne pas oublier de le déclarer dans l'index.html dans $controllers
+### Lors de la création d'un controller, ne pas oublier de le déclarer dans l'index.html dans $controllers
 
 
-# Essai deploiement le 19 avril 2024
+### Essai deploiement le 19 avril 2024
