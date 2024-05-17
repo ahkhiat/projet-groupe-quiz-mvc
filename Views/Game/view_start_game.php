@@ -1,6 +1,6 @@
 <?php
         // var_dump($quiz_duration);
-        var_dump($_SESSION)
+        // var_dump($_SESSION)
         ?> 
 <div id="game_container">
 <input type="hidden" class="quiz-duration" value="<?= $quiz_duration ?>">  

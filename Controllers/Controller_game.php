@@ -80,8 +80,16 @@ class Controller_game extends Controller
     public function action_store_game()
     {
         $m = Game::get_model();
-        $data=['nb_parties'=>$m->set_store_game()];
-        $this->render("retry", $data);
+        $data=['nb_parties'=>$m->set_store_game(),
+               'nb_perfect'=>$m->get_perfect_nbr()];
+        $this->render("continue", $data);
+    }
+
+    public function action_get_trophies()
+    {
+        $m = Game::get_model();
+        $data=['nb_perfect'=>$m->get_perfect_nbr()];
+        $this->render('', $data);
     }
 
 
