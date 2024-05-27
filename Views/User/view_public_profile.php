@@ -6,7 +6,7 @@
 // var_dump($_GET)
 ?>
 <div class="row gutters-sm">
-  <div class="profile-image-container upload container mb-3 mt-3 col-xl-8 col-md-8 col-sm-8 col-10">
+  <div class="profile-image-container upload container mb-3 mt-3 col-10 col-sm-8 col-md-8 col-xl-8">
     <img src="Public/img/<?= $user['user_info'][0]->image_name ?>" width=125 height=125 alt="" title="<?= $user['user_info'][0]->image_name ?>">
       <span class="badge-online-public-profile position-absolute p-2 <?= $user['user_info'][0]->active ? 'bg-success' : 'bg-danger';?> border border-light rounded-circle">
       <span class="visually-hidden">New alerts</span>

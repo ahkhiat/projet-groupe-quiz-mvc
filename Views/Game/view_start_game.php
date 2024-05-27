@@ -7,7 +7,7 @@
 <div class="main-container container">
     <!-- En-tête -->
 
-    <section class="progress-cross-container col-xxl-6 col-xl-6 col-md-10 col-sm-10 col-11">
+    <section class="progress-cross-container col-11 col-sm-10 col-md-10 col-xl-6 col-xxl-6">
       <a href="?controller=game&action=new_game" id="return_button"><i class="fa-solid fa-xmark fa-2xl me-3"></i></a>
       <div class="progress-container">
 

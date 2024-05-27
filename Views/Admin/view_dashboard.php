@@ -9,7 +9,7 @@ include('./Utils/header_admin.php')
 
     <!-- Row 1 -->
     <div class="row">
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-md-6 col-xl-3 mb-4">
             <div class="card border-left-primary shadow h-100 py-1">
                 <div class="card-header">Nombre d'inscrits</div>
                 <div class="card-body">
@@ -25,7 +25,7 @@ include('./Utils/header_admin.php')
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-md-6 col-xl-3  mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-header">Nombre de parties jouées</div>
                 <div class="card-body">
@@ -41,7 +41,7 @@ include('./Utils/header_admin.php')
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-md-6 col-xl-3  mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
             <div class="card-header">Nombre de questions en BDD</div>
                 <div class="card-body">
@@ -57,7 +57,7 @@ include('./Utils/header_admin.php')
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-md-  col-xl-3 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
             <a href="#nbr_questions" class="text-decoration-none link-dark" >
                 <div class="card-header">
@@ -90,7 +90,7 @@ include('./Utils/header_admin.php')
     <!-- Row 2 -->
     <div class="row">
 
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-md-6 col-xl-3 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
             <a href="#quiz_duration" class="text-decoration-none link-dark">
                 <div class="card-header">
@@ -120,7 +120,7 @@ include('./Utils/header_admin.php')
     // var_dump($nbr_questions_themes);
         foreach($nbr_questions_themes as $nqt){
             echo '
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-md-6 col-xl-3  mb-4">
                 <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-header">'.$nqt->theme_name.' (Nbe Questions)</div>
                     <div class="card-body">
@@ -151,7 +151,7 @@ include('./Utils/header_admin.php')
     <!-- Action Container -->
     <div class="row">
         <!-- Area Chart -->
-        <div class="col-xl-12 col-lg-12">
+        <div class="col-lg-12 col-xl-12 ">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
@@ -160,7 +160,7 @@ include('./Utils/header_admin.php')
                     
                 </div>
                 <div class="card-body">
-                    <div class="chart-area d-flex flex-column col-xl-2 col-md-4 col-sm-4 col-6">
+                    <div class="chart-area d-flex flex-column col-6 col-sm-4 col-md-4 col-xl-2">
                         <div class=" mb-3">
                             <form action="?controller=admin&action=nbr_questions" method="POST" id="nbr_questions_form">
                                 <label for="nbr_questions" class="form-label">Nb de questions par quiz</label>
