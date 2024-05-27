@@ -4,6 +4,7 @@
   // var_dump($user);
   // var_dump($followers);
   // var_dump($followed);
+  var_dump($users);
   ?>
 
   <section>

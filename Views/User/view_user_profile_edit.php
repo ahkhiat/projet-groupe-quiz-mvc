@@ -45,7 +45,7 @@
                                 <p class="mb-0">Nom d'utilisateur</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="email" class="form-control" value="<?= $user["user_info"][0]->username ?>" name="username">
+                                    <input type="text" class="form-control" value="<?= $user["user_info"][0]->username ?>" name="username">
                                 </div>
                             </div>
 

@@ -11,7 +11,7 @@
         foreach($nbr_questions_themes as $nqt) 
         {
           echo '
-          <button type="submit" class="pushable col-xl-6 col-md-6 col-sm-9 col-9" name="theme" value="'.$nqt->theme_id.'">
+          <button type="submit" class="pushable col-9 col-sm-9 col-md-6 col-xl-6" name="theme" value="'.$nqt->theme_id.'">
             '. $nqt->theme_name .'
           </button>
           ';

@@ -1,6 +1,6 @@
 <div id="user_registration_container">
 
-  <div class="bg-white rounded-top mx-auto mt-5 col-xl-4 col-md-6 col-sm-8 col-11">
+  <div class="bg-white rounded-top mx-auto mt-5 col-11 col-sm-8 col-md-6 col-xl-4">
 
     <h2 class= "text-center"> Inscription</h2>
       <form id="registration-form" action="?controller=security&action=user_registration_valid" method="post" >
