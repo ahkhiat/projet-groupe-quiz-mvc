@@ -50,11 +50,7 @@ let gameContainer = document.getElementById("game_container");
     /* ---------------------------- fetch JSON OBJECT---------------------------- */
         async function fetchQuestions() {
             const res = await fetch("./api/fetch_questions.php", {
-                method: 'GET' ,
-                headers: {
-                    // 'Accept': 'application/json, text/plain, */*',
-                    // 'Content-type': 'application/json'
-                } 
+                method: 'GET' 
             });
             questionsArray = await res.json();
             questions = questionsArray
@@ -67,8 +63,6 @@ let gameContainer = document.getElementById("game_container");
 
     /* -------------- waiting the fetch before generating questions ------------- */
         getListeQuestions().then(() => {
-            // console.log('question test : ', questions);
-
             let question = document.querySelector("#question");
             let reponses = document.querySelector("#answers");
             let questionActuelle = 0;
@@ -170,13 +164,10 @@ let gameContainer = document.getElementById("game_container");
             function genererQuestion() {
                 document.querySelector(".image-brain-container").innerHTML = "";
                 genererImage();
-
                 timerStart();
                 startChrono();
-
                 question.innerText = questions[questionActuelle].question;
                 bonneReponse = questions[questionActuelle].answers[bonneReponseIndex];
-
 
                 function tableauAleatoire(array) {
                     for (let i = array.length - 1; i > 0; i--) {
@@ -185,9 +176,7 @@ let gameContainer = document.getElementById("game_container");
                     }
                     return array;
                 }
-
                 tableauAleatoire(questions[questionActuelle].answers);
-
                 for (let i=0; i < questions[questionActuelle].answers.length; i++) {
                     let reponse = document.createElement("li");
                     reponse.classList.add("answer");
@@ -198,8 +187,6 @@ let gameContainer = document.getElementById("game_container");
                     reponse.innerText = questions[questionActuelle].answers[i]
                     reponses.appendChild(reponse)
                 }
-
-                // console.log(bonneReponse)
             }
 
             function genererImage(){

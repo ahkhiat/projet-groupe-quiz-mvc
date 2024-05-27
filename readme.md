@@ -23,9 +23,9 @@ They can add themes, modules, and questions, as well as delete them.
 
 **Developpers :**  
 
-Nadia Hammiche
-Mustapha Mabrouk
-Thierry Leung
+- Nadia Hammiche
+- Mustapha Mabrouk
+- Thierry Leung
 
 ## Application developed in php following an MVC architecture without framework
 
