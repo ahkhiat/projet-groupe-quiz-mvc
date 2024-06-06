@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const profileContainer = document.getElementById("profile_container");
-  const dashboardContainer = document.getElementById("dashboard_container");
-  const questionsContainer = document.getElementById("questions_container");
-  const themesContainer = document.getElementById("themes_container");
-  const gameContainer = document.getElementById("game_container")
+  const profileContainer = document.querySelector("#profile_container");
+  const dashboardContainer = document.querySelector("#dashboard_container");
+  const questionsContainer = document.querySelector("#questions_container");
+  const themesContainer = document.querySelector("#themes_container");
+  const gameContainer = document.querySelector("#game_container")
 
   // console.log("script standard chargé");
  
 /* --------------------- execute only in game container --------------------- */
 if(gameContainer) {
   // console.log("game container")
-  let returnButton = document.getElementById("return_button").addEventListener("click", (event) => {
+  let returnButton = document.querySelector("#return_button").addEventListener("click", (event) => {
     event.preventDefault();
     if (confirm("Etes-vous certain de revenir en arrère ?")) {
       window.location.href = event.currentTarget.href; 
@@ -24,14 +24,14 @@ if(gameContainer) {
 /* ------------------------ execute only in dashboard ----------------------- */
   if(dashboardContainer) {
     // console.log("dashboard container")
-    document.getElementById("nbr_questions_form").addEventListener("submit", function(event) {
+    document.querySelector("#nbr_questions_form").addEventListener("submit", function(event) {
       event.preventDefault();
       if (confirm("Etes-vous certain de modifier cette valeur ?")) {
         this.submit(); 
       }
     });
 
-    document.getElementById("quiz_duration_form").addEventListener("submit", function(event) {
+    document.querySelector("#quiz_duration_form").addEventListener("submit", function(event) {
       event.preventDefault();
       if (confirm("Etes-vous certain de modifier cette valeur ?")) {
         this.submit(); 
