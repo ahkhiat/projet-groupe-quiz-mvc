@@ -99,7 +99,6 @@ class Controller_user extends Controller
 
         $user->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
     }
-
     $data = ['users' => $users];
     $this->render("leaderboard", $data);
 }
