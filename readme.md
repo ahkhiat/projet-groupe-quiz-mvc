@@ -1,6 +1,9 @@
 # ScienceQuiz Application
 Initialized on 2024 March, the 27th
 
+Deployed on 2024 April, the 19th :
+https://thierryleung.fr/sciencequiz
+
 ## Description
 
 This application is aimed at all online game lovers and science enthusiasts. Users will be able to choose between two different modules: the Human Body or Space. Each module will consist of three levels: beginner, intermediate, and advanced.
