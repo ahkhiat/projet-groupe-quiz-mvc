@@ -4,6 +4,12 @@ Initialized on 2024 March, the 27th
 Deployed on 2024 April, the 19th :
 https://thierryleung.fr/sciencequiz
 
+**Developpers :**  
+
+- Nadia Hammiche
+- Mustapha Mabrouk
+- Thierry Leung
+
 ## Description
 
 This application is aimed at all online game lovers and science enthusiasts. Users will be able to choose between two different modules: the Human Body or Space. Each module will consist of three levels: beginner, intermediate, and advanced.
@@ -23,12 +29,6 @@ After 15 seconds, whether an answer has been selected or not, the game moves on 
 The administrator will be able to determine the number of questions asked in a quiz, as well as the time allotted for each question.
 They can add themes, modules, and questions, as well as delete them.
 
-
-**Developpers :**  
-
-- Nadia Hammiche
-- Mustapha Mabrouk
-- Thierry Leung
 
 ## Application developed in php following an MVC architecture without framework
 
